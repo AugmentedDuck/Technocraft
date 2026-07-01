@@ -1,0 +1,13 @@
+{
+  "itemGroup.technocraft": "Example Mod Tab",
+  "block.technocraft.example_block": "Example Block",
+  "item.technocraft.example_item": "Example Item",
+
+  "technocraft.configuration.title": "Technocraft Configs",
+  "technocraft.configuration.section.technocraft.common.toml": "Technocraft Configs",
+  "technocraft.configuration.section.technocraft.common.toml.title": "Technocraft Configs",
+  "technocraft.configuration.items": "Item List",
+  "technocraft.configuration.logDirtBlock": "Log Dirt Block",
+  "technocraft.configuration.magicNumberIntroduction": "Magic Number Text",
+  "technocraft.configuration.magicNumber": "Magic Number"
+}
