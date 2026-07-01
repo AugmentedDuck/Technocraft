@@ -9,5 +9,7 @@
   "technocraft.configuration.items": "Item List",
   "technocraft.configuration.logDirtBlock": "Log Dirt Block",
   "technocraft.configuration.magicNumberIntroduction": "Magic Number Text",
-  "technocraft.configuration.magicNumber": "Magic Number"
+  "technocraft.configuration.magicNumber": "Magic Number",
+
+  "item.technocraft.tin_ingot": "Tin Ingot"
 }
