@@ -11,5 +11,9 @@
   "technocraft.configuration.magicNumberIntroduction": "Magic Number Text",
   "technocraft.configuration.magicNumber": "Magic Number",
 
-  "item.technocraft.tin_ingot": "Tin Ingot"
+  "item.technocraft.tin_ingot": "Tin Ingot",
+  "item.technocraft.lead_ingot": "Lead Ingot",
+  "item.technocraft.silver_ingot": "Silver Ingot",
+  "item.technocraft.steel_ingot": "Steel Ingot",
+  "item.technocraft.bronze_ingot": "Bronze Ingot"
 }

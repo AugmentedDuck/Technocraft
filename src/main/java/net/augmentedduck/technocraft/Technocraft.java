@@ -69,6 +69,10 @@ public class Technocraft {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.TIN_INGOT);
+            event.accept(ModItems.LEAD_INGOT);
+            event.accept(ModItems.SILVER_INGOT);
+            event.accept(ModItems.STEEL_INGOT);
+            event.accept(ModItems.BRONZE_INGOT);
         }
     }
 
