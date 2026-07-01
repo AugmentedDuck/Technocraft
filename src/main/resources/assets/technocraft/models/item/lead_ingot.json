@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "technocraft:item/silver_ingot"
+        "layer0": "technocraft:item/lead_ingot"
     }
 }
