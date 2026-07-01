@@ -15,5 +15,32 @@
   "item.technocraft.lead_ingot": "Lead Ingot",
   "item.technocraft.silver_ingot": "Silver Ingot",
   "item.technocraft.steel_ingot": "Steel Ingot",
-  "item.technocraft.bronze_ingot": "Bronze Ingot"
+  "item.technocraft.bronze_ingot": "Bronze Ingot",
+
+  "item.technocraft.tin_casing": "Tin Item Casing",
+  "item.technocraft.lead_casing": "Lead Item Casing",
+  "item.technocraft.silver_casing": "Silver Item Casing",
+  "item.technocraft.steel_casing": "Steel Item Casing",
+  "item.technocraft.bronze_casing": "Bronze Item Casing",
+  "item.technocraft.iron_casing": "Iron Item Casing",
+  "item.technocraft.gold_casing": "Gold Item Casing",
+  "item.technocraft.copper_casing": "Copper Item Casing",
+
+  "item.technocraft.tin_dense_plate": "Tin Dense Plate",
+  "item.technocraft.lead_dense_plate": "Lead Dense Plate",
+  "item.technocraft.silver_dense_plate": "Silver Dense Plate",
+  "item.technocraft.steel_dense_plate": "Steel Dense Plate",
+  "item.technocraft.bronze_dense_plate": "Bronze Dense Plate",
+  "item.technocraft.iron_dense_plate": "Iron Dense Plate",
+  "item.technocraft.gold_dense_plate": "Gold Dense Plate",
+  "item.technocraft.copper_dense_plate": "Copper Dense Plate",
+
+  "item.technocraft.tin_plate": "Tin Plate",
+  "item.technocraft.lead_plate": "Lead Plate",
+  "item.technocraft.silver_plate": "Silver Plate",
+  "item.technocraft.steel_plate": "Steel Plate",
+  "item.technocraft.bronze_plate": "Bronze Plate",
+  "item.technocraft.iron_plate": "Iron Plate",
+  "item.technocraft.gold_plate": "Gold Plate",
+  "item.technocraft.copper_plate": "Copper Plate"
 }

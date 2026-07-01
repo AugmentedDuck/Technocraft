@@ -68,11 +68,45 @@ public class Technocraft {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            // INGOTS
             event.accept(ModItems.TIN_INGOT);
             event.accept(ModItems.LEAD_INGOT);
             event.accept(ModItems.SILVER_INGOT);
             event.accept(ModItems.STEEL_INGOT);
             event.accept(ModItems.BRONZE_INGOT);
+
+            // CASING
+            event.accept(ModItems.TIN_CASING);
+            event.accept(ModItems.LEAD_CASING);
+            event.accept(ModItems.SILVER_CASING);
+            event.accept(ModItems.STEEL_CASING);
+            event.accept(ModItems.BRONZE_CASING);
+
+            event.accept(ModItems.IRON_CASING);
+            event.accept(ModItems.GOLD_CASING);
+            event.accept(ModItems.COPPER_CASING);
+
+            // DENSE PLATE
+            event.accept(ModItems.TIN_DENSE_PLATE);
+            event.accept(ModItems.LEAD_DENSE_PLATE);
+            event.accept(ModItems.SILVER_DENSE_PLATE);
+            event.accept(ModItems.STEEL_DENSE_PLATE);
+            event.accept(ModItems.BRONZE_DENSE_PLATE);
+
+            event.accept(ModItems.IRON_DENSE_PLATE);
+            event.accept(ModItems.GOLD_DENSE_PLATE);
+            event.accept(ModItems.COPPER_DENSE_PLATE);
+            
+            // PLATE
+            event.accept(ModItems.TIN_PLATE);
+            event.accept(ModItems.LEAD_PLATE);
+            event.accept(ModItems.SILVER_PLATE);
+            event.accept(ModItems.STEEL_PLATE);
+            event.accept(ModItems.BRONZE_PLATE);
+
+            event.accept(ModItems.IRON_PLATE);
+            event.accept(ModItems.GOLD_PLATE);
+            event.accept(ModItems.COPPER_PLATE);
         }
     }
 
