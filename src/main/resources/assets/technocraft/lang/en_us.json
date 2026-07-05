@@ -81,5 +81,7 @@
   "block.technocraft.steel_block": "Block of Steel",
   "block.technocraft.silver_block": "Block of Silver",
   "block.technocraft.lead_block": "Block of Lead",
-  "block.technocraft.bronze_block": "Block of Bronze"
+  "block.technocraft.bronze_block": "Block of Bronze",
+
+  "creativetab.technocraft.tab_title": "Technocraft"
 }
