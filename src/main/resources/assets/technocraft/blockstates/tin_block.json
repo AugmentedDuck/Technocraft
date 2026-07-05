@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "technocraft:block/tin_block"
+        }
+    }
+}

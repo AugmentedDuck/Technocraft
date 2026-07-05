@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
+import net.augmentedduck.technocraft.block.ModBlocks;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -53,6 +54,7 @@ public class Technocraft {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -149,6 +151,14 @@ public class Technocraft {
             event.accept(ModItems.IRON_TINY_DUST);
             event.accept(ModItems.GOLD_TINY_DUST);
             event.accept(ModItems.COPPER_TINY_DUST);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.TIN_BLOCK);
+            event.accept(ModBlocks.LEAD_BLOCK);
+            event.accept(ModBlocks.SILVER_BLOCK);
+            event.accept(ModBlocks.STEEL_BLOCK);
+            event.accept(ModBlocks.BRONZE_BLOCK);
         }
     }
 
