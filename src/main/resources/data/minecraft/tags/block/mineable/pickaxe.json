@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "technocraft:tin_block",
+        "technocraft:steel_block",
+        "technocraft:lead_block",
+        "technocraft:silver_block",
+        "technocraft:bronze_block"
+    ]
+}
