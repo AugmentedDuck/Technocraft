@@ -107,6 +107,48 @@ public class Technocraft {
             event.accept(ModItems.IRON_PLATE);
             event.accept(ModItems.GOLD_PLATE);
             event.accept(ModItems.COPPER_PLATE);
+
+            // RAW
+            event.accept(ModItems.TIN_RAW);
+            event.accept(ModItems.LEAD_RAW);
+            event.accept(ModItems.SILVER_RAW);
+
+            // CRUSHED
+            event.accept(ModItems.TIN_CRUSHED);
+            event.accept(ModItems.LEAD_CRUSHED);
+            event.accept(ModItems.SILVER_CRUSHED);
+
+            event.accept(ModItems.IRON_CRUSHED);
+            event.accept(ModItems.GOLD_CRUSHED);
+            event.accept(ModItems.COPPER_CRUSHED);
+
+            // WASHED
+            event.accept(ModItems.TIN_WASHED);
+            event.accept(ModItems.LEAD_WASHED);
+            event.accept(ModItems.SILVER_WASHED);
+
+            event.accept(ModItems.IRON_WASHED);
+            event.accept(ModItems.GOLD_WASHED);
+            event.accept(ModItems.COPPER_WASHED);
+
+            // DUST
+            event.accept(ModItems.TIN_DUST);
+            event.accept(ModItems.LEAD_DUST);
+            event.accept(ModItems.SILVER_DUST);
+            event.accept(ModItems.BRONZE_DUST);
+
+            event.accept(ModItems.IRON_DUST);
+            event.accept(ModItems.GOLD_DUST);
+            event.accept(ModItems.COPPER_DUST);
+
+            // TINY DUST
+            event.accept(ModItems.TIN_TINY_DUST);
+            event.accept(ModItems.LEAD_TINY_DUST);
+            event.accept(ModItems.SILVER_TINY_DUST);
+
+            event.accept(ModItems.IRON_TINY_DUST);
+            event.accept(ModItems.GOLD_TINY_DUST);
+            event.accept(ModItems.COPPER_TINY_DUST);
         }
     }
 

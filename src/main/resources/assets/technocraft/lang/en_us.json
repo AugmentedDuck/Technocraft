@@ -42,5 +42,38 @@
   "item.technocraft.bronze_plate": "Bronze Plate",
   "item.technocraft.iron_plate": "Iron Plate",
   "item.technocraft.gold_plate": "Gold Plate",
-  "item.technocraft.copper_plate": "Copper Plate"
+  "item.technocraft.copper_plate": "Copper Plate",
+
+  "item.technocraft.tin_raw": "Raw Tin",
+  "item.technocraft.lead_raw": "Raw Lead",
+  "item.technocraft.silver_raw": "Raw Silver",
+
+  "item.technocraft.tin_crushed": "Crushed Tin",
+  "item.technocraft.lead_crushed": "Crushed Lead",
+  "item.technocraft.silver_crushed": "Crushed Silver",
+  "item.technocraft.iron_crushed": "Crushed Iron",
+  "item.technocraft.gold_crushed": "Crushed Gold",
+  "item.technocraft.copper_crushed": "Crushed Copper",
+
+  "item.technocraft.tin_washed": "Washed Crushed Tin",
+  "item.technocraft.lead_washed": "Washed Crushed Lead",
+  "item.technocraft.silver_washed": "Washed Crushed Silver",
+  "item.technocraft.iron_washed": "Washed Crushed Iron",
+  "item.technocraft.gold_washed": "Washed Crushed Gold",
+  "item.technocraft.copper_washed": "Washed Crushed Copper",
+
+  "item.technocraft.tin_dust": "Tin Dust",
+  "item.technocraft.lead_dust": "Lead Dust",
+  "item.technocraft.silver_dust": "Silver Dust",
+  "item.technocraft.bronze_dust": "Bronze Dust",
+  "item.technocraft.iron_dust": "Iron Dust",
+  "item.technocraft.gold_dust": "Gold Dust",
+  "item.technocraft.copper_dust": "Copper Dust",
+
+  "item.technocraft.tin_tiny_dust": "Tiny Pile of Tin",
+  "item.technocraft.lead_tiny_dust": "Tiny Pile of Lead",
+  "item.technocraft.silver_tiny_dust": "Tiny Pile of Silver",
+  "item.technocraft.iron_tiny_dust": "Tiny Pile of Iron",
+  "item.technocraft.gold_tiny_dust": "Tiny Pile of Gold",
+  "item.technocraft.copper_tiny_dust": "Tiny Pile of Copper"
 }

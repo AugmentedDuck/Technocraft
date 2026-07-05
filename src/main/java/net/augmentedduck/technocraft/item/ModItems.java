@@ -50,15 +50,47 @@ public class ModItems {
     public static final DeferredItem<Item> GOLD_PLATE = ITEMS.register("gold_plate", () -> new Item(new Item.Properties()));
 
     // TINY DUST
+    public static final DeferredItem<Item> TIN_TINY_DUST = ITEMS.register("tin_tiny_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_TINY_DUST = ITEMS.register("lead_tiny_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILVER_TINY_DUST = ITEMS.register("silver_tiny_dust", () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> IRON_TINY_DUST = ITEMS.register("iron_tiny_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COPPER_TINY_DUST = ITEMS.register("copper_tiny_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_TINY_DUST = ITEMS.register("gold_tiny_dust", () -> new Item(new Item.Properties()));
+    
     // DUST
+    public static final DeferredItem<Item> TIN_DUST = ITEMS.register("tin_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_DUST = ITEMS.register("lead_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILVER_DUST = ITEMS.register("silver_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BRONZE_DUST = ITEMS.register("bronze_dust", () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> IRON_DUST = ITEMS.register("iron_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COPPER_DUST = ITEMS.register("copper_dust", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_DUST = ITEMS.register("gold_dust", () -> new Item(new Item.Properties()));
 
     // WASHED
+    public static final DeferredItem<Item> TIN_WASHED = ITEMS.register("tin_washed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_WASHED = ITEMS.register("lead_washed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILVER_WASHED = ITEMS.register("silver_washed", () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> IRON_WASHED = ITEMS.register("iron_washed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COPPER_WASHED = ITEMS.register("copper_washed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_WASHED = ITEMS.register("gold_washed", () -> new Item(new Item.Properties()));
+    
     // CRUSHED
+    public static final DeferredItem<Item> TIN_CRUSHED = ITEMS.register("tin_crushed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_CRUSHED = ITEMS.register("lead_crushed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILVER_CRUSHED = ITEMS.register("silver_crushed", () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> IRON_CRUSHED = ITEMS.register("iron_crushed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COPPER_CRUSHED = ITEMS.register("copper_crushed", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GOLD_CRUSHED = ITEMS.register("gold_crushed", () -> new Item(new Item.Properties()));
+    
     // RAW
-
+    public static final DeferredItem<Item> TIN_RAW = ITEMS.register("tin_raw", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_RAW = ITEMS.register("lead_raw", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILVER_RAW = ITEMS.register("silver_raw", () -> new Item(new Item.Properties()));
+    
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
