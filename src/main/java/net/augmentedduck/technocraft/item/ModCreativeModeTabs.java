@@ -117,6 +117,8 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.LEAD_DEEPSLATE_ORE);
             output.accept(ModBlocks.SILVER_DEEPSLATE_ORE);
             
+            // GENERATORS
+            output.accept(ModBlocks.GENERATOR_BLOCK);
                                                                                                                                             })
                                                                                                                                             .build());
 

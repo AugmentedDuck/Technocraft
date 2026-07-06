@@ -32,6 +32,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.STEEL_BLOCK.get());
         dropSelf(ModBlocks.BRONZE_BLOCK.get());
         dropSelf(ModBlocks.LEAD_BLOCK.get());
+        dropSelf(ModBlocks.GENERATOR_BLOCK.get());
+
 
         add(ModBlocks.TIN_ORE.get(), block -> createOreDrop(ModBlocks.TIN_ORE.get(), ModItems.TIN_RAW.get()));
         add(ModBlocks.SILVER_ORE.get(), block -> createOreDrop(ModBlocks.SILVER_ORE.get(), ModItems.SILVER_RAW.get()));
