@@ -20,9 +20,17 @@ public class ModBlockStateProvider extends BlockStateProvider{
         blockWithItem(ModBlocks.SILVER_BLOCK);
         blockWithItem(ModBlocks.STEEL_BLOCK);
         blockWithItem(ModBlocks.LEAD_BLOCK);
+        
+        blockWithItem(ModBlocks.TIN_ORE);
+        blockWithItem(ModBlocks.SILVER_ORE);
+        blockWithItem(ModBlocks.LEAD_ORE);
+        
+        blockWithItem(ModBlocks.TIN_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.SILVER_DEEPSLATE_ORE);
+        blockWithItem(ModBlocks.LEAD_DEEPSLATE_ORE);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
-        simpleBlock(deferredBlock.get(), cubeAll(deferredBlock.get()));
+        simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 }

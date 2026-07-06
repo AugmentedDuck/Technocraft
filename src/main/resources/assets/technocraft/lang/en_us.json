@@ -83,5 +83,13 @@
   "block.technocraft.lead_block": "Block of Lead",
   "block.technocraft.bronze_block": "Block of Bronze",
 
+  "block.technocraft.tin_ore": "Tin Ore",
+  "block.technocraft.silver_ore": "Silver Ore",
+  "block.technocraft.lead_ore": "Lead Ore",
+
+  "block.technocraft.tin_deepslate_ore": "Tin Deepslate Ore",
+  "block.technocraft.silver_deepslate_ore": "Silver Deepslate Ore",
+  "block.technocraft.lead_deepslate_ore": "Lead Deepslate Ore",
+
   "creativetab.technocraft.tab_title": "Technocraft"
 }
