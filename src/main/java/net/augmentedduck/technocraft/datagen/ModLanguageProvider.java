@@ -94,7 +94,6 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.SILVER_DEEPSLATE_ORE.get(), "Silver Deepslate Ore");
         add(ModBlocks.LEAD_DEEPSLATE_ORE.get(), "Lead Deepslate Ore");
         
-        add(ModBlocks.GENERATOR_BLOCK.get(), "Generator");
         add("creativetab.technocraft.tab_title", "Technocraft");
     }
 
