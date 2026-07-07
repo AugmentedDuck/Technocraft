@@ -1,6 +1,7 @@
 package net.augmentedduck.technocraft;
 
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
+import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceScreen;
 import net.augmentedduck.technocraft.screen.custom.GeneratorScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -31,5 +32,6 @@ public class TechnocraftClient {
     @SubscribeEvent
     static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.GENERATOR_MENU.get(), GeneratorScreen::new);
+        event.register(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), ElectricFurnaceScreen::new);
     }
 }

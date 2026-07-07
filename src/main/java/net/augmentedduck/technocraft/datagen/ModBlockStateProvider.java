@@ -36,6 +36,7 @@ public class ModBlockStateProvider extends BlockStateProvider{
         blockWithItem(ModBlocks.LEAD_DEEPSLATE_ORE);
 
         machineBlockState(ModBlocks.GENERATOR_BLOCK);
+        machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

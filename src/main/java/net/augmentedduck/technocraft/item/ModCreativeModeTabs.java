@@ -119,6 +119,11 @@ public class ModCreativeModeTabs {
             
             // GENERATORS
             output.accept(ModBlocks.GENERATOR_BLOCK);
+
+            // CONSUMERS
+            output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);
+
+            // CABLES
                                                                                                                                             })
                                                                                                                                             .build());
 

@@ -35,9 +35,9 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
     public static final int CHARGE_SLOT = 1;
     public static final int OUTPUT_SLOT = 2;
 
-    public static final int ENERGY_CAPACITY = 4_000;
-    public static final int ENERGY_PER_TICK = 4;
-    public static final int ENERGY_EXTRACT_RATE = 10;
+    public static final int ENERGY_CAPACITY = 4_0000;
+    public static final int ENERGY_PER_TICK = 40;
+    public static final int ENERGY_EXTRACT_RATE = 100;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override

@@ -22,6 +22,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     protected void addTags(Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(ModBlocks.GENERATOR_BLOCK.get())
+            .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
             .add(ModBlocks.TIN_ORE.get())
             .add(ModBlocks.SILVER_ORE.get())
             .add(ModBlocks.LEAD_ORE.get())
@@ -42,6 +43,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         
         tag(BlockTags.NEEDS_IRON_TOOL)
             .add(ModBlocks.GENERATOR_BLOCK.get())
+            .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
             .add(ModBlocks.SILVER_ORE.get())
             .add(ModBlocks.SILVER_DEEPSLATE_ORE.get())
             .add(ModBlocks.BRONZE_BLOCK.get())

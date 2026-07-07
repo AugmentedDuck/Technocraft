@@ -3,6 +3,7 @@ package net.augmentedduck.technocraft.block;
 import java.util.function.Supplier;
 
 import net.augmentedduck.technocraft.Technocraft;
+import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -33,6 +34,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> LEAD_DEEPSLATE_ORE = registerBlock("lead_deepslate_ore", () -> new Block(BlockBehaviour.Properties.of().strength(4.5f, 3f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));    
 
     public static final DeferredBlock<Block> GENERATOR_BLOCK = registerBlock("generator", () -> new GeneratorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
+    public static final DeferredBlock<Block> ELECTRIC_FURNACE_BLOCK = registerBlock("electric_furnace", () -> new ElectricFurnaceBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

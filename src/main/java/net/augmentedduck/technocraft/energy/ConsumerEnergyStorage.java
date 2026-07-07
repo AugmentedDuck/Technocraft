@@ -15,4 +15,10 @@ public class ConsumerEnergyStorage extends EnergyStorage {
     public void setEnergy(int amount) {
         this.energy = Math.max(0, Math.min(this.capacity, amount));
     }
+
+    public int consumeEnergy(int amount) {
+        int toConsume = Math.min(amount, this.energy);
+        this.energy -= toConsume;
+        return toConsume;
+    }
 }
