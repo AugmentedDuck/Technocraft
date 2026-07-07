@@ -35,25 +35,27 @@ public class ModBlockStateProvider extends BlockStateProvider{
         blockWithItem(ModBlocks.SILVER_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.LEAD_DEEPSLATE_ORE);
 
-        generatorBlockState();
+        machineBlockState(ModBlocks.GENERATOR_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 
-    private void generatorBlockState() {
-        Block generator = ModBlocks.GENERATOR_BLOCK.get();
-        BlockModelBuilder offModel = models().orientableWithBottom("generator", modLoc("block/generator_side"), modLoc("block/generator_front_unlit"), modLoc("block/generator_bottom"), modLoc("block/generator_top"));
-        BlockModelBuilder onModel = models().orientableWithBottom("generator", modLoc("block/generator_side"), modLoc("block/generator_front_lit"), modLoc("block/generator_bottom"), modLoc("block/generator_top"));
+    private void machineBlockState(DeferredBlock<?> deferredBlock) {
+        Block machine = deferredBlock.get();
+        String name = deferredBlock.getId().getPath(); // e.g. "generator"
 
-        getVariantBuilder(generator).forAllStates(state -> {
+        BlockModelBuilder offModel = models().orientableWithBottom(name, modLoc("block/machine_side"), modLoc("block/" + name + "_front_unlit"), modLoc("block/machine_bottom"), modLoc("block/machine_top"));
+        BlockModelBuilder onModel = models().orientableWithBottom(name + "_lit", modLoc("block/machine_side"), modLoc("block/" + name + "_front_lit"), modLoc("block/machine_bottom"), modLoc("block/machine_top"));
+
+        getVariantBuilder(machine).forAllStates(state -> {
             Direction facing = state.getValue(GeneratorBlock.FACING);
             boolean lit = state.getValue(GeneratorBlock.LIT);
             
-            return ConfiguredModel.builder().modelFile(lit ? onModel : offModel).rotationY((int) facing.toYRot()).build();
+            return ConfiguredModel.builder().modelFile(lit ? onModel : offModel).rotationY(((int) facing.toYRot() + 180) % 360).build();
         });
 
-        itemModels().withExistingParent("generator", modLoc("block/generator"));
+        itemModels().withExistingParent(name, modLoc("block/" + name));
     }
 }

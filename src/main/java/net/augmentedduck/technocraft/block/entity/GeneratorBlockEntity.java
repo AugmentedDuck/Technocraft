@@ -35,9 +35,9 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
     public static final int CHARGE_SLOT = 1;
     public static final int OUTPUT_SLOT = 2;
 
-    public static final int ENERGY_CAPACITY = 10_000;
-    public static final int ENERGY_PER_TICK = 40;
-    public static final int ENERGY_EXTRACT_RATE = 200;
+    public static final int ENERGY_CAPACITY = 4_000;
+    public static final int ENERGY_PER_TICK = 4;
+    public static final int ENERGY_EXTRACT_RATE = 10;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
@@ -81,6 +81,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
         @Override
         public void set(int index, int value) {
             switch (index) {
+                case 0 -> energyStorage.setEnergy(value);
                 case 2 -> litTime = value;
                 case 3 -> litDuration = value;
                 default -> {}
@@ -130,7 +131,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
 
         if (be.litTime <= 0 && be.energyStorage.getEnergyStored() < be.energyStorage.getMaxEnergyStored()) {
             ItemStack fuel = be.itemHandler.getStackInSlot(FUEL_SLOT);
-            int burnTime = fuel.getBurnTime(null);
+            int burnTime = (int)(fuel.getBurnTime(null) * 0.625f);
 
             if (!fuel.isEmpty() && burnTime > 0) {
                 be.litTime = burnTime;
