@@ -181,7 +181,6 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
 
         List<IEnergyStorage> receivers = new ArrayList<>();
 
-
         for (Direction direction : Direction.values()) {
             BlockPos neighborPos = pos.relative(direction);
             if (level.getBlockEntity(neighborPos) == null) continue;
@@ -194,8 +193,12 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
         }
 
         if (receivers.isEmpty()) return false;
+
+        int available = Math.min(ENERGY_EXTRACT_RATE, energyStorage.getEnergyStored());
+        if (available <= 0) return false;
+        
+        int share = Math.max(1, available / receivers.size());
         boolean changed = false;
-        int share = Math.max(1, ENERGY_EXTRACT_RATE / receivers.size());
 
         for (IEnergyStorage receiver : receivers) {
             int extracted = energyStorage.extractEnergy(share, true);

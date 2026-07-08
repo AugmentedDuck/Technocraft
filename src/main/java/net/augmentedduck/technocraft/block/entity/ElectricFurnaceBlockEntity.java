@@ -177,7 +177,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
                 be.cookProgress = 0;
             }
         } else if (be.cookProgress > 0) {
-            be.cookProgress = 0;
+            // be.cookProgress = 0;
             changed = true;
         }
 
