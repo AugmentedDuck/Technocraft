@@ -2,11 +2,14 @@ package net.augmentedduck.technocraft.block.entity;
 
 import java.util.Optional;
 
+import javax.annotation.Nullable;
+
 import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
 import net.augmentedduck.technocraft.energy.ConsumerEnergyStorage;
 import net.augmentedduck.technocraft.energy.ModEnergyTiers;
 import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -26,10 +29,10 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
 public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvider{
     public static final int INPUT_SLOT = 0;
@@ -61,6 +64,10 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
             return slot == FUEL_SLOT ? 1 : 64;
         };
     };
+
+    private final IItemHandler inputHandler = new RangedWrapper(itemHandler, INPUT_SLOT, INPUT_SLOT + 1);
+    private final IItemHandler fuelHandler = new RangedWrapper(itemHandler, FUEL_SLOT, FUEL_SLOT + 1);
+    private final IItemHandler outputHandler = new RangedWrapper(itemHandler, OUTPUT_SLOT, OUTPUT_SLOT + 1);
 
     private final ConsumerEnergyStorage energyStorage = new ConsumerEnergyStorage(ENERGY_CAPACITY, ModEnergyTiers.LV.getMaxTransfer());
 
@@ -99,6 +106,16 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
 
     public IItemHandler getItemHandler() {
         return itemHandler;
+    }
+
+    @Nullable
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        if (side == null) return itemHandler;
+        return switch (side) {
+            case UP -> inputHandler;
+            case DOWN -> outputHandler;
+            default -> fuelHandler;
+        };
     }
 
     public ConsumerEnergyStorage getEnergyStorage() {

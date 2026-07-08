@@ -1,5 +1,8 @@
 package net.augmentedduck.technocraft.block.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
@@ -28,6 +31,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
 public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
 
@@ -60,6 +64,10 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
             return slot == OUTPUT_SLOT ? 1 : slot == CHARGE_SLOT ? 1 : 64;
         };
     };
+
+    private final IItemHandler fuelHandler = new RangedWrapper(itemHandler, FUEL_SLOT, FUEL_SLOT + 1);
+    private final IItemHandler chargeHandler = new RangedWrapper(itemHandler, CHARGE_SLOT, CHARGE_SLOT + 1);
+    private final IItemHandler outputHandler = new RangedWrapper(itemHandler, OUTPUT_SLOT, OUTPUT_SLOT + 1);
 
     private final GeneratorEnergyStorage energyStorage = new GeneratorEnergyStorage(ENERGY_CAPACITY, ENERGY_EXTRACT_RATE);
 
@@ -100,6 +108,17 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
 
     public IItemHandler getItemHandler() {
         return itemHandler;
+    }
+
+    @Nullable
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        if (side == null) return itemHandler;
+
+        return switch (side) {
+            case UP -> chargeHandler;
+            case DOWN -> outputHandler;
+            default -> fuelHandler;
+        };
     }
 
     public IEnergyStorage getEnergyStorage() {
@@ -160,7 +179,8 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
     private boolean distributeEnergy(Level level, BlockPos pos) {
         if (energyStorage.getEnergyStored() <= 0) return false;
 
-        boolean changed = false;
+        List<IEnergyStorage> receivers = new ArrayList<>();
+
 
         for (Direction direction : Direction.values()) {
             BlockPos neighborPos = pos.relative(direction);
@@ -169,19 +189,25 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
             IEnergyStorage neighborStorage = level.getCapability(Capabilities.EnergyStorage.BLOCK, neighborPos, direction.getOpposite());
 
             if (neighborStorage != null && neighborStorage.canReceive()) {
-                int extracted = energyStorage.extractEnergy(ENERGY_EXTRACT_RATE, true);
-
-                if (extracted > 0) {
-                    int accepted = neighborStorage.receiveEnergy(extracted, false);
-
-                    if (accepted > 0) {
-                        energyStorage.extractEnergy(accepted, false);
-                        changed = true;
-                    }
-                }
+                receivers.add(neighborStorage);
             }
         }
 
+        if (receivers.isEmpty()) return false;
+        boolean changed = false;
+        int share = Math.max(1, ENERGY_EXTRACT_RATE / receivers.size());
+
+        for (IEnergyStorage receiver : receivers) {
+            int extracted = energyStorage.extractEnergy(share, true);
+            if (extracted > 0) {
+                int accepted = receiver.receiveEnergy(extracted, false);
+                if (accepted > 0) {
+                    energyStorage.extractEnergy(accepted, false);
+                    changed = true;
+                }
+            }
+        }
+        
         return changed;
     }
 
