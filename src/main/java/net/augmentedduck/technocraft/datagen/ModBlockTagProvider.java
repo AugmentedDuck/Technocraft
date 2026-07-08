@@ -11,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
 
 public class ModBlockTagProvider extends BlockTagsProvider {
 
@@ -53,6 +54,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
             .add(ModBlocks.STEEL_BLOCK.get());
+
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+            .add(ModBlocks.BRONZE_BLOCK.get())
+            .add(ModBlocks.SILVER_BLOCK.get())
+            .add(ModBlocks.STEEL_BLOCK.get())
+            .add(ModBlocks.LEAD_BLOCK.get())
+            .add(ModBlocks.TIN_BLOCK.get());
     }
 
 }

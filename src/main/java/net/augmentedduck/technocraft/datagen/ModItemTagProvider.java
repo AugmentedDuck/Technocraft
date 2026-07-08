@@ -5,11 +5,14 @@ import java.util.concurrent.CompletableFuture;
 import org.jetbrains.annotations.Nullable;
 
 import net.augmentedduck.technocraft.Technocraft;
+import net.augmentedduck.technocraft.block.ModBlocks;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
 
 public class ModItemTagProvider extends ItemTagsProvider {
 
@@ -19,7 +22,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
-        
+
     }
 
 }
