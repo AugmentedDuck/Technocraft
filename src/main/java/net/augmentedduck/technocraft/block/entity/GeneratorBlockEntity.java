@@ -57,7 +57,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
 
         @Override
         public int getSlotLimit(int slot) {
-            return slot == OUTPUT_SLOT ? 1 : 64;
+            return slot == OUTPUT_SLOT ? 1 : slot == CHARGE_SLOT ? 1 : 64;
         };
     };
 

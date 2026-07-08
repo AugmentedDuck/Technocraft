@@ -2,7 +2,6 @@ package net.augmentedduck.technocraft.screen.custom;
 
 
 import net.augmentedduck.technocraft.block.entity.ElectricFurnaceBlockEntity;
-import net.augmentedduck.technocraft.block.entity.GeneratorBlockEntity;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -10,7 +9,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -84,7 +82,7 @@ public class ElectricFurnaceMenu extends AbstractContainerMenu{
 
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copy = sourceStack.copy();
-        final int machineSlots = 2;
+        final int machineSlots = 3;
 
         if (index < machineSlots) {
             if (!this.moveItemStackTo(sourceStack, machineSlots, this.slots.size(), true)) {

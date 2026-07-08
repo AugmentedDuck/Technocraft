@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -88,9 +87,10 @@ public class GeneratorMenu extends AbstractContainerMenu {
             }
         } else {
             // shift-click from player inventory: try fuel slot first, then charge slot
-            if (!this.moveItemStackTo(sourceStack, GeneratorBlockEntity.FUEL_SLOT, GeneratorBlockEntity.FUEL_SLOT + 1, false)
-                    && !this.moveItemStackTo(sourceStack, GeneratorBlockEntity.CHARGE_SLOT, GeneratorBlockEntity.CHARGE_SLOT + 1, false)) {
-                return ItemStack.EMPTY;
+            if (!this.moveItemStackTo(sourceStack, GeneratorBlockEntity.CHARGE_SLOT, GeneratorBlockEntity.CHARGE_SLOT + 1, false)) {
+                if (!this.moveItemStackTo(sourceStack, GeneratorBlockEntity.FUEL_SLOT, GeneratorBlockEntity.FUEL_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
             }
         }
 
