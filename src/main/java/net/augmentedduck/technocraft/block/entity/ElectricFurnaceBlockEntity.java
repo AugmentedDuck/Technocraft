@@ -72,6 +72,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
     private final ConsumerEnergyStorage energyStorage = new ConsumerEnergyStorage(ENERGY_CAPACITY, ModEnergyTiers.LV.getMaxTransfer());
 
     private int cookProgress;
+    private boolean activelyCooking;
 
     private final ContainerData data = new ContainerData() {
         @Override
@@ -126,8 +127,12 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
         return data;
     }
 
-    public boolean isCooking() {
+    public boolean hasProgress() {
         return cookProgress > 0;
+    }
+
+    public boolean isCooking() {
+        return activelyCooking;
     }
 
     private Optional<RecipeHolder<SmeltingRecipe>> findRecipe(ItemStack input) {
@@ -167,7 +172,11 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
         ItemStack input = be.itemHandler.getStackInSlot(INPUT_SLOT);
         Optional<RecipeHolder<SmeltingRecipe>> recipe = be.findRecipe(input);
 
-        if (recipe.isPresent() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input)) {
+        boolean canProgress = recipe.isPresent() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input);
+        be.activelyCooking = canProgress;
+
+        if (canProgress) {
+
             be.energyStorage.consumeEnergy(ENERGY_PER_TICK);
             be.cookProgress++;
             changed = true;
