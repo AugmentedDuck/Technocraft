@@ -2,18 +2,10 @@ package net.augmentedduck.technocraft.energy;
 
 import net.neoforged.neoforge.energy.EnergyStorage;
 
-public class ConsumerEnergyStorage extends EnergyStorage {
+public class ConsumerEnergyStorage extends AbstractModEnergyStorage {
 
     public ConsumerEnergyStorage(int capacity, int maxTransfer) {
-        super(capacity, maxTransfer, 0, 0);
-    }
-
-    public void addEnergy(int amount) {
-        this.energy = Math.max(0, Math.min(this.capacity, this.energy + amount));
-    }
-
-    public void setEnergy(int amount) {
-        this.energy = Math.max(0, Math.min(this.capacity, amount));
+        super(capacity, maxTransfer, 0);
     }
 
     public int consumeEnergy(int amount) {

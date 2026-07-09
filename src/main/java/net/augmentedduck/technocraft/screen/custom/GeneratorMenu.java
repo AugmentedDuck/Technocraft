@@ -6,26 +6,19 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class GeneratorMenu extends AbstractContainerMenu {
-
-    public final GeneratorBlockEntity blockEntity;
-    private final ContainerData data;
+public class GeneratorMenu extends AbstractMachineMenu {
 
     public GeneratorMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf extraData) {
         this(containerId, inventory, getBlockEntity(inventory, extraData));
     }
 
     public GeneratorMenu(int containerId, Inventory inventory, GeneratorBlockEntity blockEntity) {
-        super(ModMenuTypes.GENERATOR_MENU.get(), containerId);
-        this.blockEntity = blockEntity;
-        this.data = blockEntity.getData();
+        super(ModMenuTypes.GENERATOR_MENU.get(), containerId, blockEntity, blockEntity.getData());
 
         IItemHandler handler = blockEntity.getItemHandler();
         this.addSlot(new SlotItemHandler(handler, GeneratorBlockEntity.CHARGE_SLOT, 56, 17));
@@ -52,25 +45,9 @@ public class GeneratorMenu extends AbstractContainerMenu {
         throw new IllegalStateException("Missing Generator block entity at " + pos);
     }
 
-    public int getEnergy() {return data.get(0);}
-    public int getMaxEnergy() {return data.get(1);}
     public int getLitTime() {return data.get(2);}
     public int getLitDuration() {return data.get(3);}
     public boolean isLit() {return getLitDuration() > 0 && getLitTime() > 0; }
-
-    private void addPlayerInventory(Inventory inventory) {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 9; col++) {
-                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
-    }
-
-    private void addPlayerHotbar(Inventory inventory) {
-        for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(inventory, i, 8 + i * 18, 142));
-        }
-    }
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
@@ -102,10 +79,4 @@ public class GeneratorMenu extends AbstractContainerMenu {
 
         return copy;
     }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return blockEntity.getLevel() != null && player.distanceToSqr(blockEntity.getBlockPos().getX() + 0.5, blockEntity.getBlockPos().getY() + 0.5, blockEntity.getBlockPos().getZ() + 0.5) <= 64.0;
-    }
-
 }

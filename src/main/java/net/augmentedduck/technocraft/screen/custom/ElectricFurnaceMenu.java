@@ -7,27 +7,19 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class ElectricFurnaceMenu extends AbstractContainerMenu{
-
-    public final ElectricFurnaceBlockEntity blockEntity;
-    private final ContainerData data;
-
+public class ElectricFurnaceMenu extends AbstractMachineMenu{
 
     public ElectricFurnaceMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf extraData) {
         this(containerId, inventory, getBlockEntity(inventory, extraData));
     }
 
     public ElectricFurnaceMenu(int containerId, Inventory inventory, ElectricFurnaceBlockEntity blockEntity) {
-        super(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), containerId);
-        this.blockEntity = blockEntity;
-        this.data = blockEntity.getData();
+        super(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), containerId, blockEntity, blockEntity.getData());
 
         IItemHandler handler = blockEntity.getItemHandler();
         
@@ -55,25 +47,9 @@ public class ElectricFurnaceMenu extends AbstractContainerMenu{
         throw new IllegalStateException("Missing Electric Furnace block entity at " + pos);
     }
 
-    public int getEnergy() {return data.get(0);}
-    public int getMaxEnergy() {return data.get(1);}
     public int getCookProgress() {return data.get(2);}
     public int getCookTime() {return data.get(3);}
     public boolean isCooking() {return getCookProgress() > 0;}
-
-    private void addPlayerInventory(Inventory inventory) {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 9; col++) {
-                this.addSlot(new Slot(inventory, col + row * 9 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
-    }
-
-    private void addPlayerHotbar(Inventory inventory) {
-        for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(inventory, i, 8 + i * 18, 142));
-        }
-    }
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
@@ -103,10 +79,4 @@ public class ElectricFurnaceMenu extends AbstractContainerMenu{
 
         return copy;
     }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return blockEntity.getLevel() != null && player.distanceToSqr(blockEntity.getBlockPos().getX() + 0.5, blockEntity.getBlockPos().getY() + 0.5, blockEntity.getBlockPos().getZ() + 0.5) <= 64.0;
-    }
-
 }
