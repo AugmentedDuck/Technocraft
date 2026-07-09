@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceMenu;
 import net.augmentedduck.technocraft.screen.custom.GeneratorMenu;
+import net.augmentedduck.technocraft.screen.custom.MaceratorMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +20,7 @@ public class ModMenuTypes {
     
     // CONSUMERS
     public static final Supplier<MenuType<ElectricFurnaceMenu>> ELECTRIC_FURNACE_MENU = MENUS.register("electric_furnace_menu", () -> IMenuTypeExtension.create(ElectricFurnaceMenu::new));
+    public static final Supplier<MenuType<MaceratorMenu>> MACERATOR_MENU = MENUS.register("electric_furnace_menu", () -> IMenuTypeExtension.create(MaceratorMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

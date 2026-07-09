@@ -3,6 +3,8 @@ package net.augmentedduck.technocraft;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceScreen;
 import net.augmentedduck.technocraft.screen.custom.GeneratorScreen;
+import net.augmentedduck.technocraft.screen.custom.MaceratorMenu;
+import net.augmentedduck.technocraft.screen.custom.MaceratorScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -31,5 +33,6 @@ public class TechnocraftClient {
     static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.GENERATOR_MENU.get(), GeneratorScreen::new);
         event.register(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), ElectricFurnaceScreen::new);
+        event.register(ModMenuTypes.MACERATOR_MENU.get(), MaceratorScreen::new);
     }
 }

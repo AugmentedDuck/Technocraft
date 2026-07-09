@@ -9,6 +9,10 @@ import net.augmentedduck.technocraft.block.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+/**
+ * JEI integration: tells JEI which of our machines can actually process which
+ * vanilla recipe types, so players see possible options in JEI's UI.
+ */
 @JeiPlugin
 public class JEITechnocraftPlugin implements IModPlugin{
 

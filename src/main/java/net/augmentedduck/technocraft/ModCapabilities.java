@@ -19,6 +19,9 @@ public class ModCapabilities {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ELECTRIC_FURNACE_BE.get(), (be, side) -> be.getItemHandler(side));
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.ELECTRIC_FURNACE_BE.get(), (be, side) -> be.getEnergyStorage());
 
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.MACERATOR_BE.get(), (be, side) -> be.getItemHandler(side));
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.MACERATOR_BE.get(), (be, side) -> be.getEnergyStorage());
+
         // ITEMS
         event.registerItem(Capabilities.EnergyStorage.ITEM, (stack, ctx) -> new RechargeableBatteryItem.ItemBatteryEnergyStorage(stack),ModItems.RECHARGEABLE_BATTERY.get());
     }

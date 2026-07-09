@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
+import net.augmentedduck.technocraft.block.custom.MaceratorBlock;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -48,8 +49,12 @@ public class ModBlocks {
     
     // CONSUMERS
     public static final DeferredBlock<Block> ELECTRIC_FURNACE_BLOCK = registerBlock("electric_furnace", () -> new ElectricFurnaceBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
+    public static final DeferredBlock<Block> MACERATOR_BLOCK = registerBlock("macerator", () -> new MaceratorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
 
-
+    /**
+     * Registers a block AND its corresponding BlockItem in one call, so every
+     * block placed here automatically gets an inventory item too.
+     */
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

@@ -1,31 +1,34 @@
 package net.augmentedduck.technocraft.screen.custom;
 
-
 import net.augmentedduck.technocraft.block.entity.ElectricFurnaceBlockEntity;
+import net.augmentedduck.technocraft.block.entity.MaceratorBlockEntity;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class ElectricFurnaceMenu extends AbstractMachineMenu{
+public class MaceratorMenu extends AbstractMachineMenu{
 
-    public ElectricFurnaceMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf extraData) {
+    public MaceratorMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf extraData) {
         this(containerId, inventory, getBlockEntity(inventory, extraData));
     }
 
-    public ElectricFurnaceMenu(int containerId, Inventory inventory, ElectricFurnaceBlockEntity blockEntity) {
-        super(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), containerId, blockEntity, blockEntity.getData());
+    public MaceratorMenu(int containerId, Inventory inventory, MaceratorBlockEntity blockEntity) {
+        super(ModMenuTypes.MACERATOR_MENU.get(), containerId, blockEntity, blockEntity.getData());
 
         IItemHandler handler = blockEntity.getItemHandler();
         
-        this.addSlot(new SlotItemHandler(handler, ElectricFurnaceBlockEntity.INPUT_SLOT, 56, 17));
-        this.addSlot(new SlotItemHandler(handler, ElectricFurnaceBlockEntity.BATTERY_SLOT, 56, 53));
-        this.addSlot(new SlotItemHandler(handler, ElectricFurnaceBlockEntity.OUTPUT_SLOT, 116, 35) {
+        this.addSlot(new SlotItemHandler(handler, MaceratorBlockEntity.INPUT_SLOT, 56, 17));
+        this.addSlot(new SlotItemHandler(handler, MaceratorBlockEntity.BATTERY_SLOT, 56, 53));
+        this.addSlot(new SlotItemHandler(handler, MaceratorBlockEntity.OUTPUT_SLOT, 116, 35) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;
@@ -37,19 +40,19 @@ public class ElectricFurnaceMenu extends AbstractMachineMenu{
         addDataSlots(data);
     }
 
-    private static ElectricFurnaceBlockEntity getBlockEntity(Inventory inventory, RegistryFriendlyByteBuf buf) {
+    private static MaceratorBlockEntity getBlockEntity(Inventory inventory, RegistryFriendlyByteBuf buf) {
         BlockPos pos = buf.readBlockPos();
 
-        if (inventory.player.level().getBlockEntity(pos) instanceof ElectricFurnaceBlockEntity be) {
+        if (inventory.player.level().getBlockEntity(pos) instanceof MaceratorBlockEntity be) {
             return be;
         }
 
-        throw new IllegalStateException("Missing Electric Furnace block entity at " + pos);
+        throw new IllegalStateException("Missing Macerator block entity at " + pos);
     }
 
-    public int getCookProgress() {return data.get(2);}
-    public int getCookTime() {return data.get(3);}
-    public boolean isCooking() {return getCookProgress() > 0;}
+    public int getGrindProgress() {return data.get(2);}
+    public int getProcessTime() {return data.get(3);}
+    public boolean isGrinding() {return getGrindProgress() > 0;}
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
@@ -65,7 +68,7 @@ public class ElectricFurnaceMenu extends AbstractMachineMenu{
                 return ItemStack.EMPTY;
             }
         } else {
-            if (!this.moveItemStackTo(sourceStack, ElectricFurnaceBlockEntity.INPUT_SLOT, ElectricFurnaceBlockEntity.INPUT_SLOT + 1, false)) {
+            if (!this.moveItemStackTo(sourceStack, MaceratorBlockEntity.INPUT_SLOT, MaceratorBlockEntity.INPUT_SLOT + 1, false)) {
                 return ItemStack.EMPTY;
             }
         }
@@ -78,4 +81,5 @@ public class ElectricFurnaceMenu extends AbstractMachineMenu{
 
         return copy;
     }
+
 }

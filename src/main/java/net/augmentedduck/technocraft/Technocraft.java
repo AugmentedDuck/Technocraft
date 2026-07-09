@@ -9,6 +9,8 @@ import net.augmentedduck.technocraft.block.entity.ModBlockEntities;
 import net.augmentedduck.technocraft.item.ModCreativeModeTabs;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.augmentedduck.technocraft.item.custom.ModDataComponents;
+import net.augmentedduck.technocraft.recipe.ModRecipeSerializers;
+import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -32,6 +34,9 @@ public class Technocraft {
 
         ModCreativeModeTabs.register(modEventBus);
         ModDataComponents.register(modEventBus);
+
+        ModRecipeTypes.register(modEventBus);
+        ModRecipeSerializers.register(modEventBus);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
