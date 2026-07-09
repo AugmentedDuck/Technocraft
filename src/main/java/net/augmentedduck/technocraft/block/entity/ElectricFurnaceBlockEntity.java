@@ -35,7 +35,22 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
+/**
+ * Block entity for the Electric Furnace machine.
+ *
+ * <p>The electric furnace uses stored energy to process vanilla smelting recipes. It manages:
+ * <ul>
+ *     <li>An input slot for items to smelt
+ *     <li>An output slot for completed recipe
+ *     <li>A fuel slot for energy-containing items
+ *     <li>Internal energy storage
+ *     <li>Cooking progress tracking
+ * </ul>
+ *
+ * <p>The furnace logic runs only on the server through {@link #serverTick}.
+ */
 public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBlockEntity {
+    
     public static final int INPUT_SLOT = 0;
     public static final int OUTPUT_SLOT = 1;
     public static final int FUEL_SLOT = 2;
@@ -44,6 +59,16 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
     public static final int ENERGY_PER_TICK = 28;
     public static final int COOK_TIME = 140;
 
+    /**
+     * Internal item inventory.
+     *
+     * <p>Only valid items can be inserted into each slot:
+     * <ul>
+     *     <li>Fuel slot requires an item with an energy capability
+     *     <li>Input slot requires a valid smelting recipe
+     *     <li>Output slot cannot be manually inserted into
+     * </ul>
+     */
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -66,6 +91,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
         };
     };
 
+    // ITEM HANDLERS FOR DIFFERENT SIDES
     private final IItemHandler inputHandler = new RangedWrapper(itemHandler, INPUT_SLOT, INPUT_SLOT + 1);
     private final IItemHandler fuelHandler = new RangedWrapper(itemHandler, FUEL_SLOT, FUEL_SLOT + 1);
     private final IItemHandler outputHandler = new RangedWrapper(itemHandler, OUTPUT_SLOT, OUTPUT_SLOT + 1);
@@ -75,6 +101,17 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
     private int cookProgress;
     private boolean activelyCooking;
 
+    /**
+     * Data synchronized between server and client menus.
+     *
+     * Index:
+     * <ul>
+     *     <li>0 - Current energy
+     *     <li>1 - Maximum energy
+     *     <li>2 - Current cooking progress
+     *     <li>3 - Required cooking time
+     * </ul>
+     */
     private final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
@@ -166,6 +203,17 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
         }
     }
 
+    /**
+     * Main server-side machine tick.
+     *
+     * Handles:
+     * <ul>
+     *     <li>Charging from inserted energy items
+     *     <li>Checking recipes
+     *     <li>Consuming energy
+     *     <li>Updating block state
+     * </ul>
+     */
     public static void serverTick(Level level, BlockPos pos, BlockState state, ElectricFurnaceBlockEntity be) {
         boolean wasLit = be.isCooking();
         boolean changed = false;
@@ -189,7 +237,6 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
                 be.cookProgress = 0;
             }
         } else if (be.cookProgress > 0) {
-            // be.cookProgress = 0;
             changed = true;
         }
 

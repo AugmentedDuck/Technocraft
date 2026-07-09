@@ -27,19 +27,31 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        ////////////////////////////////////
+        // SELF DROPPING
+        ////////////////////////////////////
+        
+        // NORMAL BLOCKS
         dropSelf(ModBlocks.TIN_BLOCK.get());
         dropSelf(ModBlocks.SILVER_BLOCK.get());
         dropSelf(ModBlocks.STEEL_BLOCK.get());
         dropSelf(ModBlocks.BRONZE_BLOCK.get());
         dropSelf(ModBlocks.LEAD_BLOCK.get());
+
+        // CUSTOM BLOCKS
         dropSelf(ModBlocks.GENERATOR_BLOCK.get());
         dropSelf(ModBlocks.ELECTRIC_FURNACE_BLOCK.get());
 
-
+        /////////////////////////////////////
+        // NON SELF DROPPING
+        /////////////////////////////////////
+        
+        // ORES
         add(ModBlocks.TIN_ORE.get(), block -> createOreDrop(ModBlocks.TIN_ORE.get(), ModItems.TIN_RAW.get()));
         add(ModBlocks.SILVER_ORE.get(), block -> createOreDrop(ModBlocks.SILVER_ORE.get(), ModItems.SILVER_RAW.get()));
         add(ModBlocks.LEAD_ORE.get(), block -> createOreDrop(ModBlocks.LEAD_ORE.get(), ModItems.LEAD_RAW.get()));
         
+        // DEEPSLATE ORES
         add(ModBlocks.TIN_DEEPSLATE_ORE.get(), block -> createOreDrop(ModBlocks.TIN_DEEPSLATE_ORE.get(), ModItems.TIN_RAW.get()));
         add(ModBlocks.SILVER_DEEPSLATE_ORE.get(), block -> createOreDrop(ModBlocks.SILVER_DEEPSLATE_ORE.get(), ModItems.SILVER_RAW.get()));
         add(ModBlocks.LEAD_DEEPSLATE_ORE.get(), block -> createOreDrop(ModBlocks.LEAD_DEEPSLATE_ORE.get(), ModItems.LEAD_RAW.get()));

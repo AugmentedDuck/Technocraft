@@ -8,6 +8,10 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+/**
+ * Handles the registration of all custom Block Entities (Tile Entities) for the mod.
+ * Uses NeoForge's Deferred Register system to safely register content at the correct time.
+ */
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Technocraft.MODID);
 

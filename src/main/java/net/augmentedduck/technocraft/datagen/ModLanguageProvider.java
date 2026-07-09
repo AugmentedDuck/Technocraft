@@ -14,13 +14,18 @@ public class ModLanguageProvider extends LanguageProvider{
 
     @Override
     protected void addTranslations() {
+        ///////////////////////////////
         // ITEMS
+        ///////////////////////////////
+        
+        // INGOTS
         add(ModItems.TIN_INGOT.get(), "Tin Ingot");
         add(ModItems.LEAD_INGOT.get(), "Lead Ingot");
         add(ModItems.SILVER_INGOT.get(), "Silver Ingot");
         add(ModItems.STEEL_INGOT.get(), "Steel Ingot");
         add(ModItems.BRONZE_INGOT.get(), "Bronze Ingot");
 
+        // ITEM CASING
         add(ModItems.TIN_CASING.get(), "Tin Item Casing");
         add(ModItems.LEAD_CASING.get(), "Lead Item Casing");
         add(ModItems.SILVER_CASING.get(), "Silver Item Casing");
@@ -30,6 +35,7 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_CASING.get(), "Gold Item Casing");
         add(ModItems.COPPER_CASING.get(), "Copper Item Casing");
 
+        // DENSE PLATE
         add(ModItems.TIN_DENSE_PLATE.get(), "Tin Dense Plate");
         add(ModItems.LEAD_DENSE_PLATE.get(), "Lead Dense Plate");
         add(ModItems.SILVER_DENSE_PLATE.get(), "Silver Dense Plate");
@@ -39,6 +45,7 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_DENSE_PLATE.get(), "Gold Dense Plate");
         add(ModItems.COPPER_DENSE_PLATE.get(), "Copper Dense Plate");
 
+        // PLATE
         add(ModItems.TIN_PLATE.get(), "Tin Plate");
         add(ModItems.LEAD_PLATE.get(), "Lead Plate");
         add(ModItems.SILVER_PLATE.get(), "Silver Plate");
@@ -48,10 +55,12 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_PLATE.get(), "Gold Plate");
         add(ModItems.COPPER_PLATE.get(), "Copper Plate");
 
+        // RAW
         add(ModItems.TIN_RAW.get(), "Raw Tin");
         add(ModItems.LEAD_RAW.get(), "Raw Lead");
         add(ModItems.SILVER_RAW.get(), "Raw Silver");
 
+        // CRUSHED
         add(ModItems.TIN_CRUSHED.get(), "Crushed Tin");
         add(ModItems.LEAD_CRUSHED.get(), "Crushed Lead");
         add(ModItems.SILVER_CRUSHED.get(), "Crushed Silver");
@@ -59,6 +68,7 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_CRUSHED.get(), "Crushed Gold");
         add(ModItems.COPPER_CRUSHED.get(), "Crushed Copper");
 
+        // WASHED
         add(ModItems.TIN_WASHED.get(), "Washed Crushed Tin");
         add(ModItems.LEAD_WASHED.get(), "Washed Crushed Lead");
         add(ModItems.SILVER_WASHED.get(), "Washed Crushed Silver");
@@ -66,6 +76,7 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_WASHED.get(), "Washed Crushed Gold");
         add(ModItems.COPPER_WASHED.get(), "Washed Crushed Copper");
 
+        // DUST
         add(ModItems.TIN_DUST.get(), "Tin Dust");
         add(ModItems.LEAD_DUST.get(), "Lead Dust");
         add(ModItems.SILVER_DUST.get(), "Silver Dust");
@@ -74,6 +85,7 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_DUST.get(), "Gold Dust");
         add(ModItems.COPPER_DUST.get(), "Copper Dust");
 
+        // TINY DUST PILE
         add(ModItems.TIN_TINY_DUST.get(), "Tiny Pile of Tin");
         add(ModItems.LEAD_TINY_DUST.get(), "Tiny Pile of Lead");
         add(ModItems.SILVER_TINY_DUST.get(), "Tiny Pile of Silver");
@@ -81,8 +93,13 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_TINY_DUST.get(), "Tiny Pile of Gold");
         add(ModItems.COPPER_TINY_DUST.get(), "Tiny Pile of Copper");
 
+        // BATTERY
         add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");
 
+        ///////////////////////////////
+        // BLOCKS
+        ///////////////////////////////
+        
         // BLOCKS
         add(ModBlocks.TIN_BLOCK.get(), "Block of Tin");
         add(ModBlocks.STEEL_BLOCK.get(), "Block of Steel");
@@ -90,19 +107,30 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.LEAD_BLOCK.get(), "Block of Lead");
         add(ModBlocks.BRONZE_BLOCK.get(), "Block of Bronze");
 
+        // ORE
         add(ModBlocks.TIN_ORE.get(), "Tin Ore");
         add(ModBlocks.SILVER_ORE.get(), "Silver Ore");
         add(ModBlocks.LEAD_ORE.get(), "Lead Ore");
 
+        // DEEPSLATE ORE
         add(ModBlocks.TIN_DEEPSLATE_ORE.get(), "Tin Deepslate Ore");
         add(ModBlocks.SILVER_DEEPSLATE_ORE.get(), "Silver Deepslate Ore");
         add(ModBlocks.LEAD_DEEPSLATE_ORE.get(), "Lead Deepslate Ore");
         
+        // GENERATORS
         add(ModBlocks.GENERATOR_BLOCK.get(), "Generator");
+        
+        // CONSUMERS
         add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get(), "Electric Furnace");
 
+        ///////////////////////////////
         // OTHER
+        ///////////////////////////////
+        
+        // TITLES
         add("creativetab.technocraft.tab_title", "Technocraft");
+
+        // TOOLTIPS
         add("item.technocraft.rechargeable_battery.tooltip", "Energy: %s / %s FE");
     }
 

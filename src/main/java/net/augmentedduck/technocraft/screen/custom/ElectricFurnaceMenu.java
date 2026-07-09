@@ -65,7 +65,6 @@ public class ElectricFurnaceMenu extends AbstractMachineMenu{
                 return ItemStack.EMPTY;
             }
         } else {
-            // shift-click from player inventory: always try the input slot
             if (!this.moveItemStackTo(sourceStack, ElectricFurnaceBlockEntity.INPUT_SLOT, ElectricFurnaceBlockEntity.INPUT_SLOT + 1, false)) {
                 return ItemStack.EMPTY;
             }

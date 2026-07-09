@@ -21,40 +21,80 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(Provider provider) {
+        //////////////////////////////////
+        // MINABLE WITH {TOOL}
+        //////////////////////////////////
+        
+        // PICKAXE
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-            .add(ModBlocks.GENERATOR_BLOCK.get())
-            .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
+            // ORES
             .add(ModBlocks.TIN_ORE.get())
             .add(ModBlocks.SILVER_ORE.get())
             .add(ModBlocks.LEAD_ORE.get())
+            
+            //DEEP SLATE ORES
             .add(ModBlocks.TIN_DEEPSLATE_ORE.get())
             .add(ModBlocks.SILVER_DEEPSLATE_ORE.get())
             .add(ModBlocks.LEAD_DEEPSLATE_ORE.get())
+            
+            // BLOCKS
             .add(ModBlocks.BRONZE_BLOCK.get())
             .add(ModBlocks.SILVER_BLOCK.get())
             .add(ModBlocks.STEEL_BLOCK.get())
             .add(ModBlocks.LEAD_BLOCK.get())
-            .add(ModBlocks.TIN_BLOCK.get());
+            .add(ModBlocks.TIN_BLOCK.get())
+            
+            // GENERATORS
+            .add(ModBlocks.GENERATOR_BLOCK.get())
+            
+            // CONSUMERS
+            .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
+            
+            ;
         
+        //////////////////////////////////
+        // MINABLE WITH TOOL LEVEL:
+        //////////////////////////////////
+        
+        // STONE
         tag(BlockTags.NEEDS_STONE_TOOL)
+            // ORES
             .add(ModBlocks.TIN_ORE.get())
             .add(ModBlocks.LEAD_ORE.get())
-            .add(ModBlocks.TIN_DEEPSLATE_ORE.get())
-            .add(ModBlocks.LEAD_DEEPSLATE_ORE.get());
-        
-        tag(BlockTags.NEEDS_IRON_TOOL)
-            .add(ModBlocks.GENERATOR_BLOCK.get())
-            .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
             .add(ModBlocks.SILVER_ORE.get())
+            
+            // DEEPSLATE ORES
+            .add(ModBlocks.TIN_DEEPSLATE_ORE.get())
+            .add(ModBlocks.LEAD_DEEPSLATE_ORE.get())
             .add(ModBlocks.SILVER_DEEPSLATE_ORE.get())
+        
+            ;
+        // IRON
+        tag(BlockTags.NEEDS_IRON_TOOL)
+            // BLOCKS            
             .add(ModBlocks.BRONZE_BLOCK.get())
             .add(ModBlocks.SILVER_BLOCK.get())
             .add(ModBlocks.LEAD_BLOCK.get())
-            .add(ModBlocks.TIN_BLOCK.get());
+            .add(ModBlocks.TIN_BLOCK.get())
 
+            // GENERATORS
+            .add(ModBlocks.GENERATOR_BLOCK.get())
+            
+            // CONSUMERS
+            .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
+
+            ;
+
+        // DIAMOND
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
+            // BLOCKS
             .add(ModBlocks.STEEL_BLOCK.get());
 
+        //////////////////////////////////
+        // OTHER
+        //////////////////////////////////
+        
+        // STORAGE BLOCKS
         tag(Tags.Blocks.STORAGE_BLOCKS)
             .add(ModBlocks.BRONZE_BLOCK.get())
             .add(ModBlocks.SILVER_BLOCK.get())

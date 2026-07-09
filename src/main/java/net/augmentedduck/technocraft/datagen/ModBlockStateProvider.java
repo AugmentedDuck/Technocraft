@@ -6,7 +6,6 @@ import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -21,21 +20,35 @@ public class ModBlockStateProvider extends BlockStateProvider{
 
     @Override
     protected void registerStatesAndModels() {
+        ///////////////////////////////////
+        // SIMPLE BLOCK WITH ITEM
+        ///////////////////////////////////
+        
+        // BLOCKS
         blockWithItem(ModBlocks.BRONZE_BLOCK);
         blockWithItem(ModBlocks.TIN_BLOCK);
         blockWithItem(ModBlocks.SILVER_BLOCK);
         blockWithItem(ModBlocks.STEEL_BLOCK);
         blockWithItem(ModBlocks.LEAD_BLOCK);
         
+        // ORES
         blockWithItem(ModBlocks.TIN_ORE);
         blockWithItem(ModBlocks.SILVER_ORE);
         blockWithItem(ModBlocks.LEAD_ORE);
         
+        // DEEPSLATE ORES
         blockWithItem(ModBlocks.TIN_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.SILVER_DEEPSLATE_ORE);
         blockWithItem(ModBlocks.LEAD_DEEPSLATE_ORE);
 
+        /////////////////////////////////////
+        // MACHINE BLOCKS
+        /////////////////////////////////////
+
+        // GENERATORS
         machineBlockState(ModBlocks.GENERATOR_BLOCK);
+        
+        // CONSUMERS
         machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
     }
 
@@ -43,9 +56,14 @@ public class ModBlockStateProvider extends BlockStateProvider{
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 
+    /**
+     * For blocks with LIT/UNLIT and FACING states. With the same bottom and top face.
+     * 
+     * @param deferredBlock The block you want to add
+     */
     private void machineBlockState(DeferredBlock<?> deferredBlock) {
         Block machine = deferredBlock.get();
-        String name = deferredBlock.getId().getPath(); // e.g. "generator"
+        String name = deferredBlock.getId().getPath();
 
         BlockModelBuilder offModel = models().orientableWithBottom(name, modLoc("block/machine_side"), modLoc("block/" + name + "_front_unlit"), modLoc("block/machine_bottom"), modLoc("block/machine_top"));
         BlockModelBuilder onModel = models().orientableWithBottom(name + "_lit", modLoc("block/machine_side"), modLoc("block/" + name + "_front_lit"), modLoc("block/machine_bottom"), modLoc("block/machine_top"));

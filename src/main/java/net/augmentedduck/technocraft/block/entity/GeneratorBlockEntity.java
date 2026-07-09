@@ -32,6 +32,13 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
+/**
+ * Block Entity for a Generator machine.
+ * Burns fuel items to generate NeoForge Energy (FE) and can either charge 
+ * an item inside its inventory or distribute energy to adjacent blocks.
+ * 
+ * <p>The furnace logic runs only on the server through {@link #serverTick}.
+ */
 public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEntity{
 
     public static final int FUEL_SLOT = 0;
@@ -42,6 +49,16 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
     public static final int ENERGY_PER_TICK = 40;
     public static final int ENERGY_EXTRACT_RATE = 100;
 
+     /**
+     * Internal item inventory.
+     *
+     * <p>Only valid items can be inserted into each slot:
+     * <ul>
+     *     <li>Fuel slot requires an item that can burn
+     *     <li>Charge slot requires an item with an energy capability
+     *     <li>Output slot cannot be manually inserted into
+     * </ul>
+     */
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -64,6 +81,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
         };
     };
 
+    // ITEM HANDLERS FOR DIFFERENT SIDES
     private final IItemHandler fuelHandler = new RangedWrapper(itemHandler, FUEL_SLOT, FUEL_SLOT + 1);
     private final IItemHandler chargeHandler = new RangedWrapper(itemHandler, CHARGE_SLOT, CHARGE_SLOT + 1);
     private final IItemHandler outputHandler = new RangedWrapper(itemHandler, OUTPUT_SLOT, OUTPUT_SLOT + 1);
@@ -73,6 +91,17 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
     private int litTime;
     private int litDuration;
 
+    /**
+     * Data synchronized between server and client menus.
+     *
+     * Index:
+     * <ul>
+     *     <li>0 - Current energy
+     *     <li>1 - Maximum energy
+     *     <li>2 - How long it will be lit
+     *     <li>3 - Total burn time
+     * </ul>
+     */
     private final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
@@ -132,6 +161,9 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
         return litTime > 0;
     }
 
+    /**
+     * Core processing loop executed every single game tick on the Logical Server.
+     */
     public static void serverTick(Level level, BlockPos pos, BlockState state, GeneratorBlockEntity be) {
         boolean wasLit = be.isLit();
         boolean changed = false;

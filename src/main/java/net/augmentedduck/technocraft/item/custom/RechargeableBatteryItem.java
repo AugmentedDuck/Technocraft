@@ -26,7 +26,7 @@ public class RechargeableBatteryItem extends Item {
         stack.set(ModDataComponents.ENERGY.get(), Mth.clamp(energy, 0, CAPACITY));
     }
 
-    // Stacks only when empty or fully charged; any partial charge is unique and unstackable.
+    // Stacks only when empty or fully charged, any partial charge is unique and unstackable
     @Override
     public int getMaxStackSize(ItemStack stack) {
         int energy = getEnergy(stack);

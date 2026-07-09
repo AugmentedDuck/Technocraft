@@ -63,7 +63,6 @@ public class GeneratorMenu extends AbstractMachineMenu {
                 return ItemStack.EMPTY;
             }
         } else {
-            // shift-click from player inventory: try fuel slot first, then charge slot
             if (!this.moveItemStackTo(sourceStack, GeneratorBlockEntity.CHARGE_SLOT, GeneratorBlockEntity.CHARGE_SLOT + 1, false)) {
                 if (!this.moveItemStackTo(sourceStack, GeneratorBlockEntity.FUEL_SLOT, GeneratorBlockEntity.FUEL_SLOT + 1, false)) {
                     return ItemStack.EMPTY;

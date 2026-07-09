@@ -18,6 +18,10 @@ public class ModCreativeModeTabs {
                                                                                                                                             .icon(() -> new ItemStack(ModItems.GOLD_CASING.get()))
                                                                                                                                             .title(Component.translatable("creativetab.technocraft.tab_title"))
                                                                                                                                             .displayItems((itemDisplayParameters, output) -> {
+            
+            ///////////////////////////////
+            // ITEMS
+            ///////////////////////////////
             // INGOTS
             output.accept(ModItems.TIN_INGOT);
             output.accept(ModItems.LEAD_INGOT);
@@ -103,7 +107,11 @@ public class ModCreativeModeTabs {
             // ITEMS
             output.accept(ModItems.RECHARGEABLE_BATTERY);
 
-            // BLOCKS -----------------------
+            ///////////////////////////////
+            // BLOCKS
+            ///////////////////////////////
+            
+            // BLOCKS
             output.accept(ModBlocks.TIN_BLOCK);
             output.accept(ModBlocks.LEAD_BLOCK);
             output.accept(ModBlocks.SILVER_BLOCK);

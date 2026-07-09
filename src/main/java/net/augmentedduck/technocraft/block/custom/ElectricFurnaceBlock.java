@@ -21,7 +21,7 @@ public class ElectricFurnaceBlock extends AbstractMachineBlock<ElectricFurnaceBl
     public ElectricFurnaceBlock(Properties properties) {
         super(properties);
     }
-    
+
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
