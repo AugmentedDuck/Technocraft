@@ -53,11 +53,11 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
     
     public static final int INPUT_SLOT = 0;
     public static final int OUTPUT_SLOT = 1;
-    public static final int FUEL_SLOT = 2;
+    public static final int BATTERY_SLOT = 2;
     
     public static final int ENERGY_CAPACITY = 4160;
-    public static final int ENERGY_PER_TICK = 28;
-    public static final int COOK_TIME = 140;
+    public static final int ENERGY_PER_TICK = 30;
+    public static final int COOK_TIME = (int)(6.5F * 20); // 6.5s * 20 t/s 
 
     /**
      * Internal item inventory.
@@ -78,7 +78,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
             return switch (slot) {
-                case FUEL_SLOT -> stack.getCapability(Capabilities.EnergyStorage.ITEM) != null;
+                case BATTERY_SLOT -> stack.getCapability(Capabilities.EnergyStorage.ITEM) != null;
                 case INPUT_SLOT -> level != null && findRecipe(stack).isPresent();
                 case OUTPUT_SLOT -> false;
                 default -> false;
@@ -87,13 +87,13 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
 
         @Override
         public int getSlotLimit(int slot) {
-            return slot == FUEL_SLOT ? 1 : 64;
+            return slot == BATTERY_SLOT ? 1 : 64;
         };
     };
 
     // ITEM HANDLERS FOR DIFFERENT SIDES
     private final IItemHandler inputHandler = new RangedWrapper(itemHandler, INPUT_SLOT, INPUT_SLOT + 1);
-    private final IItemHandler fuelHandler = new RangedWrapper(itemHandler, FUEL_SLOT, FUEL_SLOT + 1);
+    private final IItemHandler batteryHandler = new RangedWrapper(itemHandler, BATTERY_SLOT, BATTERY_SLOT + 1);
     private final IItemHandler outputHandler = new RangedWrapper(itemHandler, OUTPUT_SLOT, OUTPUT_SLOT + 1);
 
     private final ConsumerEnergyStorage energyStorage = new ConsumerEnergyStorage(ENERGY_CAPACITY, ModEnergyTiers.LV.getMaxTransfer());
@@ -108,8 +108,8 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
      * <ul>
      *     <li>0 - Current energy
      *     <li>1 - Maximum energy
-     *     <li>2 - Current cooking progress
-     *     <li>3 - Required cooking time
+     *     <li>2 - Current smelting progress
+     *     <li>3 - Required process time
      * </ul>
      */
     private final ContainerData data = new ContainerData() {
@@ -153,7 +153,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
         return switch (side) {
             case UP -> inputHandler;
             case DOWN -> outputHandler;
-            default -> fuelHandler;
+            default -> batteryHandler;
         };
     }
 
@@ -257,7 +257,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
         Containers.dropContents(this.level, this.worldPosition, (Container) inv);
     }
 
-     @Override
+    @Override
     protected void saveAdditional(CompoundTag tag, Provider registries) {
         tag.put("inventory", itemHandler.serializeNBT(registries));
         tag.putInt("energy", energyStorage.getEnergyStored());
@@ -284,7 +284,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
     }
 
     private boolean dischargeItem() {
-        ItemStack fuelStack = itemHandler.getStackInSlot(FUEL_SLOT);
+        ItemStack fuelStack = itemHandler.getStackInSlot(BATTERY_SLOT);
         if (fuelStack.isEmpty()) return false;
 
         IEnergyStorage itemEnergy = fuelStack.getCapability(Capabilities.EnergyStorage.ITEM);
