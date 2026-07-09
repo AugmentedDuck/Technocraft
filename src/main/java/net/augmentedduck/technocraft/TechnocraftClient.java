@@ -3,7 +3,6 @@ package net.augmentedduck.technocraft;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceScreen;
 import net.augmentedduck.technocraft.screen.custom.GeneratorScreen;
-import net.augmentedduck.technocraft.screen.custom.MaceratorMenu;
 import net.augmentedduck.technocraft.screen.custom.MaceratorScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

@@ -221,6 +221,12 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MachineBl
         changed |= be.dischargeItem();
 
         ItemStack input = be.itemHandler.getStackInSlot(INPUT_SLOT);
+
+        if (input.isEmpty() && be.cookProgress > 0) {
+            be.cookProgress = 0;
+            changed = true;
+        }
+
         Optional<RecipeHolder<SmeltingRecipe>> recipe = be.findRecipe(input);
 
         boolean canProgress = recipe.isPresent() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input);

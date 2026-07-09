@@ -9,7 +9,6 @@ import net.augmentedduck.technocraft.energy.ConsumerEnergyStorage;
 import net.augmentedduck.technocraft.energy.ModEnergyTiers;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
 import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
-import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceMenu;
 import net.augmentedduck.technocraft.screen.custom.MaceratorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,13 +24,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -211,6 +207,12 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
         changed |= be.dischargeItem();
 
         ItemStack input = be.itemHandler.getStackInSlot(INPUT_SLOT);
+
+        if (input.isEmpty() && be.grindProgress > 0) {
+            be.grindProgress = 0;
+            changed = true;
+        }
+
         Optional<RecipeHolder<MacerationRecipe>> recipe = be.findRecipe(input);
 
         boolean canProgress = recipe.isPresent() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input);
