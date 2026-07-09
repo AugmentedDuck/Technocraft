@@ -20,7 +20,7 @@ public class ModMenuTypes {
     
     // CONSUMERS
     public static final Supplier<MenuType<ElectricFurnaceMenu>> ELECTRIC_FURNACE_MENU = MENUS.register("electric_furnace_menu", () -> IMenuTypeExtension.create(ElectricFurnaceMenu::new));
-    public static final Supplier<MenuType<MaceratorMenu>> MACERATOR_MENU = MENUS.register("electric_furnace_menu", () -> IMenuTypeExtension.create(MaceratorMenu::new));
+    public static final Supplier<MenuType<MaceratorMenu>> MACERATOR_MENU = MENUS.register("macerator_menu", () -> IMenuTypeExtension.create(MaceratorMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

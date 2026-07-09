@@ -3,6 +3,7 @@ package net.augmentedduck.technocraft.recipe;
 import java.util.function.Supplier;
 
 import net.augmentedduck.technocraft.Technocraft;
+import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;

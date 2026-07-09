@@ -50,6 +50,7 @@ public class ModBlockStateProvider extends BlockStateProvider{
         
         // CONSUMERS
         machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
+        machineBlockState(ModBlocks.MACERATOR_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

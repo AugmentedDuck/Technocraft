@@ -41,6 +41,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         // CUSTOM BLOCKS
         dropSelf(ModBlocks.GENERATOR_BLOCK.get());
         dropSelf(ModBlocks.ELECTRIC_FURNACE_BLOCK.get());
+        dropSelf(ModBlocks.MACERATOR_BLOCK.get());
 
         /////////////////////////////////////
         // NON SELF DROPPING

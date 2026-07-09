@@ -133,6 +133,7 @@ public class ModCreativeModeTabs {
 
             // CONSUMERS
             output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);
+            output.accept(ModBlocks.MACERATOR_BLOCK);
 
             // CABLES
                                                                                                                                             })

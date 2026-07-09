@@ -52,6 +52,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput, TIN_SMELTABLES, RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 0.7f, 200, "tin_ingot");
         oreBlasting(recipeOutput, TIN_SMELTABLES, RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 0.7f, 100, "tin_ingot");
 
+        oreMacerating(recipeOutput, List.of(ModItems.TIN_RAW, ModBlocks.TIN_ORE, ModBlocks.TIN_DEEPSLATE_ORE), ModItems.TIN_CRUSHED.get(), 2, "tin_crushed");
+
         // SILVER
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SILVER_BLOCK.get())
             .pattern("BBB")
@@ -74,6 +76,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> SILVER_SMELTABLES = List.of(ModItems.SILVER_RAW, ModItems.SILVER_DUST, ModItems.SILVER_CRUSHED, ModItems.SILVER_WASHED, ModBlocks.SILVER_ORE, ModBlocks.SILVER_DEEPSLATE_ORE);
         oreSmelting(recipeOutput, SILVER_SMELTABLES, RecipeCategory.MISC, ModItems.SILVER_INGOT.get(), 0.7f, 200, "silver_ingot");
         oreBlasting(recipeOutput, SILVER_SMELTABLES, RecipeCategory.MISC, ModItems.SILVER_INGOT.get(), 0.7f, 100, "silver_ingot");
+
+        oreMacerating(recipeOutput, List.of(ModItems.SILVER_RAW, ModBlocks.SILVER_ORE, ModBlocks.SILVER_DEEPSLATE_ORE), ModItems.SILVER_CRUSHED.get(), 2, "silver_crushed");
 
         // STEEL
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STEEL_BLOCK.get())
@@ -109,6 +113,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> LEAD_SMELTABLES = List.of(ModItems.LEAD_RAW, ModItems.LEAD_DUST, ModItems.LEAD_CRUSHED, ModItems.LEAD_WASHED, ModBlocks.LEAD_ORE, ModBlocks.LEAD_DEEPSLATE_ORE);
         oreSmelting(recipeOutput, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7f, 200, "lead_ingot");
         oreBlasting(recipeOutput, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7f, 100, "lead_ingot");
+
+        oreMacerating(recipeOutput, List.of(ModItems.LEAD_RAW, ModBlocks.LEAD_ORE, ModBlocks.LEAD_DEEPSLATE_ORE), ModItems.LEAD_CRUSHED.get(), 2, "lead_crushed");
         
         // BRONZE
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRONZE_BLOCK.get())
@@ -143,6 +149,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput, COPPER_SMELTABLES, RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
         oreBlasting(recipeOutput, COPPER_SMELTABLES, RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
         
+        oreMacerating(recipeOutput, List.of(Items.RAW_COPPER, Items.COPPER_ORE, Items.DEEPSLATE_COPPER_ORE), ModItems.COPPER_CRUSHED.get(), 2, "copper_crushed");
+        
         // GOLD
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GOLD_DUST.get())
             .pattern("BBB")
@@ -154,6 +162,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> GOLD_SMELTABLES = List.of(ModItems.GOLD_DUST, ModItems.GOLD_CRUSHED, ModItems.GOLD_WASHED);
         oreSmelting(recipeOutput, GOLD_SMELTABLES, RecipeCategory.MISC, Items.GOLD_INGOT, 0.7f, 200, "gold_ingot");
         oreBlasting(recipeOutput, GOLD_SMELTABLES, RecipeCategory.MISC, Items.GOLD_INGOT, 0.7f, 100, "gold_ingot");
+
+        oreMacerating(recipeOutput, List.of(Items.RAW_GOLD, Items.GOLD_ORE, Items.DEEPSLATE_GOLD_ORE), ModItems.GOLD_CRUSHED.get(), 2, "gold_crushed");
         
         // IRON
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_DUST.get())
@@ -166,6 +176,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         List<ItemLike> IRON_SMELTABLES = List.of(ModItems.IRON_DUST, ModItems.IRON_CRUSHED, ModItems.IRON_WASHED);
         oreSmelting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
         oreBlasting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
+
+        oreMacerating(recipeOutput, List.of(Items.RAW_IRON, Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), ModItems.IRON_CRUSHED.get(), 2, "iron_crushed");
     }
 
     /** Registers a smelting recipe for every ingredient in pIngredients -> pResult (one recipe file per ingredient). */
@@ -178,14 +190,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreCooking(recipeOutput, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");
     }
 
-    protected static void oreMacerating(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, String group) {
+    protected static void oreMacerating(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int count ,String group) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "macerating/" + getItemName(result) + "_from_" + getItemName(ingredient));
-        recipeOutput.accept(id, new MacerationRecipe(Ingredient.of(ingredient), new ItemStack(result)), null);
+        recipeOutput.accept(id, new MacerationRecipe(Ingredient.of(ingredient), new ItemStack(result, count)), null);
     }
 
-    protected static void oreMacerating(RecipeOutput recipeOutput, List<ItemLike> ingredients, ItemLike result, String group) {
+    protected static void oreMacerating(RecipeOutput recipeOutput, List<ItemLike> ingredients, ItemLike result, int count, String group) {
         for (ItemLike ingredient : ingredients) {
-            oreMacerating(recipeOutput, ingredient, result, group);
+            oreMacerating(recipeOutput, ingredient, result, count, group);
         }
     }
 
