@@ -53,7 +53,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
         public boolean isItemValid(int slot, ItemStack stack) {
             return switch (slot) {
                 case FUEL_SLOT -> stack.getBurnTime( null) > 0;
-                case CHARGE_SLOT -> true;
+                case CHARGE_SLOT -> stack.getCapability(Capabilities.EnergyStorage.ITEM) != null;
                 case OUTPUT_SLOT -> false;
                 default -> false;
             };
@@ -165,6 +165,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
             }
         }
 
+        changed |= be.chargeItem();
         changed |= be.distributeEnergy(level, pos);
 
         if (wasLit != be.isLit()) {
@@ -249,6 +250,23 @@ public class GeneratorBlockEntity extends BlockEntity implements MenuProvider{
     @Override
     public Component getDisplayName() {
         return Component.translatable("block.technocraft.generator");
+    }
+
+    private boolean chargeItem() {
+        ItemStack chargeStack = itemHandler.getStackInSlot(CHARGE_SLOT);
+        if (chargeStack.isEmpty() || energyStorage.getEnergyStored() <= 0) return false;
+
+        IEnergyStorage itemEnergy = chargeStack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (itemEnergy == null || !itemEnergy.canReceive()) return false;
+
+        int simulated = itemEnergy.receiveEnergy(energyStorage.getEnergyStored(), true);
+        if (simulated <= 0) return false;
+
+        int extracted = energyStorage.extractEnergy(simulated, false);
+        if (extracted <= 0) return false;
+
+        itemEnergy.receiveEnergy(extracted, false);
+        return true;
     }
 
 }

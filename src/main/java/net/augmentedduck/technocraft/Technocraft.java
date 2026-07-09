@@ -8,6 +8,7 @@ import net.augmentedduck.technocraft.block.ModBlocks;
 import net.augmentedduck.technocraft.block.entity.ModBlockEntities;
 import net.augmentedduck.technocraft.item.ModCreativeModeTabs;
 import net.augmentedduck.technocraft.item.ModItems;
+import net.augmentedduck.technocraft.item.custom.ModDataComponents;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -48,6 +49,7 @@ public class Technocraft {
         NeoForge.EVENT_BUS.register(this);
 
         ModCreativeModeTabs.register(modEventBus);
+        ModDataComponents.register(modEventBus);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);

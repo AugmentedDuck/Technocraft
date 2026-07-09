@@ -100,7 +100,10 @@ public class ModCreativeModeTabs {
             output.accept(ModItems.GOLD_TINY_DUST);
             output.accept(ModItems.COPPER_TINY_DUST);
 
-            // BLOCKS
+            // ITEMS
+            output.accept(ModItems.RECHARGEABLE_BATTERY);
+
+            // BLOCKS -----------------------
             output.accept(ModBlocks.TIN_BLOCK);
             output.accept(ModBlocks.LEAD_BLOCK);
             output.accept(ModBlocks.SILVER_BLOCK);

@@ -30,6 +30,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
@@ -52,7 +54,7 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
             return switch (slot) {
-                case FUEL_SLOT -> false;
+                case FUEL_SLOT -> stack.getCapability(Capabilities.EnergyStorage.ITEM) != null;
                 case INPUT_SLOT -> level != null && findRecipe(stack).isPresent();
                 case OUTPUT_SLOT -> false;
                 default -> false;
@@ -169,6 +171,8 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
         boolean wasLit = be.isCooking();
         boolean changed = false;
 
+        changed |= be.dischargeItem();
+
         ItemStack input = be.itemHandler.getStackInSlot(INPUT_SLOT);
         Optional<RecipeHolder<SmeltingRecipe>> recipe = be.findRecipe(input);
 
@@ -231,5 +235,25 @@ public class ElectricFurnaceBlockEntity extends BlockEntity implements MenuProvi
     @Override
     public Component getDisplayName() {
         return Component.translatable("block.technocraft.electric_furnace");
+    }
+
+    private boolean dischargeItem() {
+        ItemStack fuelStack = itemHandler.getStackInSlot(FUEL_SLOT);
+        if (fuelStack.isEmpty()) return false;
+
+        IEnergyStorage itemEnergy = fuelStack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (itemEnergy == null || !itemEnergy.canExtract()) return false;
+
+        int missing = energyStorage.getMaxEnergyStored() - energyStorage.getEnergyStored();
+        if (missing <= 0) return false;
+
+        int simulated = itemEnergy.extractEnergy(missing, true);
+        if (simulated <= 0) return false;
+
+        int accepted = energyStorage.receiveEnergy(simulated, false);
+        if (accepted <= 0) return false;
+
+        itemEnergy.extractEnergy(accepted, false);
+        return true;
     }
 }

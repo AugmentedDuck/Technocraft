@@ -78,6 +78,9 @@ public class ModItemModelProvider extends ItemModelProvider{
         basicItem(ModItems.TIN_RAW.get());
         basicItem(ModItems.TIN_TINY_DUST.get());
         basicItem(ModItems.TIN_WASHED.get());
+
+        // BATTERY
+        basicItem(ModItems.RECHARGEABLE_BATTERY.get());
     }
 
 }

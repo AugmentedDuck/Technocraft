@@ -14,6 +14,7 @@ public class ModLanguageProvider extends LanguageProvider{
 
     @Override
     protected void addTranslations() {
+        // ITEMS
         add(ModItems.TIN_INGOT.get(), "Tin Ingot");
         add(ModItems.LEAD_INGOT.get(), "Lead Ingot");
         add(ModItems.SILVER_INGOT.get(), "Silver Ingot");
@@ -80,6 +81,9 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_TINY_DUST.get(), "Tiny Pile of Gold");
         add(ModItems.COPPER_TINY_DUST.get(), "Tiny Pile of Copper");
 
+        add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");
+
+        // BLOCKS
         add(ModBlocks.TIN_BLOCK.get(), "Block of Tin");
         add(ModBlocks.STEEL_BLOCK.get(), "Block of Steel");
         add(ModBlocks.SILVER_BLOCK.get(), "Block of Silver");
@@ -97,8 +101,9 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.GENERATOR_BLOCK.get(), "Generator");
         add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get(), "Electric Furnace");
 
-
+        // OTHER
         add("creativetab.technocraft.tab_title", "Technocraft");
+        add("item.technocraft.rechargeable_battery.tooltip", "Energy: %s / %s FE");
     }
 
 }
