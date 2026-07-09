@@ -45,8 +45,8 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
     public static final int CHARGE_SLOT = 1;
     public static final int OUTPUT_SLOT = 2;
 
-    public static final int ENERGY_CAPACITY = 4_0000;
-    public static final int ENERGY_PER_TICK = 40;
+    public static final int ENERGY_CAPACITY = 40_000;
+    public static final int ENERGY_PER_TICK = 100;
     public static final int ENERGY_EXTRACT_RATE = 100;
 
      /**
@@ -181,7 +181,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
 
         if (be.litTime <= 0 && be.energyStorage.getEnergyStored() < be.energyStorage.getMaxEnergyStored()) {
             ItemStack fuel = be.itemHandler.getStackInSlot(FUEL_SLOT);
-            int burnTime = (int)(fuel.getBurnTime(null) * 0.625f);
+            int burnTime = (int)(fuel.getBurnTime(null) * 0.25F);
 
             if (!fuel.isEmpty() && burnTime > 0) {
                 be.litTime = burnTime;
@@ -209,6 +209,12 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
         }
     }
 
+    /**
+     * Pushes surplus energy to adjacent capability-exposing blocks.
+     * 
+     * <p>We snapshot {@code available} up front and simulate-extract per receiver
+     * rather than extracting live from the storage while iterating. 
+     */ 
     private boolean distributeEnergy(Level level, BlockPos pos) {
         if (energyStorage.getEnergyStored() <= 0) return false;
 
