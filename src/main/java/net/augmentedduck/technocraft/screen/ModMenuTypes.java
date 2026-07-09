@@ -14,7 +14,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, Technocraft.MODID);
 
+    // GENERATORS
     public static final Supplier<MenuType<GeneratorMenu>> GENERATOR_MENU = MENUS.register("generator_menu", () -> IMenuTypeExtension.create(GeneratorMenu::new));
+    
+    // CONSUMERS
     public static final Supplier<MenuType<ElectricFurnaceMenu>> ELECTRIC_FURNACE_MENU = MENUS.register("electric_furnace_menu", () -> IMenuTypeExtension.create(ElectricFurnaceMenu::new));
 
     public static void register(IEventBus eventBus) {

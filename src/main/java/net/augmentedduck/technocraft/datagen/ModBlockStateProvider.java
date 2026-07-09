@@ -65,7 +65,10 @@ public class ModBlockStateProvider extends BlockStateProvider{
         Block machine = deferredBlock.get();
         String name = deferredBlock.getId().getPath();
 
+        // UNLIT
         BlockModelBuilder offModel = models().orientableWithBottom(name, modLoc("block/machine_side"), modLoc("block/" + name + "_front_unlit"), modLoc("block/machine_bottom"), modLoc("block/machine_top"));
+        
+        // LIT
         BlockModelBuilder onModel = models().orientableWithBottom(name + "_lit", modLoc("block/machine_side"), modLoc("block/" + name + "_front_lit"), modLoc("block/machine_bottom"), modLoc("block/machine_top"));
 
         getVariantBuilder(machine).forAllStates(state -> {

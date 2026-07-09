@@ -14,6 +14,8 @@ import net.minecraft.world.MenuProvider;
 public interface MachineBlockEntity extends MenuProvider{
     /**
      * Drops the contents of the machine into the world.
+     * 
+     * This method is typically called when the machine block is broken or replaced to prevent stored items from being lost.
      */
     void drops();
 }

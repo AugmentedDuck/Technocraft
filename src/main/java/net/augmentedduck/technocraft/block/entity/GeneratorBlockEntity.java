@@ -197,6 +197,7 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
         }
 
         changed |= be.chargeItem();
+        changed |= be.tryEjectFullBattery();
         changed |= be.distributeEnergy(level, pos);
 
         if (wasLit != be.isLit()) {
@@ -300,4 +301,28 @@ public class GeneratorBlockEntity extends BlockEntity implements MachineBlockEnt
         return true;
     }
 
+    private boolean tryEjectFullBattery() {
+        ItemStack chargeStack = itemHandler.getStackInSlot(CHARGE_SLOT);
+        if (chargeStack.isEmpty()) return false;
+
+        IEnergyStorage itemEnergy = chargeStack.getCapability(Capabilities.EnergyStorage.ITEM);
+        if (itemEnergy == null) return false;
+
+        if (itemEnergy.receiveEnergy(1, true) > 0) return false;
+
+        ItemStack outputStack = itemHandler.getStackInSlot(OUTPUT_SLOT);
+        if (!outputStack.isEmpty()) {
+            if (!outputStack.isSameItemSameComponents(chargeStack, outputStack)) return false;
+
+            if (outputStack.getMaxStackSize() <= outputStack.getCount()) return false;
+
+            outputStack.grow(1);
+            itemHandler.setStackInSlot(OUTPUT_SLOT, outputStack);
+        } else {
+            itemHandler.setStackInSlot(OUTPUT_SLOT, chargeStack);
+        }
+
+        itemHandler.setStackInSlot(CHARGE_SLOT, ItemStack.EMPTY);
+        return true;        
+    }
 }
