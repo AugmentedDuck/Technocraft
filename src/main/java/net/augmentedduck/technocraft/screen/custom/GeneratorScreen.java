@@ -2,7 +2,6 @@ package net.augmentedduck.technocraft.screen.custom;
 
 import net.augmentedduck.technocraft.Technocraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;

@@ -2,7 +2,6 @@ package net.augmentedduck.technocraft.block.custom;
 
 import javax.annotation.Nullable;
 
-import net.augmentedduck.technocraft.block.entity.ElectricFurnaceBlockEntity;
 import net.augmentedduck.technocraft.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,6 +1,5 @@
 package net.augmentedduck.technocraft.energy;
 
-import net.neoforged.neoforge.energy.EnergyStorage;
 
 public class ConsumerEnergyStorage extends AbstractModEnergyStorage {
 
