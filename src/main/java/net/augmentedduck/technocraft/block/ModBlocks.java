@@ -6,6 +6,7 @@ import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
 import net.augmentedduck.technocraft.block.custom.MaceratorBlock;
+import net.augmentedduck.technocraft.block.custom.TinCableBlock;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -50,6 +51,10 @@ public class ModBlocks {
     // CONSUMERS
     public static final DeferredBlock<Block> ELECTRIC_FURNACE_BLOCK = registerBlock("electric_furnace", () -> new ElectricFurnaceBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
     public static final DeferredBlock<Block> MACERATOR_BLOCK = registerBlock("macerator", () -> new MaceratorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
+
+    // CABLES
+    public static final DeferredBlock<Block> TIN_CABLE_BLOCK = registerBlock("tin_cable", () -> new TinCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+
 
     /**
      * Registers a block AND its corresponding BlockItem in one call, so every

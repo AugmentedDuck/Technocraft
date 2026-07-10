@@ -107,6 +107,9 @@ public class ModCreativeModeTabs {
             // ITEMS
             output.accept(ModItems.RECHARGEABLE_BATTERY);
 
+            // TOOLS
+            output.accept(ModItems.POWER_METER);
+
             ///////////////////////////////
             // BLOCKS
             ///////////////////////////////
@@ -136,7 +139,8 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.MACERATOR_BLOCK);
 
             // CABLES
-                                                                                                                                            })
+            output.accept(ModBlocks.TIN_CABLE_BLOCK);
+                                                                                                                                              })
                                                                                                                                             .build());
 
     public static void register(IEventBus eventBus) {

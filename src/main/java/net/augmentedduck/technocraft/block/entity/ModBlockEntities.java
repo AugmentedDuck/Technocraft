@@ -22,6 +22,9 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ElectricFurnaceBlockEntity>> ELECTRIC_FURNACE_BE = BLOCK_ENTITIES.register("electric_furnace_be", () -> BlockEntityType.Builder.of(ElectricFurnaceBlockEntity::new, ModBlocks.ELECTRIC_FURNACE_BLOCK.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MaceratorBlockEntity>> MACERATOR_BE = BLOCK_ENTITIES.register("macerator_be", () -> BlockEntityType.Builder.of(MaceratorBlockEntity::new, ModBlocks.MACERATOR_BLOCK.get()).build(null));
 
+    // CABLES
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TinCableBlockEntity>> TIN_CABLE_BE = BLOCK_ENTITIES.register("tin_cable_be", () -> BlockEntityType.Builder.of(TinCableBlockEntity::new, ModBlocks.TIN_CABLE_BLOCK.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

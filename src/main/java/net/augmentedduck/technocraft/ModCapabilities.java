@@ -22,6 +22,9 @@ public class ModCapabilities {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.MACERATOR_BE.get(), (be, side) -> be.getItemHandler(side));
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.MACERATOR_BE.get(), (be, side) -> be.getEnergyStorage());
 
+        // CABLES
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.TIN_CABLE_BE.get(), (be, side) -> be.getEnergyStorage());
+
         // ITEMS
         event.registerItem(Capabilities.EnergyStorage.ITEM, (stack, ctx) -> new RechargeableBatteryItem.ItemBatteryEnergyStorage(stack),ModItems.RECHARGEABLE_BATTERY.get());
     }

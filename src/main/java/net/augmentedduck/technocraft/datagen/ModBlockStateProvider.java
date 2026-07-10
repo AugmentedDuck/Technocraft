@@ -2,13 +2,17 @@ package net.augmentedduck.technocraft.datagen;
 
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
+import net.augmentedduck.technocraft.block.custom.AbstractCableBlock;
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -51,6 +55,12 @@ public class ModBlockStateProvider extends BlockStateProvider{
         // CONSUMERS
         machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
         machineBlockState(ModBlocks.MACERATOR_BLOCK);
+
+        /////////////////////////////////////
+        // CABLES
+        /////////////////////////////////////
+        
+        cableBlockState(ModBlocks.TIN_CABLE_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
@@ -80,5 +90,34 @@ public class ModBlockStateProvider extends BlockStateProvider{
         });
 
         itemModels().withExistingParent(name, modLoc("block/" + name));
+    }
+
+    private void cableBlockState(DeferredBlock<?> deferredBlock) {
+        Block cable = deferredBlock.get();
+        String name = deferredBlock.getId().getPath();
+
+        ResourceLocation texture = modLoc("block/" + name);
+
+        ModelFile coreModel = models().withExistingParent(name + "_core", modLoc("block/cable_core")).texture("texture", texture);
+
+        ModelFile downArm  = models().withExistingParent(name + "_arm_down",  modLoc("block/cable_arm")).texture("texture", texture);
+        ModelFile upArm    = models().withExistingParent(name + "_arm_up",    modLoc("block/cable_arm")).texture("texture", texture);
+        ModelFile northArm = models().withExistingParent(name + "_arm_north", modLoc("block/cable_arm")).texture("texture", texture);
+        ModelFile southArm = models().withExistingParent(name + "_arm_south", modLoc("block/cable_arm")).texture("texture", texture);
+        ModelFile westArm  = models().withExistingParent(name + "_arm_west",  modLoc("block/cable_arm")).texture("texture", texture);
+        ModelFile eastArm  = models().withExistingParent(name + "_arm_east",  modLoc("block/cable_arm")).texture("texture", texture);
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(cable);
+
+        builder.part().modelFile(coreModel).addModel();
+
+        builder.part().modelFile(downArm).addModel().condition(AbstractCableBlock.DOWN, true).end();
+        builder.part().modelFile(upArm).addModel().condition(AbstractCableBlock.UP, true).end();
+        builder.part().modelFile(northArm).addModel().condition(AbstractCableBlock.NORTH, true).end();
+        builder.part().modelFile(southArm).addModel().condition(AbstractCableBlock.SOUTH, true).end();
+        builder.part().modelFile(westArm).addModel().condition(AbstractCableBlock.WEST, true).end();
+        builder.part().modelFile(eastArm).addModel().condition(AbstractCableBlock.EAST, true).end();
+
+        itemModels().getBuilder(name).parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(modLoc("block/" + name + "_inventory")));
     }
 }

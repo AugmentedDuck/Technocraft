@@ -51,6 +51,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
             .add(ModBlocks.MACERATOR_BLOCK.get())
             
+            // CABLES
+            .add(ModBlocks.TIN_CABLE_BLOCK.get())
             ;
         
         //////////////////////////////////

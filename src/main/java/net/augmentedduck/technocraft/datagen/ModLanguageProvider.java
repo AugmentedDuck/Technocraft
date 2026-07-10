@@ -96,6 +96,9 @@ public class ModLanguageProvider extends LanguageProvider{
         // BATTERY
         add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");
 
+        // TOOLS
+        add(ModItems.POWER_METER.get(), "Power Meter");
+
         ///////////////////////////////
         // BLOCKS
         ///////////////////////////////
@@ -124,6 +127,9 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get(), "Electric Furnace");
         add(ModBlocks.MACERATOR_BLOCK.get(), "Macerator");
 
+        // CABLES
+        add(ModBlocks.TIN_CABLE_BLOCK.get(), "Tin Cable");
+
         ///////////////////////////////
         // OTHER
         ///////////////////////////////
@@ -133,6 +139,10 @@ public class ModLanguageProvider extends LanguageProvider{
 
         // TOOLTIPS
         add("item.technocraft.rechargeable_battery.tooltip", "Energy: %s / %s FE");
+
+        // POWER METER
+        add("item.technocraft.power_meter.flow", "Cable flow: %s FE/t");
+        add("item.technocraft.power_meter.storage", "Stored: %s / %s FE");
     }
 
 }
