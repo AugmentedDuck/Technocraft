@@ -109,7 +109,7 @@ public class ModBlockStateProvider extends BlockStateProvider{
 
         MultiPartBlockStateBuilder builder = getMultipartBuilder(cable);
 
-        builder.part().modelFile(coreModel).addModel();
+        builder.part().modelFile(coreModel).addModel().end();
 
         builder.part().modelFile(downArm).addModel().condition(AbstractCableBlock.DOWN, true).end();
         builder.part().modelFile(upArm).rotationX(180).addModel().condition(AbstractCableBlock.UP, true).end();
