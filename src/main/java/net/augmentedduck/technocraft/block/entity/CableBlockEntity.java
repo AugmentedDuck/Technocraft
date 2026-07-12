@@ -3,8 +3,10 @@ package net.augmentedduck.technocraft.block.entity;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import net.augmentedduck.technocraft.block.custom.AbstractCableBlock;
@@ -79,13 +81,18 @@ public abstract class CableBlockEntity extends BlockEntity{
 
         List<CableBlockEntity> networkCables = new ArrayList<>();
         List<IEnergyStorage> receivers = new ArrayList<>();
-        collectNetwork(networkCables, receivers);
+        Map<CableBlockEntity, CableBlockEntity> parents = new HashMap<>();
+        Map<IEnergyStorage, CableBlockEntity> receiverParents = new HashMap<>();
+
+        collectNetwork(networkCables, receivers, parents, receiverParents);
 
         if (receivers.isEmpty()) return 0;
 
         int remaining = offered;
         int totalSent = 0;
         int share = Math.max(1, offered / receivers.size());
+
+        Map<IEnergyStorage, Integer> acceptedByReceiver = new HashMap<>();
 
         for (IEnergyStorage receiver : receivers) {
             if (remaining <= 0) break;
@@ -95,24 +102,49 @@ public abstract class CableBlockEntity extends BlockEntity{
 
             totalSent += accepted;
             remaining -= accepted;
+
+            if (accepted > 0) {
+                acceptedByReceiver.merge(receiver, accepted, Integer::sum);
+            }
         }
 
-        if (!simulate && totalSent > 0) {
+        if (!simulate) {
+            Map<CableBlockEntity, Integer> flowByCable = new HashMap<>();
+
+            for (Map.Entry<IEnergyStorage, Integer> entry : acceptedByReceiver.entrySet()) {
+                int flow = entry.getValue();
+                CableBlockEntity cable = receiverParents.get(entry.getKey());
+
+                while (cable != null) {
+                    flowByCable.merge(cable, flow,Integer::sum);
+                    cable = parents.get(cable);
+                }
+            }
+
             for (CableBlockEntity cable : networkCables) {
-                cable.markFlow(totalSent);
+                cable.markFlow(flowByCable.getOrDefault(cable, 0));
             }
         }
 
         return totalSent;
     }
 
-    private void collectNetwork(List<CableBlockEntity> visitedCables, List<IEnergyStorage> receivers) {
+
+    /**
+     * BFS across the connected cable network, recording not just which
+     * cables/receivers exist but the tree shape of how we reached them â a
+     * parent pointer per cable, and the parent cable each receiver hangs off
+     * of. This lets {@link #distribute} attribute flow per-branch instead of
+     * network-wide.
+     */
+    private void collectNetwork(List<CableBlockEntity> visitedCables, List<IEnergyStorage> receivers, Map<CableBlockEntity, CableBlockEntity> parents, Map<IEnergyStorage, CableBlockEntity> receiverParents) {
         Set<BlockPos> visitedPositions = new HashSet<>();
         Set<IEnergyStorage> seenReceivers = new HashSet<>();
         Deque<CableBlockEntity> queue = new ArrayDeque<>();
 
         visitedPositions.add(worldPosition);
         queue.add(this);
+        parents.put(this, null);
 
         while (!queue.isEmpty()) {
             CableBlockEntity current = queue.poll();
@@ -128,6 +160,7 @@ public abstract class CableBlockEntity extends BlockEntity{
 
                 if (level.getBlockEntity(neighborPos) instanceof CableBlockEntity neighborCable) {
                     if (visitedPositions.add(neighborPos)) {
+                        parents.put(neighborCable, current);
                         queue.add(neighborCable);
                     }
 
@@ -137,6 +170,7 @@ public abstract class CableBlockEntity extends BlockEntity{
                 IEnergyStorage neighborStorage = level.getCapability(Capabilities.EnergyStorage.BLOCK, neighborPos, direction.getOpposite());
                 if (neighborStorage != null && neighborStorage.canReceive() && seenReceivers.add(neighborStorage)) {
                     receivers.add(neighborStorage);
+                    receiverParents.put(neighborStorage, current);
                 }
             }
         }
