@@ -112,11 +112,11 @@ public class ModBlockStateProvider extends BlockStateProvider{
         builder.part().modelFile(coreModel).addModel();
 
         builder.part().modelFile(downArm).addModel().condition(AbstractCableBlock.DOWN, true).end();
-        builder.part().modelFile(upArm).addModel().condition(AbstractCableBlock.UP, true).end();
-        builder.part().modelFile(northArm).addModel().condition(AbstractCableBlock.NORTH, true).end();
-        builder.part().modelFile(southArm).addModel().condition(AbstractCableBlock.SOUTH, true).end();
-        builder.part().modelFile(westArm).addModel().condition(AbstractCableBlock.WEST, true).end();
-        builder.part().modelFile(eastArm).addModel().condition(AbstractCableBlock.EAST, true).end();
+        builder.part().modelFile(upArm).rotationX(180).addModel().condition(AbstractCableBlock.UP, true).end();
+        builder.part().modelFile(northArm).rotationX(270).addModel().condition(AbstractCableBlock.NORTH, true).end();
+        builder.part().modelFile(southArm).rotationX(90).addModel().condition(AbstractCableBlock.SOUTH, true).end();
+        builder.part().modelFile(westArm).rotationY(90).addModel().condition(AbstractCableBlock.WEST, true).end();
+        builder.part().modelFile(eastArm).rotationY(270).addModel().condition(AbstractCableBlock.EAST, true).end();
 
         itemModels().getBuilder(name).parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(modLoc("block/" + name + "_inventory")));
     }
