@@ -1,5 +1,6 @@
 package net.augmentedduck.technocraft.block.custom;
 
+import java.net.http.HttpClient.Redirect;
 import java.util.Map;
 
 import net.augmentedduck.technocraft.block.entity.CableBlockEntity;
@@ -11,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -110,5 +112,10 @@ public abstract class AbstractCableBlock<T extends CableBlockEntity> extends Bas
         if (!(level instanceof Level realLevel)) return false;
 
         return realLevel.getCapability(Capabilities.EnergyStorage.BLOCK, neighborPos, direction.getOpposite()) != null;
+    }
+
+    @Override
+    protected RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 }

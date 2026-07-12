@@ -12,6 +12,7 @@ import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -115,9 +116,9 @@ public class ModBlockStateProvider extends BlockStateProvider{
         builder.part().modelFile(upArm).rotationX(180).addModel().condition(AbstractCableBlock.UP, true).end();
         builder.part().modelFile(northArm).rotationX(270).addModel().condition(AbstractCableBlock.NORTH, true).end();
         builder.part().modelFile(southArm).rotationX(90).addModel().condition(AbstractCableBlock.SOUTH, true).end();
-        builder.part().modelFile(westArm).rotationY(90).addModel().condition(AbstractCableBlock.WEST, true).end();
-        builder.part().modelFile(eastArm).rotationY(270).addModel().condition(AbstractCableBlock.EAST, true).end();
+        builder.part().modelFile(westArm).rotationX(90).rotationY(90).addModel().condition(AbstractCableBlock.WEST, true).end();
+        builder.part().modelFile(eastArm).rotationX(90).rotationY(270).addModel().condition(AbstractCableBlock.EAST, true).end();
 
-        itemModels().getBuilder(name).parent(new net.neoforged.neoforge.client.model.generators.ModelFile.UncheckedModelFile(modLoc("block/" + name + "_inventory")));
+        itemModels().getBuilder(name).parent(new UncheckedModelFile(modLoc("block/" + name + "_inventory")));
     }
 }
