@@ -1,6 +1,5 @@
 package net.augmentedduck.technocraft.block.custom;
 
-import java.net.http.HttpClient.Redirect;
 import java.util.Map;
 
 import net.augmentedduck.technocraft.block.entity.CableBlockEntity;

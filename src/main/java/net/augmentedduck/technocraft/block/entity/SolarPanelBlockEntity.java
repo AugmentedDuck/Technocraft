@@ -3,7 +3,6 @@ package net.augmentedduck.technocraft.block.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
 import net.augmentedduck.technocraft.energy.GeneratorEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,7 +11,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -20,9 +18,9 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 public class SolarPanelBlockEntity extends BlockEntity implements MachineBlockEntity {
-    public static final int ENERGY_CAPACITY = 0;
-    public static final int ENERGY_PER_TICK = 100;
-    public static final int ENERGY_EXTRACT_RATE = 100;
+    public static final int ENERGY_CAPACITY = 10;
+    public static final int ENERGY_PER_TICK = 10;
+    public static final int ENERGY_EXTRACT_RATE = 10;
 
     private final GeneratorEnergyStorage energyStorage = new GeneratorEnergyStorage(ENERGY_CAPACITY, ENERGY_EXTRACT_RATE);
 
@@ -37,6 +35,15 @@ public class SolarPanelBlockEntity extends BlockEntity implements MachineBlockEn
     public static void serverTick(Level level, BlockPos pos, BlockState state, SolarPanelBlockEntity be) {
         boolean changed = false;
 
+        if (isExposedToSky(level, pos) && level.isDay()) {
+            int missing = be.energyStorage.getMaxEnergyStored() - be.energyStorage.getEnergyStored();
+            
+             if (missing > 0) {
+                be.energyStorage.addEnergy(Math.min(ENERGY_PER_TICK, missing));
+                changed = true;
+            }
+        }
+
         changed |= be.distributeEnergy(level, pos);
 
         if (changed) {
@@ -45,8 +52,7 @@ public class SolarPanelBlockEntity extends BlockEntity implements MachineBlockEn
     }
 
     private boolean distributeEnergy(Level level, BlockPos pos) {
-        if (!(level.getHeight(Heightmap.Types.WORLD_SURFACE, pos.getX(), pos.getZ()) <= pos.getY())) return false;
-        if (level.getBrightness(LightLayer.SKY, pos) <= 5) return false;
+        if (energyStorage.getEnergyStored() <= 0) return false;
 
         List<IEnergyStorage> receivers = new ArrayList<>();
 
@@ -63,7 +69,7 @@ public class SolarPanelBlockEntity extends BlockEntity implements MachineBlockEn
 
         if (receivers.isEmpty()) return false;
 
-        int available = ENERGY_EXTRACT_RATE;
+        int available = Math.min(ENERGY_EXTRACT_RATE, energyStorage.getEnergyStored());
         if (available <= 0) return false;
         
         int share = Math.max(1, available / receivers.size());
@@ -81,6 +87,10 @@ public class SolarPanelBlockEntity extends BlockEntity implements MachineBlockEn
         }
         
         return changed;
+    }
+
+    private static boolean isExposedToSky(Level level, BlockPos pos) {
+        return level.getHeightmapPos(Heightmap.Types.WORLD_SURFACE, pos).getY() <= pos.getY() + 1;
     }
 
     @Override
