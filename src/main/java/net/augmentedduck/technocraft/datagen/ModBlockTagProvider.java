@@ -46,6 +46,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             
             // GENERATORS
             .add(ModBlocks.GENERATOR_BLOCK.get())
+            .add(ModBlocks.SOLAR_PANEL_BLOCK.get())
             
             // CONSUMERS
             .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
@@ -86,6 +87,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
             // GENERATORS
             .add(ModBlocks.GENERATOR_BLOCK.get())
+            .add(ModBlocks.SOLAR_PANEL_BLOCK.get())
             
             // CONSUMERS
             .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())

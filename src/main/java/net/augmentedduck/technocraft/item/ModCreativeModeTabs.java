@@ -133,6 +133,7 @@ public class ModCreativeModeTabs {
             
             // GENERATORS
             output.accept(ModBlocks.GENERATOR_BLOCK);
+            output.accept(ModBlocks.SOLAR_PANEL_BLOCK);
 
             // CONSUMERS
             output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);

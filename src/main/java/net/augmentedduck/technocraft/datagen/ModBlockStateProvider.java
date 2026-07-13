@@ -52,6 +52,8 @@ public class ModBlockStateProvider extends BlockStateProvider{
 
         // GENERATORS
         machineBlockState(ModBlocks.GENERATOR_BLOCK);
+        solarBlockState(ModBlocks.SOLAR_PANEL_BLOCK);
+
         
         // CONSUMERS
         machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
@@ -92,6 +94,20 @@ public class ModBlockStateProvider extends BlockStateProvider{
             boolean lit = state.getValue(GeneratorBlock.LIT);
             
             return ConfiguredModel.builder().modelFile(lit ? onModel : offModel).rotationY(((int) facing.toYRot() + 180) % 360).build();
+        });
+
+        itemModels().withExistingParent(name, modLoc("block/" + name));
+    }
+
+    private void solarBlockState(DeferredBlock<?> deferredBlock) {
+        Block machine = deferredBlock.get();
+        String name = deferredBlock.getId().getPath();
+        
+        BlockModelBuilder model = models().cubeBottomTop(name, modLoc("block/machine_side"), modLoc("block/machine_bottom"), modLoc("block/" + name + "_top"));
+
+        getVariantBuilder(machine).forAllStates(state -> {
+            
+            return ConfiguredModel.builder().modelFile(model).build();
         });
 
         itemModels().withExistingParent(name, modLoc("block/" + name));

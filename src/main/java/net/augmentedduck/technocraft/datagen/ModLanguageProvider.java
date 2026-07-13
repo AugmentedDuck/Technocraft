@@ -122,6 +122,7 @@ public class ModLanguageProvider extends LanguageProvider{
         
         // GENERATORS
         add(ModBlocks.GENERATOR_BLOCK.get(), "Generator");
+        add(ModBlocks.SOLAR_PANEL_BLOCK.get(), "Solar Panel");
         
         // CONSUMERS
         add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get(), "Electric Furnace");
