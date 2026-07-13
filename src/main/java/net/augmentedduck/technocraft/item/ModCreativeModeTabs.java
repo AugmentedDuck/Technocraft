@@ -140,6 +140,10 @@ public class ModCreativeModeTabs {
 
             // CABLES
             output.accept(ModBlocks.TIN_CABLE_BLOCK);
+            output.accept(ModBlocks.COPPER_CABLE_BLOCK);
+            output.accept(ModBlocks.GOLD_CABLE_BLOCK);
+            output.accept(ModBlocks.SILVER_CABLE_BLOCK);
+            output.accept(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK);
                                                                                                                                               })
                                                                                                                                             .build());
 

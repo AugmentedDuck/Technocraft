@@ -24,6 +24,10 @@ public class ModBlockEntities {
 
     // CABLES
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TinCableBlockEntity>> TIN_CABLE_BE = BLOCK_ENTITIES.register("tin_cable_be", () -> BlockEntityType.Builder.of(TinCableBlockEntity::new, ModBlocks.TIN_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CopperCableBlockEntity>> COPPER_CABLE_BE = BLOCK_ENTITIES.register("copper_cable_be", () -> BlockEntityType.Builder.of(CopperCableBlockEntity::new, ModBlocks.COPPER_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GoldCableBlockEntity>> GOLD_CABLE_BE = BLOCK_ENTITIES.register("gold_cable_be", () -> BlockEntityType.Builder.of(GoldCableBlockEntity::new, ModBlocks.GOLD_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SilverCableBlockEntity>> SILVER_CABLE_BE = BLOCK_ENTITIES.register("silver_cable_be", () -> BlockEntityType.Builder.of(SilverCableBlockEntity::new, ModBlocks.SILVER_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SuperConductingCableBlockEntity>> SUPER_CONDUCTING_CABLE_BE = BLOCK_ENTITIES.register("super_conducting_cable_be", () -> BlockEntityType.Builder.of(SuperConductingCableBlockEntity::new, ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

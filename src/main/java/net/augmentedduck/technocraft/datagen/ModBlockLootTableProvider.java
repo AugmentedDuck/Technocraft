@@ -43,6 +43,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.ELECTRIC_FURNACE_BLOCK.get());
         dropSelf(ModBlocks.MACERATOR_BLOCK.get());
         dropSelf(ModBlocks.TIN_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.COPPER_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.GOLD_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.SILVER_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get());
 
         /////////////////////////////////////
         // NON SELF DROPPING

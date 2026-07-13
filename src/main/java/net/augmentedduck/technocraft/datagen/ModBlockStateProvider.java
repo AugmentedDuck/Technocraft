@@ -62,6 +62,10 @@ public class ModBlockStateProvider extends BlockStateProvider{
         /////////////////////////////////////
         
         cableBlockState(ModBlocks.TIN_CABLE_BLOCK);
+        cableBlockState(ModBlocks.COPPER_CABLE_BLOCK);
+        cableBlockState(ModBlocks.GOLD_CABLE_BLOCK);
+        cableBlockState(ModBlocks.SILVER_CABLE_BLOCK);
+        cableBlockState(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

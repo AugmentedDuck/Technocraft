@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "technocraft:block/super_conducting_cable_inv"
+  }
+}

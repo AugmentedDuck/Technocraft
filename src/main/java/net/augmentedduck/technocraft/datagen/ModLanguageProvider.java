@@ -129,6 +129,10 @@ public class ModLanguageProvider extends LanguageProvider{
 
         // CABLES
         add(ModBlocks.TIN_CABLE_BLOCK.get(), "Tin Cable");
+        add(ModBlocks.COPPER_CABLE_BLOCK.get(), "Copper Cable");
+        add(ModBlocks.GOLD_CABLE_BLOCK.get(), "Gold Cable");
+        add(ModBlocks.SILVER_CABLE_BLOCK.get(), "Silver Cable");
+        add(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get(), "Super Conducting Cable");
 
         ///////////////////////////////
         // OTHER

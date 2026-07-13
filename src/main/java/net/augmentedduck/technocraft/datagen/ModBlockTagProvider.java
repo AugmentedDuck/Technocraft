@@ -53,6 +53,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             
             // CABLES
             .add(ModBlocks.TIN_CABLE_BLOCK.get())
+            .add(ModBlocks.COPPER_CABLE_BLOCK.get())
+            .add(ModBlocks.GOLD_CABLE_BLOCK.get())
+            .add(ModBlocks.SILVER_CABLE_BLOCK.get())
+            .add(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get())
             ;
         
         //////////////////////////////////

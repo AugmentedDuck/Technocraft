@@ -3,9 +3,13 @@ package net.augmentedduck.technocraft.block;
 import java.util.function.Supplier;
 
 import net.augmentedduck.technocraft.Technocraft;
+import net.augmentedduck.technocraft.block.custom.CopperCableBlock;
 import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
+import net.augmentedduck.technocraft.block.custom.GoldCableBlock;
 import net.augmentedduck.technocraft.block.custom.MaceratorBlock;
+import net.augmentedduck.technocraft.block.custom.SilverCableBlock;
+import net.augmentedduck.technocraft.block.custom.SuperConductingCableBlock;
 import net.augmentedduck.technocraft.block.custom.TinCableBlock;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -54,6 +58,10 @@ public class ModBlocks {
 
     // CABLES
     public static final DeferredBlock<Block> TIN_CABLE_BLOCK = registerBlock("tin_cable", () -> new TinCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> COPPER_CABLE_BLOCK = registerBlock("copper_cable", () -> new CopperCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> GOLD_CABLE_BLOCK = registerBlock("gold_cable", () -> new GoldCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> SILVER_CABLE_BLOCK = registerBlock("silver_cable", () -> new SilverCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> SUPER_CONDUCTING_CABLE_BLOCK = registerBlock("super_conducting_cable", () -> new SuperConductingCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
 
 
     /**
