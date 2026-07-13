@@ -90,6 +90,7 @@ public class ModItemModelProvider extends ItemModelProvider{
         // OTHER
         basicItem(ModItems.RECHARGEABLE_BATTERY.get());
         basicItem(ModItems.POWER_METER.get());
+        basicItem(ModItems.RTG_FUEL.get());
     }
 
 }

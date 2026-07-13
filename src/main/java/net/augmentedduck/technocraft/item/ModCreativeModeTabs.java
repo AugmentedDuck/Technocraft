@@ -106,6 +106,7 @@ public class ModCreativeModeTabs {
 
             // ITEMS
             output.accept(ModItems.RECHARGEABLE_BATTERY);
+            output.accept(ModItems.RTG_FUEL);
 
             // TOOLS
             output.accept(ModItems.POWER_METER);
@@ -134,6 +135,7 @@ public class ModCreativeModeTabs {
             // GENERATORS
             output.accept(ModBlocks.GENERATOR_BLOCK);
             output.accept(ModBlocks.SOLAR_PANEL_BLOCK);
+            output.accept(ModBlocks.RTG_BLOCK);
 
             // CONSUMERS
             output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);

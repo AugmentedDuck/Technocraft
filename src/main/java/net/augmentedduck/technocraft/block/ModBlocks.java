@@ -8,6 +8,7 @@ import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
 import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
 import net.augmentedduck.technocraft.block.custom.GoldCableBlock;
 import net.augmentedduck.technocraft.block.custom.MaceratorBlock;
+import net.augmentedduck.technocraft.block.custom.RTGBlock;
 import net.augmentedduck.technocraft.block.custom.SilverCableBlock;
 import net.augmentedduck.technocraft.block.custom.SolarPanelBlock;
 import net.augmentedduck.technocraft.block.custom.SuperConductingCableBlock;
@@ -53,6 +54,7 @@ public class ModBlocks {
     // GENERATORS
     public static final DeferredBlock<Block> GENERATOR_BLOCK = registerBlock("generator", () -> new GeneratorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final DeferredBlock<Block> SOLAR_PANEL_BLOCK = registerBlock("solar_panel", () -> new SolarPanelBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+    public static final DeferredBlock<Block> RTG_BLOCK = registerBlock("rtg", () -> new RTGBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     
     // CONSUMERS
     public static final DeferredBlock<Block> ELECTRIC_FURNACE_BLOCK = registerBlock("electric_furnace", () -> new ElectricFurnaceBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    

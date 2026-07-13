@@ -93,11 +93,12 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.GOLD_TINY_DUST.get(), "Tiny Pile of Gold");
         add(ModItems.COPPER_TINY_DUST.get(), "Tiny Pile of Copper");
 
-        // BATTERY
-        add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");
-
         // TOOLS
         add(ModItems.POWER_METER.get(), "Power Meter");
+        
+        // OTHER
+        add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");
+        add(ModItems.RTG_FUEL.get(), "RTG Fuel Pellet");
 
         ///////////////////////////////
         // BLOCKS
@@ -123,6 +124,7 @@ public class ModLanguageProvider extends LanguageProvider{
         // GENERATORS
         add(ModBlocks.GENERATOR_BLOCK.get(), "Generator");
         add(ModBlocks.SOLAR_PANEL_BLOCK.get(), "Solar Panel");
+        add(ModBlocks.RTG_BLOCK.get(), "Radioisotope Thermoelectric Generator");
         
         // CONSUMERS
         add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get(), "Electric Furnace");

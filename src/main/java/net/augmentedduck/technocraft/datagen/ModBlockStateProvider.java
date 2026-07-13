@@ -52,7 +52,8 @@ public class ModBlockStateProvider extends BlockStateProvider{
 
         // GENERATORS
         machineBlockState(ModBlocks.GENERATOR_BLOCK);
-        solarBlockState(ModBlocks.SOLAR_PANEL_BLOCK);
+        topBlockState(ModBlocks.SOLAR_PANEL_BLOCK);
+        topBlockState(ModBlocks.RTG_BLOCK);
 
         
         // CONSUMERS
@@ -99,7 +100,7 @@ public class ModBlockStateProvider extends BlockStateProvider{
         itemModels().withExistingParent(name, modLoc("block/" + name));
     }
 
-    private void solarBlockState(DeferredBlock<?> deferredBlock) {
+    private void topBlockState(DeferredBlock<?> deferredBlock) {
         Block machine = deferredBlock.get();
         String name = deferredBlock.getId().getPath();
         

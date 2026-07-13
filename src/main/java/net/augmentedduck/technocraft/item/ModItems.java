@@ -96,6 +96,7 @@ public class ModItems {
     // OTHER
     public static final DeferredItem<Item> RECHARGEABLE_BATTERY = ITEMS.register("rechargeable_battery", () -> new RechargeableBatteryItem(new Item.Properties()));
     public static final DeferredItem<Item> POWER_METER = ITEMS.register("power_meter", () -> new PowerMeterItem(new Item.Properties()));
+    public static final DeferredItem<Item> RTG_FUEL = ITEMS.register("rtg_fuel", () -> new PowerMeterItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
