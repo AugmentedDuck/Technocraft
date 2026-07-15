@@ -59,6 +59,7 @@ public class ModBlockStateProvider extends BlockStateProvider{
         // CONSUMERS
         machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
         machineBlockState(ModBlocks.MACERATOR_BLOCK);
+        machineBlockState(ModBlocks.COMPRESSOR_BLOCK);
 
         /////////////////////////////////////
         // CABLES

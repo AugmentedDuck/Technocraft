@@ -5,7 +5,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.augmentedduck.technocraft.recipe.ModRecipeSerializers;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
-import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
-import net.minecraft.world.level.Level;
 
 /**
  * A single-ingredient, single-result recipe used by the Macerator.
@@ -23,38 +21,10 @@ import net.minecraft.world.level.Level;
  * it's purely energy-driven, so it needs its own recipe type rather than reusing
  * {@link net.minecraft.world.item.crafting.SmeltingRecipe}.
  */
-public class MacerationRecipe implements Recipe<SingleRecipeInput> {
-
-    private final Ingredient input;
-    private final ItemStack output;
+public class MacerationRecipe extends AbstractModSingleRecipe {
 
     public MacerationRecipe(Ingredient input, ItemStack output) {
-        this.input = input;
-        this.output = output;
-    }
-
-    public Ingredient getInput() {
-        return input;
-    }
-
-    @Override
-    public boolean matches(SingleRecipeInput recipeInput, Level level) {
-        return input.test(recipeInput.item());
-    }
-
-    @Override
-    public ItemStack assemble(SingleRecipeInput recipeInput, Provider registries) {
-        return output.copy();
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getResultItem(Provider registries) {
-        return output;
+        super(input, output);
     }
 
     @Override

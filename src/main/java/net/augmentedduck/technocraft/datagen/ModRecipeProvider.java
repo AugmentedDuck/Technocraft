@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
 import net.augmentedduck.technocraft.item.ModItems;
+import net.augmentedduck.technocraft.recipe.custom.CompressorRecipe;
 import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -178,6 +179,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
 
         oreMacerating(recipeOutput, List.of(Items.RAW_IRON, Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), ModItems.IRON_CRUSHED.get(), 2, "iron_crushed");
+
+        /////////////////////////////////////////////////
+        // COMPRESSOR
+        /////////////////////////////////////////////////
+        
+        compressing(recipeOutput, Items.SAND, Items.SANDSTONE, 1, "sandstone");
+        compressing(recipeOutput, Items.SNOW_BLOCK, Items.ICE, 1, "ice");
     }
 
     /** Registers a smelting recipe for every ingredient in pIngredients -> pResult (one recipe file per ingredient). */
@@ -199,6 +207,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         for (ItemLike ingredient : ingredients) {
             oreMacerating(recipeOutput, ingredient, result, count, group);
         }
+    }
+
+    protected static void compressing(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int count ,String group) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "compressing/" + getItemName(result) + "_from_" + getItemName(ingredient));
+        recipeOutput.accept(id, new CompressorRecipe(Ingredient.of(ingredient), new ItemStack(result, count)), null);
     }
 
     protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {

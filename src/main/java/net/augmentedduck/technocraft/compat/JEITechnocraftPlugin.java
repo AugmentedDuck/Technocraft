@@ -11,6 +11,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
+import net.augmentedduck.technocraft.recipe.custom.CompressorRecipe;
 import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -33,6 +34,7 @@ public class JEITechnocraftPlugin implements IModPlugin{
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new MacerationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new CompressorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -42,12 +44,17 @@ public class JEITechnocraftPlugin implements IModPlugin{
 
         List<RecipeHolder<MacerationRecipe>> maceratingRecipes = recipeManager.getAllRecipesFor(ModRecipeTypes.MACERATING.get());
         registration.addRecipes(MacerationRecipeCategory.RECIPE_TYPE, maceratingRecipes);
+
+        List<RecipeHolder<CompressorRecipe>> compressorRecipes = recipeManager.getAllRecipesFor(ModRecipeTypes.COMPRESSOR.get());
+        registration.addRecipes(CompressorRecipeCategory.RECIPE_TYPE, compressorRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.ELECTRIC_FURNACE_BLOCK.get()), RecipeTypes.SMELTING);
+
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.MACERATOR_BLOCK.get()), MacerationRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.COMPRESSOR_BLOCK.get()), CompressorRecipeCategory.RECIPE_TYPE);
     }
 
     private RecipeManager getRecipeManager() {

@@ -137,16 +137,18 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.SOLAR_PANEL_BLOCK);
             output.accept(ModBlocks.RTG_BLOCK);
 
-            // CONSUMERS
-            output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);
-            output.accept(ModBlocks.MACERATOR_BLOCK);
-
             // CABLES
             output.accept(ModBlocks.TIN_CABLE_BLOCK);
             output.accept(ModBlocks.COPPER_CABLE_BLOCK);
             output.accept(ModBlocks.GOLD_CABLE_BLOCK);
             output.accept(ModBlocks.SILVER_CABLE_BLOCK);
             output.accept(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK);
+
+            // CONSUMERS
+            output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);
+            output.accept(ModBlocks.MACERATOR_BLOCK);
+            output.accept(ModBlocks.COMPRESSOR_BLOCK);
+            
                                                                                                                                               })
                                                                                                                                             .build());
 

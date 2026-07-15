@@ -52,6 +52,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             // CONSUMERS
             .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
             .add(ModBlocks.MACERATOR_BLOCK.get())
+            .add(ModBlocks.COMPRESSOR_BLOCK.get())
             
             // CABLES
             .add(ModBlocks.TIN_CABLE_BLOCK.get())
@@ -94,6 +95,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             // CONSUMERS
             .add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
             .add(ModBlocks.MACERATOR_BLOCK.get())
+            .add(ModBlocks.COMPRESSOR_BLOCK.get())
 
             ;
 

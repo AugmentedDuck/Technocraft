@@ -1,6 +1,7 @@
 package net.augmentedduck.technocraft;
 
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
+import net.augmentedduck.technocraft.screen.custom.CompressorScreen;
 import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceScreen;
 import net.augmentedduck.technocraft.screen.custom.GeneratorScreen;
 import net.augmentedduck.technocraft.screen.custom.MaceratorScreen;
@@ -35,5 +36,6 @@ public class TechnocraftClient {
         event.register(ModMenuTypes.RTG_MENU.get(), RTGScreen::new);
         event.register(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), ElectricFurnaceScreen::new);
         event.register(ModMenuTypes.MACERATOR_MENU.get(), MaceratorScreen::new);
+        event.register(ModMenuTypes.COMPRESSOR_MENU.get(), CompressorScreen::new);
     }
 }

@@ -3,6 +3,7 @@ package net.augmentedduck.technocraft.screen;
 import java.util.function.Supplier;
 
 import net.augmentedduck.technocraft.Technocraft;
+import net.augmentedduck.technocraft.screen.custom.CompressorMenu;
 import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceMenu;
 import net.augmentedduck.technocraft.screen.custom.GeneratorMenu;
 import net.augmentedduck.technocraft.screen.custom.MaceratorMenu;
@@ -23,6 +24,7 @@ public class ModMenuTypes {
     // CONSUMERS
     public static final Supplier<MenuType<ElectricFurnaceMenu>> ELECTRIC_FURNACE_MENU = MENUS.register("electric_furnace_menu", () -> IMenuTypeExtension.create(ElectricFurnaceMenu::new));
     public static final Supplier<MenuType<MaceratorMenu>> MACERATOR_MENU = MENUS.register("macerator_menu", () -> IMenuTypeExtension.create(MaceratorMenu::new));
+    public static final Supplier<MenuType<CompressorMenu>> COMPRESSOR_MENU = MENUS.register("compressor_menu", () -> IMenuTypeExtension.create(CompressorMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);

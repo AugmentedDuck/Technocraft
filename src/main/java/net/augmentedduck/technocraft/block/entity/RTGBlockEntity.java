@@ -49,7 +49,6 @@ public class RTGBlockEntity extends BlockEntity implements MachineBlockEntity {
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
             return switch (slot) {
-                // TODO Change to RTG fuel pellets
                 case FUEL_SLOT_0 -> stack.getItem() == ModItems.RTG_FUEL.get();
                 case FUEL_SLOT_1 -> stack.getItem() == ModItems.RTG_FUEL.get();
                 case FUEL_SLOT_2 -> stack.getItem() == ModItems.RTG_FUEL.get();

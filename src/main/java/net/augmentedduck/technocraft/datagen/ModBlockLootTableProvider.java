@@ -49,6 +49,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get());
         dropSelf(ModBlocks.SOLAR_PANEL_BLOCK.get());
         dropSelf(ModBlocks.RTG_BLOCK.get());
+        dropSelf(ModBlocks.COMPRESSOR_BLOCK.get());
 
         /////////////////////////////////////
         // NON SELF DROPPING
