@@ -157,7 +157,7 @@ public class RollerBlockEntity extends BlockEntity implements MachineBlockEntity
         ItemStack result = recipe.value().assemble(new SingleRecipeInput(input), level.registryAccess());
         ItemStack output = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
-        input.shrink(1);
+        input.shrink(recipe.value().getInputCount());
         itemHandler.setStackInSlot(INPUT_SLOT, input);
 
         if (output.isEmpty()) {
@@ -183,7 +183,7 @@ public class RollerBlockEntity extends BlockEntity implements MachineBlockEntity
 
         Optional<RecipeHolder<RollerRecipe>> recipe = be.findRecipe(input);
 
-        boolean canProgress = recipe.isPresent() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input);
+        boolean canProgress = recipe.isPresent() && input.getCount() >= recipe.get().value().getInputCount() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input);
         be.activelyGrinding = canProgress;
 
         if (canProgress) {

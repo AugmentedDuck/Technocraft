@@ -10,14 +10,20 @@ import net.minecraft.world.level.Level;
 public abstract class AbstractModSingleRecipe implements Recipe<SingleRecipeInput>{
     protected final Ingredient input;
     protected final ItemStack output;
+    protected final int inputCount;
 
-    public AbstractModSingleRecipe(Ingredient input, ItemStack output) {
+    public AbstractModSingleRecipe(Ingredient input, ItemStack output, int inputCount) {
         this.input = input;
         this.output = output;
+        this.inputCount = inputCount;
     }
 
     public Ingredient getInput() {
         return input;
+    }
+
+    public int getInputCount() {
+        return inputCount;
     }
 
     @Override

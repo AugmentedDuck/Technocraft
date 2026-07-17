@@ -6,8 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
 import net.augmentedduck.technocraft.item.ModItems;
-import net.augmentedduck.technocraft.recipe.custom.CompressorRecipe;
-import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
+import net.augmentedduck.technocraft.recipe.custom.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -269,9 +268,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreCooking(recipeOutput, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");
     }
 
-    protected static void oreMacerating(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int count ,String group) {
+    protected static void oreMacerating(RecipeOutput recipeOutput, ItemLike ingredient, int ingredientCount, ItemLike result, int count ,String group) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "macerating/" + getItemName(result) + "_from_" + getItemName(ingredient));
-        recipeOutput.accept(id, new MacerationRecipe(Ingredient.of(ingredient), new ItemStack(result, count)), null);
+        recipeOutput.accept(id, new MacerationRecipe(Ingredient.of(ingredient), new ItemStack(result, count), ingredientCount), null);
+    }
+
+    protected static void oreMacerating(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int count ,String group) {
+        oreMacerating(recipeOutput, ingredient, 1, result, count, group);
     }
 
     protected static void oreMacerating(RecipeOutput recipeOutput, List<ItemLike> ingredients, ItemLike result, int count, String group) {
@@ -280,9 +283,40 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    protected static void compressing(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int count ,String group) {
+    protected static void compressing(RecipeOutput recipeOutput, ItemLike ingredient, int ingredientCount, ItemLike result, int resultCount, String group) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "compressing/" + getItemName(result) + "_from_" + getItemName(ingredient));
-        recipeOutput.accept(id, new CompressorRecipe(Ingredient.of(ingredient), new ItemStack(result, count)), null);
+        recipeOutput.accept(id, new CompressorRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount), ingredientCount), null);
+    }
+
+    protected static void compressing(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
+        compressing(recipeOutput, ingredient, 1, result, resultCount, group);
+    }
+
+    protected static void extracting(RecipeOutput recipeOutput, ItemLike ingredient, int ingredientCount, ItemLike result, int resultCount, String group) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "extracting/" + getItemName(result) + "_from_" + getItemName(ingredient));
+        recipeOutput.accept(id, new ExtractorRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount), ingredientCount), null);
+    }
+
+    protected static void extracting(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
+        extracting(recipeOutput, ingredient, 1, result, resultCount, group);
+    }
+
+    protected static void extruding(RecipeOutput recipeOutput, ItemLike ingredient, int ingredientCount, ItemLike result, int resultCount, String group) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "extruding/" + getItemName(result) + "_from_" + getItemName(ingredient));
+        recipeOutput.accept(id, new ExtruderRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount), ingredientCount), null);
+    }
+
+    protected static void extruding(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
+        extruding(recipeOutput, ingredient, 1, result, resultCount, group);
+    }
+
+    protected static void rolling(RecipeOutput recipeOutput, ItemLike ingredient, int ingredientCount, ItemLike result, int resultCount, String group) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "rolling/" + getItemName(result) + "_from_" + getItemName(ingredient));
+        recipeOutput.accept(id, new RollerRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount), ingredientCount), null);
+    }
+
+    protected static void rolling(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
+        rolling(recipeOutput, ingredient, 1, result, resultCount, group);
     }
 
     protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
