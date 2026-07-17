@@ -30,7 +30,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        // TIN
+        ///////////////////////////////////////////////////
+        /// 
+        /// TIN
+        /// 
+        ///////////////////////////////////////////////////
+        
+        // TIN BLOCK
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TIN_BLOCK.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -38,6 +44,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.TIN_INGOT.get())
             .unlockedBy("has_tin", has(ModItems.TIN_INGOT)).save(recipeOutput);
 
+        // TIN DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TIN_DUST.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -45,7 +52,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.TIN_TINY_DUST.get())
             .unlockedBy("has_tin_tiny_dust", has(ModItems.TIN_TINY_DUST)).save(recipeOutput);
             
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 9)
+        // TIN INGOT
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 9)
             .requires(ModBlocks.TIN_BLOCK)
             .unlockedBy("has_tin_block", has(ModBlocks.TIN_BLOCK)).save(recipeOutput, "technocraft:tin_ingot_from_block");
             
@@ -53,9 +61,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput, TIN_SMELTABLES, RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 0.7f, 200, "tin_ingot");
         oreBlasting(recipeOutput, TIN_SMELTABLES, RecipeCategory.MISC, ModItems.TIN_INGOT.get(), 0.7f, 100, "tin_ingot");
 
+        // CUSHED TIN
         oreMacerating(recipeOutput, List.of(ModItems.TIN_RAW, ModBlocks.TIN_ORE, ModBlocks.TIN_DEEPSLATE_ORE), ModItems.TIN_CRUSHED.get(), 2, "tin_crushed");
 
-        // SILVER
+        ///////////////////////////////////////////////////
+        /// 
+        /// SILVER
+        /// 
+        ///////////////////////////////////////////////////
+        
+        // SILVER BLOCK
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SILVER_BLOCK.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -63,6 +78,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.SILVER_INGOT.get())
             .unlockedBy("has_silver", has(ModItems.SILVER_INGOT)).save(recipeOutput);
         
+        // SILVER DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SILVER_DUST.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -70,6 +86,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.SILVER_TINY_DUST.get())
             .unlockedBy("has_silver_tiny_dust", has(ModItems.SILVER_TINY_DUST)).save(recipeOutput);
 
+        // SILVER INGOT
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SILVER_INGOT.get(), 9)
             .requires(ModBlocks.SILVER_BLOCK)
             .unlockedBy("has_silver_block", has(ModBlocks.SILVER_BLOCK)).save(recipeOutput, "technocraft:silver_ingot_from_block");
@@ -78,9 +95,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput, SILVER_SMELTABLES, RecipeCategory.MISC, ModItems.SILVER_INGOT.get(), 0.7f, 200, "silver_ingot");
         oreBlasting(recipeOutput, SILVER_SMELTABLES, RecipeCategory.MISC, ModItems.SILVER_INGOT.get(), 0.7f, 100, "silver_ingot");
 
+        // CRUSHED SILVER
         oreMacerating(recipeOutput, List.of(ModItems.SILVER_RAW, ModBlocks.SILVER_ORE, ModBlocks.SILVER_DEEPSLATE_ORE), ModItems.SILVER_CRUSHED.get(), 2, "silver_crushed");
 
-        // STEEL
+        ///////////////////////////////////////////////////
+        /// 
+        /// STEEL
+        /// 
+        ///////////////////////////////////////////////////
+
+        // STEEL BLOCK
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STEEL_BLOCK.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -88,11 +112,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.STEEL_INGOT.get())
             .unlockedBy("has_steel", has(ModItems.STEEL_INGOT)).save(recipeOutput);
 
+        // STEEL INGOT
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STEEL_INGOT.get(), 9)
             .requires(ModBlocks.STEEL_BLOCK)
             .unlockedBy("has_steel_block", has(ModBlocks.STEEL_BLOCK)).save(recipeOutput, "technocraft:steel_ingot_from_block");
+
+        ///////////////////////////////////////////////////
+        /// 
+        /// LEAD
+        /// 
+        ///////////////////////////////////////////////////
         
-        // LEAD
+        // LEAD BLOCK
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LEAD_BLOCK.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -100,6 +131,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.LEAD_INGOT.get())
             .unlockedBy("has_lead", has(ModItems.LEAD_INGOT)).save(recipeOutput);
 
+        // LEAD DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LEAD_DUST.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -107,6 +139,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.LEAD_TINY_DUST.get())
             .unlockedBy("has_lead_tiny_dust", has(ModItems.LEAD_TINY_DUST)).save(recipeOutput);
         
+        // LEAD INGOT
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 9)
             .requires(ModBlocks.LEAD_BLOCK)
             .unlockedBy("has_lead_block", has(ModBlocks.LEAD_BLOCK)).save(recipeOutput, "technocraft:lead_ingot_from_block");
@@ -115,9 +148,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(recipeOutput, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7f, 200, "lead_ingot");
         oreBlasting(recipeOutput, LEAD_SMELTABLES, RecipeCategory.MISC, ModItems.LEAD_INGOT.get(), 0.7f, 100, "lead_ingot");
 
+        // CRUSHED LEAD
         oreMacerating(recipeOutput, List.of(ModItems.LEAD_RAW, ModBlocks.LEAD_ORE, ModBlocks.LEAD_DEEPSLATE_ORE), ModItems.LEAD_CRUSHED.get(), 2, "lead_crushed");
         
-        // BRONZE
+        ///////////////////////////////////////////////////
+        /// 
+        /// BRONZE
+        /// 
+        ///////////////////////////////////////////////////
+
+        // BRONZE BLOCK
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BRONZE_BLOCK.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -125,20 +165,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.BRONZE_INGOT.get())
             .unlockedBy("has_bronze", has(ModItems.BRONZE_INGOT)).save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), 9)
-            .requires(ModBlocks.BRONZE_BLOCK)
-            .unlockedBy("has_bronze_block", has(ModBlocks.BRONZE_BLOCK)).save(recipeOutput, "technocraft:bronze_ingot_from_block");
-        
+        // BRONZE DUST
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BRONZE_DUST.get(), 1)
             .requires(ModItems.COPPER_DUST, 3)
             .requires(ModItems.TIN_DUST)
             .unlockedBy("has_copper_dust", has(ModItems.COPPER_DUST)).save(recipeOutput);
 
+        // BRONZE INGOT
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), 9)
+            .requires(ModBlocks.BRONZE_BLOCK)
+            .unlockedBy("has_bronze_block", has(ModBlocks.BRONZE_BLOCK)).save(recipeOutput, "technocraft:bronze_ingot_from_block");
+        
         List<ItemLike> BRONZE_SMELTABLES = List.of(ModItems.BRONZE_DUST);
         oreSmelting(recipeOutput, BRONZE_SMELTABLES, RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), 0.7f, 200, "bronze_ingot");
         oreBlasting(recipeOutput, BRONZE_SMELTABLES, RecipeCategory.MISC, ModItems.BRONZE_INGOT.get(), 0.7f, 100, "bronze_ingot");
-        
-        // COPPER      
+            
+        ///////////////////////////////////////////////////
+        /// 
+        /// COPPER
+        /// 
+        ///////////////////////////////////////////////////
+
+        // COPPER DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COPPER_DUST.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -146,13 +194,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.COPPER_TINY_DUST.get())
             .unlockedBy("has_copper_tiny_dust", has(ModItems.COPPER_TINY_DUST)).save(recipeOutput);
         
+        // COPPER INGOT
         List<ItemLike> COPPER_SMELTABLES = List.of(ModItems.COPPER_DUST, ModItems.COPPER_CRUSHED, ModItems.COPPER_WASHED);
         oreSmelting(recipeOutput, COPPER_SMELTABLES, RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 200, "copper_ingot");
         oreBlasting(recipeOutput, COPPER_SMELTABLES, RecipeCategory.MISC, Items.COPPER_INGOT, 0.7f, 100, "copper_ingot");
         
+        // CRUSHED COPPER
         oreMacerating(recipeOutput, List.of(Items.RAW_COPPER, Items.COPPER_ORE, Items.DEEPSLATE_COPPER_ORE), ModItems.COPPER_CRUSHED.get(), 2, "copper_crushed");
         
-        // GOLD
+        ///////////////////////////////////////////////////
+        /// 
+        /// GOLD
+        /// 
+        ///////////////////////////////////////////////////
+
+        // GOLD DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GOLD_DUST.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -160,13 +216,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.GOLD_TINY_DUST.get())
             .unlockedBy("has_gold_tiny_dust", has(ModItems.GOLD_TINY_DUST)).save(recipeOutput);
 
+        // GOLD INGOT
         List<ItemLike> GOLD_SMELTABLES = List.of(ModItems.GOLD_DUST, ModItems.GOLD_CRUSHED, ModItems.GOLD_WASHED);
         oreSmelting(recipeOutput, GOLD_SMELTABLES, RecipeCategory.MISC, Items.GOLD_INGOT, 0.7f, 200, "gold_ingot");
         oreBlasting(recipeOutput, GOLD_SMELTABLES, RecipeCategory.MISC, Items.GOLD_INGOT, 0.7f, 100, "gold_ingot");
 
+        // CRUSHED GOLD
         oreMacerating(recipeOutput, List.of(Items.RAW_GOLD, Items.GOLD_ORE, Items.DEEPSLATE_GOLD_ORE), ModItems.GOLD_CRUSHED.get(), 2, "gold_crushed");
         
-        // IRON
+        ///////////////////////////////////////////////////
+        /// 
+        /// IRON
+        /// 
+        ///////////////////////////////////////////////////
+        
+        // IRON DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_DUST.get())
             .pattern("BBB")
             .pattern("BBB")
@@ -174,17 +238,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', ModItems.IRON_TINY_DUST.get())
             .unlockedBy("has_iron_tiny_dust", has(ModItems.IRON_TINY_DUST)).save(recipeOutput);
         
+        // IRON INGOT
         List<ItemLike> IRON_SMELTABLES = List.of(ModItems.IRON_DUST, ModItems.IRON_CRUSHED, ModItems.IRON_WASHED);
         oreSmelting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
         oreBlasting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
 
+        // CRUSHED IRON
         oreMacerating(recipeOutput, List.of(Items.RAW_IRON, Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), ModItems.IRON_CRUSHED.get(), 2, "iron_crushed");
 
-        /////////////////////////////////////////////////
-        // COMPRESSOR
-        /////////////////////////////////////////////////
-        
+        ///////////////////////////////////////////////////
+        /// 
+        /// OTHER
+        /// 
+        ///////////////////////////////////////////////////
+
+        // SANDSTONE
         compressing(recipeOutput, Items.SAND, Items.SANDSTONE, 1, "sandstone");
+        
+        // ICE
         compressing(recipeOutput, Items.SNOW_BLOCK, Items.ICE, 1, "ice");
     }
 
