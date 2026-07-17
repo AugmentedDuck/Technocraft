@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import net.augmentedduck.technocraft.block.custom.ElectricFurnaceBlock;
+import net.augmentedduck.technocraft.block.custom.CompressorBlock;
 import net.augmentedduck.technocraft.energy.ConsumerEnergyStorage;
 import net.augmentedduck.technocraft.energy.ModEnergyTiers;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
@@ -199,7 +199,7 @@ public class CompressorBlockEntity extends BlockEntity implements MachineBlockEn
         }
 
         if (wasCompressing != be.isCompressing()) {
-            level.setBlock(pos, state.setValue(ElectricFurnaceBlock.LIT, be.isCompressing()), Block.UPDATE_ALL);
+            level.setBlock(pos, state.setValue(CompressorBlock.LIT, be.isCompressing()), Block.UPDATE_ALL);
         }
 
         if (changed) {

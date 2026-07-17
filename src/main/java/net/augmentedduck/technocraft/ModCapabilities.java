@@ -31,6 +31,15 @@ public class ModCapabilities {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.COMPRESSOR_BE.get(), (be, side) -> be.getItemHandler(side));
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.COMPRESSOR_BE.get(), (be, side) -> be.getEnergyStorage());
 
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.EXTRACTOR_BE.get(), (be, side) -> be.getItemHandler(side));
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.EXTRACTOR_BE.get(), (be, side) -> be.getEnergyStorage());
+
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.EXTRUDER_BE.get(), (be, side) -> be.getItemHandler(side));
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.EXTRUDER_BE.get(), (be, side) -> be.getEnergyStorage());
+
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.ROLLER_BE.get(), (be, side) -> be.getItemHandler(side));
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.ROLLER_BE.get(), (be, side) -> be.getEnergyStorage());
+
         // CABLES
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.TIN_CABLE_BE.get(), (be, side) -> be.getEnergyStorage());
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.COPPER_CABLE_BE.get(), (be, side) -> be.getEnergyStorage());

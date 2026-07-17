@@ -148,6 +148,9 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);
             output.accept(ModBlocks.MACERATOR_BLOCK);
             output.accept(ModBlocks.COMPRESSOR_BLOCK);
+            output.accept(ModBlocks.EXTRACTOR_BLOCK);
+            output.accept(ModBlocks.EXTRUDER_BLOCK);
+            output.accept(ModBlocks.ROLLER_BLOCK);
             
                                                                                                                                               })
                                                                                                                                             .build());

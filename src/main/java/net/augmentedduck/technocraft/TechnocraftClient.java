@@ -1,11 +1,7 @@
 package net.augmentedduck.technocraft;
 
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
-import net.augmentedduck.technocraft.screen.custom.CompressorScreen;
-import net.augmentedduck.technocraft.screen.custom.ElectricFurnaceScreen;
-import net.augmentedduck.technocraft.screen.custom.GeneratorScreen;
-import net.augmentedduck.technocraft.screen.custom.MaceratorScreen;
-import net.augmentedduck.technocraft.screen.custom.RTGScreen;
+import net.augmentedduck.technocraft.screen.custom.*;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -37,5 +33,8 @@ public class TechnocraftClient {
         event.register(ModMenuTypes.ELECTRIC_FURNACE_MENU.get(), ElectricFurnaceScreen::new);
         event.register(ModMenuTypes.MACERATOR_MENU.get(), MaceratorScreen::new);
         event.register(ModMenuTypes.COMPRESSOR_MENU.get(), CompressorScreen::new);
+        event.register(ModMenuTypes.EXTRACTOR_MENU.get(), ExtractorScreen::new);
+        event.register(ModMenuTypes.EXTRUDER_MENU.get(), ExtruderScreen::new);
+        event.register(ModMenuTypes.ROLLER_MENU.get(), RollerScreen::new);
     }
 }

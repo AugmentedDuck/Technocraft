@@ -4,12 +4,12 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import net.augmentedduck.technocraft.block.custom.MaceratorBlock;
+import net.augmentedduck.technocraft.block.custom.ExtractorBlock;
 import net.augmentedduck.technocraft.energy.ConsumerEnergyStorage;
 import net.augmentedduck.technocraft.energy.ModEnergyTiers;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
-import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
-import net.augmentedduck.technocraft.screen.custom.MaceratorMenu;
+import net.augmentedduck.technocraft.recipe.custom.ExtractorRecipe;
+import net.augmentedduck.technocraft.screen.custom.ExtractorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup.Provider;
@@ -35,26 +35,16 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 
-public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEntity{
+public class ExtractorBlockEntity extends BlockEntity implements MachineBlockEntity{
 
     public static final int INPUT_SLOT = 0;
     public static final int OUTPUT_SLOT = 1;
     public static final int BATTERY_SLOT = 2;
 
-    public static final int ENERGY_CAPACITY = 12_000;
-    public static final int PROCESS_TIME = 15 * 20;
+    public static final int ENERGY_CAPACITY = 8_000;
+    public static final int PROCESS_TIME = 20 * 20;
     public static final int ENERGY_PER_TICK = 20;
 
-    /**
-     * Internal item inventory.
-     *
-     * <p>Only valid items can be inserted into each slot:
-     * <ul>
-     *     <li>Fuel slot requires an item with an energy capability
-     *     <li>Input slot requires a valid smelting recipe
-     *     <li>Output slot cannot be manually inserted into
-     * </ul>
-     */
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -87,17 +77,6 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
     private int grindProgress;
     private boolean activelyGrinding;
 
-    /**
-     * Data synchronized between server and client menus.
-     *
-     * Index:
-     * <ul>
-     *     <li>0 - Current energy
-     *     <li>1 - Maximum energy
-     *     <li>2 - Current grind progress
-     *     <li>3 - Required process time
-     * </ul>
-     */
     private final ContainerData data = new ContainerData() {
         @Override
         public int get(int index) {
@@ -125,8 +104,8 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
         }
     };
 
-    public MaceratorBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModBlockEntities.MACERATOR_BE.get(), pos, blockState);
+    public ExtractorBlockEntity(BlockPos pos, BlockState blockState) {
+        super(ModBlockEntities.EXTRACTOR_BE.get(), pos, blockState);
     }
 
     public IItemHandler getItemHandler() {
@@ -159,12 +138,12 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
         return activelyGrinding;
     }
 
-    private Optional<RecipeHolder<MacerationRecipe>> findRecipe(ItemStack input) {
+    private Optional<RecipeHolder<ExtractorRecipe>> findRecipe(ItemStack input) {
         if (level == null || input.isEmpty()) return Optional.empty();
-        return level.getRecipeManager().getRecipeFor(ModRecipeTypes.MACERATING.get(), new SingleRecipeInput(input), level);
+        return level.getRecipeManager().getRecipeFor(ModRecipeTypes.EXTRACTOR.get(), new SingleRecipeInput(input), level);
     }
 
-    private boolean canInsertResult(RecipeHolder<MacerationRecipe> recipe, Level level, ItemStack input) {
+    private boolean canInsertResult(RecipeHolder<ExtractorRecipe> recipe, Level level, ItemStack input) {
         ItemStack result = recipe.value().assemble(new SingleRecipeInput(input), level.registryAccess());
         ItemStack output = itemHandler.getStackInSlot(OUTPUT_SLOT);
 
@@ -173,7 +152,7 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
         return output.getCount() + result.getCount() <= output.getMaxStackSize();
     }
 
-    private void craftItem(RecipeHolder<MacerationRecipe> recipe, Level level) {
+    private void craftItem(RecipeHolder<ExtractorRecipe> recipe, Level level) {
         ItemStack input = itemHandler.getStackInSlot(INPUT_SLOT);
         ItemStack result = recipe.value().assemble(new SingleRecipeInput(input), level.registryAccess());
         ItemStack output = itemHandler.getStackInSlot(OUTPUT_SLOT);
@@ -189,18 +168,7 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
         }
     }
 
-    /**
-     * Main server-side machine tick.
-     *
-     * Handles:
-     * <ul>
-     *     <li>Charging from inserted energy items
-     *     <li>Checking recipes
-     *     <li>Consuming energy
-     *     <li>Updating block state
-     * </ul>
-     */
-    public static void serverTick(Level level, BlockPos pos, BlockState state, MaceratorBlockEntity be) {
+    public static void serverTick(Level level, BlockPos pos, BlockState state, ExtractorBlockEntity be) {
         boolean wasGrinding = be.isGrinding();
         boolean changed = false;
 
@@ -213,7 +181,7 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
             changed = true;
         }
 
-        Optional<RecipeHolder<MacerationRecipe>> recipe = be.findRecipe(input);
+        Optional<RecipeHolder<ExtractorRecipe>> recipe = be.findRecipe(input);
 
         boolean canProgress = recipe.isPresent() && be.energyStorage.getEnergyStored() >= ENERGY_PER_TICK && be.canInsertResult(recipe.get(), level, input);
         be.activelyGrinding = canProgress;
@@ -232,7 +200,7 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
         }
 
         if (wasGrinding != be.isGrinding()) {
-            level.setBlock(pos, state.setValue(MaceratorBlock.LIT, be.isGrinding()), Block.UPDATE_ALL);
+            level.setBlock(pos, state.setValue(ExtractorBlock.LIT, be.isGrinding()), Block.UPDATE_ALL);
         }
 
         if (changed) {
@@ -266,12 +234,12 @@ public class MaceratorBlockEntity extends BlockEntity implements MachineBlockEnt
 
     @Override
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
-        return new MaceratorMenu(containerId, playerInventory, this);
+        return new ExtractorMenu(containerId, playerInventory, this);
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.technocraft.macerator");
+        return Component.translatable("block.technocraft.extractor");
     }
 
     private boolean dischargeItem() {

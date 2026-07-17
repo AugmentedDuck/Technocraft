@@ -130,6 +130,9 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.ELECTRIC_FURNACE_BLOCK.get(), "Electric Furnace");
         add(ModBlocks.MACERATOR_BLOCK.get(), "Macerator");
         add(ModBlocks.COMPRESSOR_BLOCK.get(), "Compressor");
+        add(ModBlocks.EXTRACTOR_BLOCK.get(), "Extractor");
+        add(ModBlocks.EXTRUDER_BLOCK.get(), "Extruder");
+        add(ModBlocks.ROLLER_BLOCK.get(), "Press");
 
         // CABLES
         add(ModBlocks.TIN_CABLE_BLOCK.get(), "Tin Cable");

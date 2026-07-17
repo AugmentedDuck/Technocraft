@@ -60,6 +60,9 @@ public class ModBlockStateProvider extends BlockStateProvider{
         machineBlockState(ModBlocks.ELECTRIC_FURNACE_BLOCK);
         machineBlockState(ModBlocks.MACERATOR_BLOCK);
         machineBlockState(ModBlocks.COMPRESSOR_BLOCK);
+        machineBlockState(ModBlocks.EXTRACTOR_BLOCK);
+        machineBlockState(ModBlocks.EXTRUDER_BLOCK);
+        machineBlockState(ModBlocks.ROLLER_BLOCK);
 
         /////////////////////////////////////
         // CABLES

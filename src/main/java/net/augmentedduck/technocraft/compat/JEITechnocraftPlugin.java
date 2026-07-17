@@ -11,8 +11,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
-import net.augmentedduck.technocraft.recipe.custom.CompressorRecipe;
-import net.augmentedduck.technocraft.recipe.custom.MacerationRecipe;
+import net.augmentedduck.technocraft.recipe.custom.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +34,9 @@ public class JEITechnocraftPlugin implements IModPlugin{
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new MacerationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new CompressorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new ExtractorRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new ExtruderRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new RollerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -47,6 +49,15 @@ public class JEITechnocraftPlugin implements IModPlugin{
 
         List<RecipeHolder<CompressorRecipe>> compressorRecipes = recipeManager.getAllRecipesFor(ModRecipeTypes.COMPRESSOR.get());
         registration.addRecipes(CompressorRecipeCategory.RECIPE_TYPE, compressorRecipes);
+
+        List<RecipeHolder<ExtractorRecipe>> extractorRecipes = recipeManager.getAllRecipesFor(ModRecipeTypes.EXTRACTOR.get());
+        registration.addRecipes(ExtractorRecipeCategory.RECIPE_TYPE, extractorRecipes);
+
+        List<RecipeHolder<ExtruderRecipe>> extruderRecipes = recipeManager.getAllRecipesFor(ModRecipeTypes.EXTRUDER.get());
+        registration.addRecipes(ExtruderRecipeCategory.RECIPE_TYPE, extruderRecipes);
+
+        List<RecipeHolder<RollerRecipe>> rollerRecipes = recipeManager.getAllRecipesFor(ModRecipeTypes.ROLLER.get());
+        registration.addRecipes(RollerRecipeCategory.RECIPE_TYPE, rollerRecipes);
     }
 
     @Override
@@ -55,6 +66,9 @@ public class JEITechnocraftPlugin implements IModPlugin{
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.MACERATOR_BLOCK.get()), MacerationRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.COMPRESSOR_BLOCK.get()), CompressorRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.EXTRACTOR_BLOCK.get()), ExtractorRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.EXTRUDER_BLOCK.get()), ExtruderRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ROLLER_BLOCK.get()), RollerRecipeCategory.RECIPE_TYPE);
     }
 
     private RecipeManager getRecipeManager() {
