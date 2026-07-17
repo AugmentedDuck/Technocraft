@@ -1,5 +1,8 @@
 package net.augmentedduck.technocraft.compat;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.jetbrains.annotations.Nullable;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -53,7 +56,13 @@ public class MacerationRecipeCategory implements IRecipeCategory<RecipeHolder<Ma
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<MacerationRecipe> recipeHolder, IFocusGroup focuses) {
         MacerationRecipe recipe = recipeHolder.value();
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 2, 2).addIngredients(recipe.getInput());
+        List<ItemStack> inputStacks = Arrays.stream(recipe.getInput().getItems()).map(stack -> {
+            ItemStack display = stack.copy();
+            display.setCount(recipe.getInputCount());
+            return display;
+        }).toList();
+
+        builder.addSlot(RecipeIngredientRole.INPUT, 2, 2).addItemStacks(inputStacks);
         builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 20).addItemStack(recipe.getResultItem(null));
     }
 }
