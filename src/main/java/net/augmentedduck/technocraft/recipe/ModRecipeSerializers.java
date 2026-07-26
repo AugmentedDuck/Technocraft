@@ -12,11 +12,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModRecipeSerializers {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, Technocraft.MODID);
 
-    public static final Supplier<MacerationRecipe.Serializer> MACERATION_SERIALIZER = SERIALIZERS.register("macerating", MacerationRecipe.Serializer::new);
-    public static final Supplier<CompressorRecipe.Serializer> COMPRESSOR_SERIALIZER = SERIALIZERS.register("compressor", CompressorRecipe.Serializer::new);
-    public static final Supplier<ExtractorRecipe.Serializer> EXTRACTOR_SERIALIZER = SERIALIZERS.register("extractor", ExtractorRecipe.Serializer::new);
-    public static final Supplier<ExtruderRecipe.Serializer> EXTRUDER_SERIALIZER = SERIALIZERS.register("extruder", ExtruderRecipe.Serializer::new);
-    public static final Supplier<RollerRecipe.Serializer> ROLLER_SERIALIZER = SERIALIZERS.register("roller", RollerRecipe.Serializer::new);
+    public static final Supplier<RecipeSerializer<MacerationRecipe>> MACERATION_SERIALIZER = SERIALIZERS.register("macerating", () -> new SingleRecipeSerializer<>(MacerationRecipe::new));
+    public static final Supplier<RecipeSerializer<CompressorRecipe>> COMPRESSOR_SERIALIZER = SERIALIZERS.register("compressor", () -> new SingleRecipeSerializer<>(CompressorRecipe::new));
+    public static final Supplier<RecipeSerializer<ExtractorRecipe>> EXTRACTOR_SERIALIZER = SERIALIZERS.register("extractor", () -> new SingleRecipeSerializer<>(ExtractorRecipe::new));
+    public static final Supplier<RecipeSerializer<ExtruderRecipe>> EXTRUDER_SERIALIZER = SERIALIZERS.register("extruder", () -> new SingleRecipeSerializer<>(ExtruderRecipe::new));
+    public static final Supplier<RecipeSerializer<RollerRecipe>> ROLLER_SERIALIZER = SERIALIZERS.register("roller", () -> new SingleRecipeSerializer<>(RollerRecipe::new));
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

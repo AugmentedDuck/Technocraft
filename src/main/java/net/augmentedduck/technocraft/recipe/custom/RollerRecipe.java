@@ -43,31 +43,4 @@ public class RollerRecipe extends AbstractModSingleRecipe {
     public RecipeType<? extends Recipe<SingleRecipeInput>> getType() {
         return ModRecipeTypes.ROLLER.get();
     }
-
-    public static class Serializer implements RecipeSerializer<RollerRecipe> {
-        
-        public static final MapCodec<RollerRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(RollerRecipe::getInput), 
-            ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.output),
-            Codec.INT.optionalFieldOf("count", 1).forGetter(RollerRecipe::getInputCount)
-        ).apply(instance, RollerRecipe::new));
-
-        public static final StreamCodec<RegistryFriendlyByteBuf, RollerRecipe> STREAM_CODEC = StreamCodec.composite(
-            Ingredient.CONTENTS_STREAM_CODEC, RollerRecipe::getInput, 
-            ItemStack.STREAM_CODEC, recipe -> recipe.output, 
-            ByteBufCodecs.VAR_INT, RollerRecipe::getInputCount,
-            RollerRecipe::new
-        );
-        
-        @Override
-        public MapCodec<RollerRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, RollerRecipe> streamCodec() {
-            return STREAM_CODEC;
-        }
-
-    }
 }

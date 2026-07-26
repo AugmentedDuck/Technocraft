@@ -1,13 +1,10 @@
 package net.augmentedduck.technocraft.block.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import net.augmentedduck.technocraft.energy.EnergyDistributor;
 import net.augmentedduck.technocraft.energy.GeneratorEnergyStorage;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.augmentedduck.technocraft.screen.custom.RTGMenu;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -22,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -135,41 +131,7 @@ public class RTGBlockEntity extends BlockEntity implements MachineBlockEntity {
     }
 
     private boolean distributeEnergy(Level level, BlockPos pos) {
-        if (energyStorage.getEnergyStored() <= 0) return false;
-
-        List<IEnergyStorage> receivers = new ArrayList<>();
-
-        for (Direction direction : Direction.values()) {
-            BlockPos neighborPos = pos.relative(direction);
-            if (level.getBlockEntity(neighborPos) == null) continue;
-
-            IEnergyStorage neighborStorage = level.getCapability(Capabilities.EnergyStorage.BLOCK, neighborPos, direction.getOpposite());
-
-            if (neighborStorage != null && neighborStorage.canReceive()) {
-                receivers.add(neighborStorage);
-            }
-        }
-
-        if (receivers.isEmpty()) return false;
-
-        int available = Math.min(ENERGY_EXTRACT_RATE, energyStorage.getEnergyStored());
-        if (available <= 0) return false;
-        
-        int share = Math.max(1, available / receivers.size());
-        boolean changed = false;
-
-        for (IEnergyStorage receiver : receivers) {
-            int extracted = energyStorage.extractEnergy(share, true);
-            if (extracted > 0) {
-                int accepted = receiver.receiveEnergy(extracted, false);
-                if (accepted > 0) {
-                    energyStorage.extractEnergy(accepted, false);
-                    changed = true;
-                }
-            }
-        }
-        
-        return changed;
+        return EnergyDistributor.distributeToNeighbors(level, pos, energyStorage, ENERGY_EXTRACT_RATE);
     }
 
     public void drops() {

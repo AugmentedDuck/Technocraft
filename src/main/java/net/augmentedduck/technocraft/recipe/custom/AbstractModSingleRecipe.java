@@ -22,6 +22,10 @@ public abstract class AbstractModSingleRecipe implements Recipe<SingleRecipeInpu
         return input;
     }
     
+    public ItemStack getOutput() {
+        return output;
+    }
+
     public int getInputCount() {
         return inputCount;
     }
