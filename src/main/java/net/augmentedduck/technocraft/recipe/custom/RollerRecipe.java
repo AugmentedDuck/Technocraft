@@ -1,14 +1,7 @@
 package net.augmentedduck.technocraft.recipe.custom;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.augmentedduck.technocraft.recipe.ModRecipeSerializers;
 import net.augmentedduck.technocraft.recipe.ModRecipeTypes;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
