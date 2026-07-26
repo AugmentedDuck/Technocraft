@@ -18,7 +18,7 @@ public class ExtruderMenu extends AbstractMachineMenu{
     }
 
     public ExtruderMenu(int containerId, Inventory inventory, ExtruderBlockEntity blockEntity) {
-        super(ModMenuTypes.ROLLER_MENU.get(), containerId, blockEntity, blockEntity.getData());
+        super(ModMenuTypes.EXTRUDER_MENU.get(), containerId, blockEntity, blockEntity.getData());
 
         IItemHandler handler = blockEntity.getItemHandler();
         

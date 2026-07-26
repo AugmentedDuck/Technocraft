@@ -18,7 +18,7 @@ public class ExtractorMenu extends AbstractMachineMenu{
     }
 
     public ExtractorMenu(int containerId, Inventory inventory, ExtractorBlockEntity blockEntity) {
-    super(ModMenuTypes.ROLLER_MENU.get(), containerId, blockEntity, blockEntity.getData());
+    super(ModMenuTypes.EXTRACTOR_MENU.get(), containerId, blockEntity, blockEntity.getData());
 
         IItemHandler handler = blockEntity.getItemHandler();
         

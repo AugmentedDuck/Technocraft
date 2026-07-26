@@ -49,7 +49,7 @@ public class ModBlocks {
     
     // CONSUMERS
     public static final DeferredBlock<Block> ELECTRIC_FURNACE_BLOCK = registerBlock("electric_furnace", () -> new ElectricFurnaceBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
-    public static final DeferredBlock<Block> MACERATOR_BLOCK = registerBlock("macerator", () -> new ExtractorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
+    public static final DeferredBlock<Block> MACERATOR_BLOCK = registerBlock("macerator", () -> new MaceratorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
     public static final DeferredBlock<Block> COMPRESSOR_BLOCK = registerBlock("compressor", () -> new CompressorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
     public static final DeferredBlock<Block> EXTRACTOR_BLOCK = registerBlock("extractor", () -> new ExtractorBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
     public static final DeferredBlock<Block> EXTRUDER_BLOCK = registerBlock("extruder", () -> new ExtruderBlock(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));    
