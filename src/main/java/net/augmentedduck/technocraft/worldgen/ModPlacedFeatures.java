@@ -7,6 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -23,12 +24,26 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> TIN_ORE_PLACED_LOWER_KEY = registerKey("tin_ore_placed_lower");
     public static final ResourceKey<PlacedFeature> TIN_ORE_PLACED_EXTRA_KEY = registerKey("tin_ore_placed_extra");
 
+    public static final ResourceKey<PlacedFeature> ORE_LEAD_UPPER = registerKey("ore_lead_upper_placed");
+    public static final ResourceKey<PlacedFeature> ORE_LEAD_MIDDLE = registerKey("ore_lead_middle_placed");
+    public static final ResourceKey<PlacedFeature> ORE_LEAD_SMALL = registerKey("ore_lead_small_placed");
+
+    public static final ResourceKey<PlacedFeature> ORE_SILVER = registerKey("ore_silver_placed");
+    public static final ResourceKey<PlacedFeature> ORE_SILVER_LOWER = registerKey("ore_silver_lower_placed");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeature = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, TIN_ORE_PLACED_KEY, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_BURRIED_KEY), ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(40))));
         register(context, TIN_ORE_PLACED_LOWER_KEY, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_BURRIED_KEY), ModOrePlacement.orePlacement(CountPlacement.of(UniformInt.of(0, 1)), HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-40))));
         register(context, TIN_ORE_PLACED_EXTRA_KEY, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_TIN_ORE_KEY), ModOrePlacement.commonOrePlacement(50, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(264))));
+    
+        register(context, ORE_LEAD_UPPER, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_LEAD_ORE_KEY), ModOrePlacement.commonOrePlacement(90, HeightRangePlacement.triangle(VerticalAnchor.absolute(80), VerticalAnchor.absolute(384))));
+        register(context, ORE_LEAD_MIDDLE, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_LEAD_ORE_KEY), ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(59))));
+        register(context, ORE_LEAD_SMALL, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_LEAD_ORE_SMALL_KEY), ModOrePlacement.commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(75))));
+        
+        register(context, ORE_SILVER, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_SILVER_ORE_KEY), ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15))));
+        register(context, ORE_SILVER_LOWER, configuredFeature.getOrThrow(ModConfiguredFeatures.OVERWORLD_SILVER_ORE_KEY), ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-32), VerticalAnchor.aboveBottom(32))));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
