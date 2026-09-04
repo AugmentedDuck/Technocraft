@@ -508,9 +508,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         compressing(recipeOutput, Items.DIAMOND, 9, Blocks.DIAMOND_BLOCK, 1, "diamond_block");
 
         // DUST
-        // DIAMOND [MACERATING] DUST
-
-        // TODO DIAMOND: DUST
+        macerating(recipeOutput, Items.DIAMOND, ModItems.DIAMOND_DUST, 1, "diamond_dust");
         
         ///////////////////////////////////////////////////
         /// 
@@ -747,8 +745,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // DUST
         // ENERGY CRYSTAL [MACERATING] 9 DUST
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENERGIUM_DUST.get(), 9)
+            .pattern("RDR")
+            .pattern("DRD")
+            .pattern("RDR")
+            .define('R', Items.REDSTONE)
+            .define('D', ModItems.DIAMOND_DUST.get())
+            .unlockedBy("has_diamond_dust", has(ModItems.DIAMOND_DUST)).save(recipeOutput);
 
-        // TODO ENERGUIM: DUST + ENERGY CRYSTAL
+        // TODO ENERGUIM: ENERGY CRYSTAL
 
         ///////////////////////////////////////////////////
         /// 
@@ -902,6 +907,105 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // STRING
         macerating(recipeOutput, Items.WHITE_WOOL, Items.STRING, 2, "sting");
+
+        // RECHARGEABLE BATTERY
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RECHARGEABLE_BATTERY.get())
+            .pattern(" T ")
+            .pattern("CRC")
+            .pattern("CRC")
+            .define('T', ModBlocks.INS_TIN_CABLE_BLOCK.get())
+            .define('C', ModItems.TIN_CASING.get())
+            .define('R', Items.REDSTONE)
+            .unlockedBy("has_ins_tin_cable", has(ModBlocks.INS_TIN_CABLE_BLOCK)).save(recipeOutput);
+
+        // POWER METER
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWER_METER.get())
+            .pattern(" G ")
+            .pattern("CEC")
+            .pattern("C C")
+            .define('C', ModBlocks.INS_COPPER_CABLE_BLOCK.get())
+            .define('E', ModItems.ELECTRONIC_CIRCUIT.get())
+            .define('G', Items.GLOWSTONE)
+            .unlockedBy("has_electronic_circuit", has(ModItems.ELECTRONIC_CIRCUIT)).save(recipeOutput);
+
+        // ELECTRONIC CIRCUIT
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ELECTRONIC_CIRCUIT.get())
+            .pattern("CCC")
+            .pattern("RIR")
+            .pattern("CCC")
+            .define('C', ModBlocks.INS_COPPER_CABLE_BLOCK.get())
+            .define('I', ModItems.IRON_PLATE.get())
+            .define('R', Items.REDSTONE)
+            .unlockedBy("has_ins_copper_cable", has(ModBlocks.INS_COPPER_CABLE_BLOCK)).save(recipeOutput);
+
+        // GENERATOR
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GENERATOR_BLOCK.get())
+            .pattern("B")
+            .pattern("M")
+            .pattern("F")
+            .define('M', ModBlocks.MACHINE_CASING.get())
+            .define('B', ModItems.RECHARGEABLE_BATTERY.get())
+            .define('F', Items.FURNACE)
+            .unlockedBy("has_rechargeable_battery", has(ModItems.RECHARGEABLE_BATTERY)).save(recipeOutput);
+        
+        // MACHINE CASING
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MACHINE_CASING.get())
+            .pattern("III")
+            .pattern("I I")
+            .pattern("III")
+            .define('I', ModItems.IRON_PLATE.get())
+            .unlockedBy("has_iron_plate", has(ModItems.IRON_PLATE)).save(recipeOutput);
+        
+        // SUPER CABLE
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get(), 6)
+            .pattern("GGG")
+            .pattern("ESE")
+            .pattern("GGG")
+            .define('E', ModItems.ENERGIUM_DUST.get())
+            .define('S', ModItems.SILVER_DUST.get())
+            .define('G', Items.GLASS)
+            .unlockedBy("has_energium_dust", has(ModItems.ENERGIUM_DUST)).save(recipeOutput);
+        
+        // ELECTRIC FURNACE
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ELECTRIC_FURNACE_BLOCK.get())
+            .pattern("III")
+            .pattern("IFI")
+            .pattern("RER")
+            .define('I', ModItems.IRON_PLATE.get())
+            .define('E', ModItems.ELECTRONIC_CIRCUIT.get())
+            .define('F', Items.FURNACE)
+            .define('R', Items.REDSTONE)
+            .unlockedBy("has_electronic_circuit", has(ModItems.ELECTRONIC_CIRCUIT)).save(recipeOutput);
+
+        // MACERATOR
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MACERATOR_BLOCK.get())
+            .pattern("FFF")
+            .pattern("CMC")
+            .pattern(" E ")
+            .define('M', ModBlocks.MACHINE_CASING.get())
+            .define('E', ModItems.ELECTRONIC_CIRCUIT.get())
+            .define('F', Items.FLINT)
+            .define('C', Items.COBBLESTONE)
+            .unlockedBy("has_electronic_circuit", has(ModItems.ELECTRONIC_CIRCUIT)).save(recipeOutput);
+
+        // COMPRESSOR
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COMPRESSOR_BLOCK.get())
+            .pattern("S S")
+            .pattern("SMS")
+            .pattern("SES")
+            .define('M', ModBlocks.MACHINE_CASING.get())
+            .define('E', ModItems.ELECTRONIC_CIRCUIT.get())
+            .define('S', Items.STONE)
+            .unlockedBy("has_electronic_circuit", has(ModItems.ELECTRONIC_CIRCUIT)).save(recipeOutput);
+
+        // COIL
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COIL.get())
+            .pattern("CCC")
+            .pattern("CIC")
+            .pattern("CCC")
+            .define('C', ModBlocks.COPPER_CABLE_BLOCK.get())
+            .define('I', Items.IRON_INGOT)
+            .unlockedBy("has_copper_cable", has(ModBlocks.COPPER_CABLE_BLOCK)).save(recipeOutput);
     }
 
     /** Registers a smelting recipe for every ingredient in pIngredients -> pResult (one recipe file per ingredient). */
