@@ -1,6 +1,6 @@
 package net.augmentedduck.technocraft.energy;
 
-import net.augmentedduck.technocraft.block.entity.CableBlockEntity;
+import net.augmentedduck.technocraft.block.entity.cables.CableBlockEntity;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 /**

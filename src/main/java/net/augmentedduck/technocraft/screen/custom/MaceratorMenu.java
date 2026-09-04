@@ -1,6 +1,6 @@
 package net.augmentedduck.technocraft.screen.custom;
 
-import net.augmentedduck.technocraft.block.entity.MaceratorBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.MaceratorBlockEntity;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;

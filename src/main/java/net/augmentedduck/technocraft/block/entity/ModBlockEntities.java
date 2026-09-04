@@ -2,6 +2,16 @@ package net.augmentedduck.technocraft.block.entity;
 
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
+import net.augmentedduck.technocraft.block.entity.cables.*;
+import net.augmentedduck.technocraft.block.entity.consumers.CompressorBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.ElectricFurnaceBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.ExtractorBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.ExtruderBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.MaceratorBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.RollerBlockEntity;
+import net.augmentedduck.technocraft.block.entity.generators.GeneratorBlockEntity;
+import net.augmentedduck.technocraft.block.entity.generators.RTGBlockEntity;
+import net.augmentedduck.technocraft.block.entity.generators.SolarPanelBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -34,6 +44,11 @@ public class ModBlockEntities {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GoldCableBlockEntity>> GOLD_CABLE_BE = BLOCK_ENTITIES.register("gold_cable_be", () -> BlockEntityType.Builder.of(GoldCableBlockEntity::new, ModBlocks.GOLD_CABLE_BLOCK.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SilverCableBlockEntity>> SILVER_CABLE_BE = BLOCK_ENTITIES.register("silver_cable_be", () -> BlockEntityType.Builder.of(SilverCableBlockEntity::new, ModBlocks.SILVER_CABLE_BLOCK.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SuperConductingCableBlockEntity>> SUPER_CONDUCTING_CABLE_BE = BLOCK_ENTITIES.register("super_conducting_cable_be", () -> BlockEntityType.Builder.of(SuperConductingCableBlockEntity::new, ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get()).build(null));
+    
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<InsTinCableBlockEntity>> INS_TIN_CABLE_BE = BLOCK_ENTITIES.register("ins_tin_cable_be", () -> BlockEntityType.Builder.of(InsTinCableBlockEntity::new, ModBlocks.INS_TIN_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<InsCopperCableBlockEntity>> INS_COPPER_CABLE_BE = BLOCK_ENTITIES.register("ins_copper_cable_be", () -> BlockEntityType.Builder.of(InsCopperCableBlockEntity::new, ModBlocks.INS_COPPER_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<InsGoldCableBlockEntity>> INS_GOLD_CABLE_BE = BLOCK_ENTITIES.register("ins_gold_cable_be", () -> BlockEntityType.Builder.of(InsGoldCableBlockEntity::new, ModBlocks.INS_GOLD_CABLE_BLOCK.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<InsSilverCableBlockEntity>> INS_SILVER_CABLE_BE = BLOCK_ENTITIES.register("ins_silver_cable_be", () -> BlockEntityType.Builder.of(InsSilverCableBlockEntity::new, ModBlocks.INS_SILVER_CABLE_BLOCK.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

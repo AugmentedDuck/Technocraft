@@ -1,7 +1,7 @@
 package net.augmentedduck.technocraft.screen.custom;
 
 
-import net.augmentedduck.technocraft.block.entity.ElectricFurnaceBlockEntity;
+import net.augmentedduck.technocraft.block.entity.consumers.ElectricFurnaceBlockEntity;
 import net.augmentedduck.technocraft.screen.ModMenuTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;

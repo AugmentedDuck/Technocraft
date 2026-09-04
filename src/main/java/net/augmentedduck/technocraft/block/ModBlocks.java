@@ -3,7 +3,9 @@ package net.augmentedduck.technocraft.block;
 import java.util.function.Supplier;
 
 import net.augmentedduck.technocraft.Technocraft;
-import net.augmentedduck.technocraft.block.custom.*;
+import net.augmentedduck.technocraft.block.custom.cables.*;
+import net.augmentedduck.technocraft.block.custom.consumers.*;
+import net.augmentedduck.technocraft.block.custom.generators.*;
 import net.augmentedduck.technocraft.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -38,6 +40,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SILVER_DEEPSLATE_ORE = registerBlock("silver_deepslate_ore", () -> new Block(BlockBehaviour.Properties.of().strength(4.5f, 3f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
     public static final DeferredBlock<Block> LEAD_DEEPSLATE_ORE = registerBlock("lead_deepslate_ore", () -> new Block(BlockBehaviour.Properties.of().strength(4.5f, 3f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));    
 
+    // OTHER
+    public static final DeferredBlock<Block> MACHINE_CASING = registerBlock("machine_casing", () -> new Block(BlockBehaviour.Properties.of().strength(3.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
     ///////////////////////////////////
     // CUSTOM BLOCKS
     ///////////////////////////////////
@@ -61,6 +66,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> GOLD_CABLE_BLOCK = registerBlock("gold_cable", () -> new GoldCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
     public static final DeferredBlock<Block> SILVER_CABLE_BLOCK = registerBlock("silver_cable", () -> new SilverCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
     public static final DeferredBlock<Block> SUPER_CONDUCTING_CABLE_BLOCK = registerBlock("super_conducting_cable", () -> new SuperConductingCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    
+    public static final DeferredBlock<Block> INS_TIN_CABLE_BLOCK = registerBlock("ins_tin_cable", () -> new InsTinCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> INS_COPPER_CABLE_BLOCK = registerBlock("ins_copper_cable", () -> new InsCopperCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> INS_GOLD_CABLE_BLOCK = registerBlock("ins_gold_cable", () -> new InsGoldCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
+    public static final DeferredBlock<Block> INS_SILVER_CABLE_BLOCK = registerBlock("ins_silver_cable", () -> new InsSilverCableBlock(BlockBehaviour.Properties.of().strength(1f, 6f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));    
 
 
     /**

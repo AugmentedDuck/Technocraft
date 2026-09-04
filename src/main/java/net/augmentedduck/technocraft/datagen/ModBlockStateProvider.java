@@ -2,8 +2,8 @@ package net.augmentedduck.technocraft.datagen;
 
 import net.augmentedduck.technocraft.Technocraft;
 import net.augmentedduck.technocraft.block.ModBlocks;
-import net.augmentedduck.technocraft.block.custom.AbstractCableBlock;
-import net.augmentedduck.technocraft.block.custom.GeneratorBlock;
+import net.augmentedduck.technocraft.block.custom.cables.AbstractCableBlock;
+import net.augmentedduck.technocraft.block.custom.generators.GeneratorBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -36,6 +36,8 @@ public class ModBlockStateProvider extends BlockStateProvider{
         blockWithItem(ModBlocks.STEEL_BLOCK);
         blockWithItem(ModBlocks.LEAD_BLOCK);
         
+        blockWithItem(ModBlocks.MACHINE_CASING);
+        
         // ORES
         blockWithItem(ModBlocks.TIN_ORE);
         blockWithItem(ModBlocks.SILVER_ORE);
@@ -63,7 +65,7 @@ public class ModBlockStateProvider extends BlockStateProvider{
         machineBlockState(ModBlocks.EXTRACTOR_BLOCK);
         machineBlockState(ModBlocks.EXTRUDER_BLOCK);
         machineBlockState(ModBlocks.ROLLER_BLOCK);
-
+        
         /////////////////////////////////////
         // CABLES
         /////////////////////////////////////
@@ -73,6 +75,11 @@ public class ModBlockStateProvider extends BlockStateProvider{
         cableBlockState(ModBlocks.GOLD_CABLE_BLOCK);
         cableBlockState(ModBlocks.SILVER_CABLE_BLOCK);
         cableBlockState(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK);
+        
+        cableBlockState(ModBlocks.INS_TIN_CABLE_BLOCK);
+        cableBlockState(ModBlocks.INS_COPPER_CABLE_BLOCK);
+        cableBlockState(ModBlocks.INS_GOLD_CABLE_BLOCK);
+        cableBlockState(ModBlocks.INS_SILVER_CABLE_BLOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

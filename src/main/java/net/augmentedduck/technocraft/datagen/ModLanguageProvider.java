@@ -84,6 +84,8 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModItems.IRON_DUST.get(), "Iron Dust");
         add(ModItems.GOLD_DUST.get(), "Gold Dust");
         add(ModItems.COPPER_DUST.get(), "Copper Dust");
+        add(ModItems.DIAMOND_DUST.get(), "Diamond Dust");
+        add(ModItems.ENERGIUM_DUST.get(), "Energium Dust");
 
         // TINY DUST PILE
         add(ModItems.TIN_TINY_DUST.get(), "Tiny Pile of Tin");
@@ -99,6 +101,8 @@ public class ModLanguageProvider extends LanguageProvider{
         // OTHER
         add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");
         add(ModItems.RTG_FUEL.get(), "RTG Fuel Pellet");
+        add(ModItems.ELECTRONIC_CIRCUIT.get(), "Electronic Circuit");
+        add(ModItems.COIL.get(), "Coil");
 
         ///////////////////////////////
         // BLOCKS
@@ -110,6 +114,7 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.SILVER_BLOCK.get(), "Block of Silver");
         add(ModBlocks.LEAD_BLOCK.get(), "Block of Lead");
         add(ModBlocks.BRONZE_BLOCK.get(), "Block of Bronze");
+        add(ModBlocks.MACHINE_CASING.get(), "Basic Machine Casing");
 
         // ORE
         add(ModBlocks.TIN_ORE.get(), "Tin Ore");
@@ -140,6 +145,11 @@ public class ModLanguageProvider extends LanguageProvider{
         add(ModBlocks.GOLD_CABLE_BLOCK.get(), "Gold Cable");
         add(ModBlocks.SILVER_CABLE_BLOCK.get(), "Silver Cable");
         add(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get(), "Super Conducting Cable");
+        
+        add(ModBlocks.INS_TIN_CABLE_BLOCK.get(), "Insulated Tin Cable");
+        add(ModBlocks.INS_COPPER_CABLE_BLOCK.get(), "Insulated Copper Cable");
+        add(ModBlocks.INS_GOLD_CABLE_BLOCK.get(), "Insulated Gold Cable");
+        add(ModBlocks.INS_SILVER_CABLE_BLOCK.get(), "Insulated Silver Cable");
 
         ///////////////////////////////
         // OTHER

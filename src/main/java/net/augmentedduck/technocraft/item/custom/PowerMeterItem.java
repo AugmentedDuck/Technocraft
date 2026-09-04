@@ -1,6 +1,6 @@
 package net.augmentedduck.technocraft.item.custom;
 
-import net.augmentedduck.technocraft.block.entity.CableBlockEntity;
+import net.augmentedduck.technocraft.block.entity.cables.CableBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;

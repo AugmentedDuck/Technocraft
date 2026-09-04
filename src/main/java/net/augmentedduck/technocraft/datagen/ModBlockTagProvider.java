@@ -44,6 +44,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             .add(ModBlocks.LEAD_BLOCK.get())
             .add(ModBlocks.TIN_BLOCK.get())
             
+            .add(ModBlocks.MACHINE_CASING.get())
+            
             // GENERATORS
             .add(ModBlocks.GENERATOR_BLOCK.get())
             .add(ModBlocks.SOLAR_PANEL_BLOCK.get())
@@ -63,6 +65,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
             .add(ModBlocks.GOLD_CABLE_BLOCK.get())
             .add(ModBlocks.SILVER_CABLE_BLOCK.get())
             .add(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get())
+            
+            .add(ModBlocks.INS_TIN_CABLE_BLOCK.get())
+            .add(ModBlocks.INS_COPPER_CABLE_BLOCK.get())
+            .add(ModBlocks.INS_GOLD_CABLE_BLOCK.get())
+            .add(ModBlocks.INS_SILVER_CABLE_BLOCK.get())
             ;
         
         //////////////////////////////////

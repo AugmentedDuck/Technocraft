@@ -95,6 +95,9 @@ public class ModCreativeModeTabs {
             output.accept(ModItems.GOLD_DUST);
             output.accept(ModItems.COPPER_DUST);
 
+            output.accept(ModItems.DIAMOND_DUST);
+            output.accept(ModItems.ENERGIUM_DUST);
+
             // TINY DUST
             output.accept(ModItems.TIN_TINY_DUST);
             output.accept(ModItems.LEAD_TINY_DUST);
@@ -107,6 +110,8 @@ public class ModCreativeModeTabs {
             // ITEMS
             output.accept(ModItems.RECHARGEABLE_BATTERY);
             output.accept(ModItems.RTG_FUEL);
+            output.accept(ModItems.ELECTRONIC_CIRCUIT);
+            output.accept(ModItems.COIL);
 
             // TOOLS
             output.accept(ModItems.POWER_METER);
@@ -121,6 +126,8 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.SILVER_BLOCK);
             output.accept(ModBlocks.STEEL_BLOCK);
             output.accept(ModBlocks.BRONZE_BLOCK);
+
+            output.accept(ModBlocks.MACHINE_CASING);
 
             // ORE
             output.accept(ModBlocks.TIN_ORE);
@@ -143,6 +150,11 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.GOLD_CABLE_BLOCK);
             output.accept(ModBlocks.SILVER_CABLE_BLOCK);
             output.accept(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK);
+            
+            output.accept(ModBlocks.INS_TIN_CABLE_BLOCK);
+            output.accept(ModBlocks.INS_COPPER_CABLE_BLOCK);
+            output.accept(ModBlocks.INS_GOLD_CABLE_BLOCK);
+            output.accept(ModBlocks.INS_SILVER_CABLE_BLOCK);
 
             // CONSUMERS
             output.accept(ModBlocks.ELECTRIC_FURNACE_BLOCK);

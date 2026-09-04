@@ -40,19 +40,28 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         // CUSTOM BLOCKS
         dropSelf(ModBlocks.GENERATOR_BLOCK.get());
+        dropSelf(ModBlocks.SOLAR_PANEL_BLOCK.get());
+        dropSelf(ModBlocks.RTG_BLOCK.get());
+
         dropSelf(ModBlocks.ELECTRIC_FURNACE_BLOCK.get());
         dropSelf(ModBlocks.MACERATOR_BLOCK.get());
+        dropSelf(ModBlocks.COMPRESSOR_BLOCK.get());
+        dropSelf(ModBlocks.EXTRACTOR_BLOCK.get());
+        dropSelf(ModBlocks.EXTRUDER_BLOCK.get());
+        dropSelf(ModBlocks.ROLLER_BLOCK.get());
+        
         dropSelf(ModBlocks.TIN_CABLE_BLOCK.get());
         dropSelf(ModBlocks.COPPER_CABLE_BLOCK.get());
         dropSelf(ModBlocks.GOLD_CABLE_BLOCK.get());
         dropSelf(ModBlocks.SILVER_CABLE_BLOCK.get());
         dropSelf(ModBlocks.SUPER_CONDUCTING_CABLE_BLOCK.get());
-        dropSelf(ModBlocks.SOLAR_PANEL_BLOCK.get());
-        dropSelf(ModBlocks.RTG_BLOCK.get());
-        dropSelf(ModBlocks.COMPRESSOR_BLOCK.get());
-        dropSelf(ModBlocks.EXTRACTOR_BLOCK.get());
-        dropSelf(ModBlocks.EXTRUDER_BLOCK.get());
-        dropSelf(ModBlocks.ROLLER_BLOCK.get());
+        
+        dropSelf(ModBlocks.INS_TIN_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.INS_COPPER_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.INS_GOLD_CABLE_BLOCK.get());
+        dropSelf(ModBlocks.INS_SILVER_CABLE_BLOCK.get());
+
+        dropSelf(ModBlocks.MACHINE_CASING.get());
 
         /////////////////////////////////////
         // NON SELF DROPPING

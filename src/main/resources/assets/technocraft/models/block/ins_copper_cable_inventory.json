@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "technocraft:block/ins_copper_cable_inv"
+  }
+}

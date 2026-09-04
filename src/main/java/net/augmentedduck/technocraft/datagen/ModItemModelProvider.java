@@ -91,6 +91,10 @@ public class ModItemModelProvider extends ItemModelProvider{
         basicItem(ModItems.RECHARGEABLE_BATTERY.get());
         basicItem(ModItems.POWER_METER.get());
         basicItem(ModItems.RTG_FUEL.get());
+        basicItem(ModItems.ELECTRONIC_CIRCUIT.get());
+        basicItem(ModItems.DIAMOND_DUST.get());
+        basicItem(ModItems.ENERGIUM_DUST.get());
+        basicItem(ModItems.COIL.get());
     }
 
 }
