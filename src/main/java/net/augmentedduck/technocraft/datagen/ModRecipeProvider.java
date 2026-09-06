@@ -89,6 +89,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // PLATE
         rolling(recipeOutput, ModItems.TIN_INGOT, ModItems.TIN_PLATE, 1, "tin_plate");
+        hammering(recipeOutput, ModItems.TIN_INGOT.get(), ModItems.TIN_PLATE, 1, "tin_plate");
 
         // TODO TIN: HYDRATED DUST + EMPTY CAN + FILLED CAN
 
@@ -1109,5 +1110,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         for (ItemLike itemLike : pIngredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemLike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemLike), has(itemLike)).save(recipeOutput, Technocraft.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemLike));
         }
+    }
+
+    protected static void hammering(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "hammering/" + getItemName(result) + "_from_" + getItemName(ingredient));
+        recipeOutput.accept(id, new HammerRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount)), null);
     }
 }

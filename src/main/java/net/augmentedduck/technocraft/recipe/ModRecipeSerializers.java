@@ -18,6 +18,8 @@ public class ModRecipeSerializers {
     public static final Supplier<RecipeSerializer<ExtruderRecipe>> EXTRUDER_SERIALIZER = SERIALIZERS.register("extruder", () -> new SingleRecipeSerializer<>(ExtruderRecipe::new));
     public static final Supplier<RecipeSerializer<RollerRecipe>> ROLLER_SERIALIZER = SERIALIZERS.register("roller", () -> new SingleRecipeSerializer<>(RollerRecipe::new));
 
+    public static final Supplier<RecipeSerializer<HammerRecipe>> HAMMER_SERIALIZER = SERIALIZERS.register("hammering", HammerRecipeSerializer::new);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

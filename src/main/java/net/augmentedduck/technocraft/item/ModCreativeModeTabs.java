@@ -115,6 +115,7 @@ public class ModCreativeModeTabs {
 
             // TOOLS
             output.accept(ModItems.POWER_METER);
+            output.accept(ModItems.HAMMER);
 
             ///////////////////////////////
             // BLOCKS

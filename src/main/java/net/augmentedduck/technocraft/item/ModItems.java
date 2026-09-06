@@ -1,8 +1,7 @@
 package net.augmentedduck.technocraft.item;
 
 import net.augmentedduck.technocraft.Technocraft;
-import net.augmentedduck.technocraft.item.custom.PowerMeterItem;
-import net.augmentedduck.technocraft.item.custom.RechargeableBatteryItem;
+import net.augmentedduck.technocraft.item.custom.*;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -103,6 +102,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> ELECTRONIC_CIRCUIT = ITEMS.register("electronic_circuit", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> COIL = ITEMS.register("coil", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> HAMMER = ITEMS.register("hammer", () -> new HammerItem(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
