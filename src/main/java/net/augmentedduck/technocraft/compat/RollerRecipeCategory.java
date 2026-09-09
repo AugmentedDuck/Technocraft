@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class RollerRecipeCategory extends AbstractModRecipeCategory<RollerRecipe> {
 
+    @SuppressWarnings("unchecked")
     public static final RecipeType<RecipeHolder<RollerRecipe>> RECIPE_TYPE = RecipeType.create(Technocraft.MODID, "roller", (Class<RecipeHolder<RollerRecipe>>) (Class<?>) RecipeHolder.class);
 
     public RollerRecipeCategory(IGuiHelper guiHelper) {

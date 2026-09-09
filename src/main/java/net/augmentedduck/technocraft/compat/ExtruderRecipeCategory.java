@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class ExtruderRecipeCategory extends AbstractModRecipeCategory<ExtruderRecipe> {
 
+    @SuppressWarnings("unchecked")
     public static final RecipeType<RecipeHolder<ExtruderRecipe>> RECIPE_TYPE = RecipeType.create(Technocraft.MODID, "extruder", (Class<RecipeHolder<ExtruderRecipe>>) (Class<?>) RecipeHolder.class);
 
     public ExtruderRecipeCategory(IGuiHelper guiHelper) {

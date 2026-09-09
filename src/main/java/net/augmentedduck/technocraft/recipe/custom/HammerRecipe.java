@@ -1,7 +1,5 @@
 package net.augmentedduck.technocraft.recipe.custom;
 
-import java.util.List;
-
 import net.augmentedduck.technocraft.item.ModItems;
 
 import net.augmentedduck.technocraft.recipe.ModRecipeSerializers;

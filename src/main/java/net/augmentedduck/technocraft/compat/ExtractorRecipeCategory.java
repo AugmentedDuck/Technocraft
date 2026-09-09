@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class ExtractorRecipeCategory extends AbstractModRecipeCategory<ExtractorRecipe> {
 
+    @SuppressWarnings("unchecked")
     public static final RecipeType<RecipeHolder<ExtractorRecipe>> RECIPE_TYPE = RecipeType.create(Technocraft.MODID, "extractor", (Class<RecipeHolder<ExtractorRecipe>>) (Class<?>) RecipeHolder.class);
 
     public ExtractorRecipeCategory(IGuiHelper guiHelper) {

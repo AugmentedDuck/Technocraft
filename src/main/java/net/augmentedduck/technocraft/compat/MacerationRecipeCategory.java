@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class MacerationRecipeCategory extends AbstractModRecipeCategory<MacerationRecipe> {
 
+    @SuppressWarnings("unchecked")
     public static final RecipeType<RecipeHolder<MacerationRecipe>> RECIPE_TYPE = RecipeType.create(Technocraft.MODID, "macerating", (Class<RecipeHolder<MacerationRecipe>>) (Class<?>) RecipeHolder.class);
 
     public MacerationRecipeCategory(IGuiHelper guiHelper) {

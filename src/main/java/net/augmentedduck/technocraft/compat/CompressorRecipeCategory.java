@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
 public class CompressorRecipeCategory extends AbstractModRecipeCategory<CompressorRecipe> {
+    @SuppressWarnings("unchecked")
     public static final RecipeType<RecipeHolder<CompressorRecipe>> RECIPE_TYPE = RecipeType.create(Technocraft.MODID, "compressing", (Class<RecipeHolder<CompressorRecipe>>) (Class<?>) RecipeHolder.class);
 
     public CompressorRecipeCategory(IGuiHelper guiHelper) {
