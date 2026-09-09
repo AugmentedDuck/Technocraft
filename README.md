@@ -78,7 +78,7 @@ Ingots can then be:
 ## Building from Source
  
 ```bash
-git clone https://github.com/<your-username>/technocraft.git
+git clone https://github.com/AugmentedDuck/technocraft.git
 cd technocraft
 ./gradlew build
 ```
