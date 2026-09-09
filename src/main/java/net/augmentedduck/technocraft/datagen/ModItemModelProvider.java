@@ -96,6 +96,7 @@ public class ModItemModelProvider extends ItemModelProvider{
         basicItem(ModItems.ENERGIUM_DUST.get());
         basicItem(ModItems.COIL.get());
         basicItem(ModItems.HAMMER.get());
+        basicItem(ModItems.CUTTER_ITEM.get());
     }
 
 }

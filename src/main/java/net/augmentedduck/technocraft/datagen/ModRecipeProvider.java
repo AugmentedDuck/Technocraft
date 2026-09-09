@@ -83,6 +83,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // CABLE
         extruding(recipeOutput, ModItems.TIN_INGOT, ModBlocks.TIN_CABLE_BLOCK, 3, "tin_cable");
+        cuttingItem(recipeOutput, ModItems.TIN_PLATE.get(), ModBlocks.TIN_CABLE_BLOCK, 2, "tin_cable");
+
 
         // ITEM CASING
         rolling(recipeOutput, ModItems.TIN_PLATE, ModItems.TIN_CASING, 2, "tin_casing");
@@ -1115,5 +1117,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void hammering(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "hammering/" + getItemName(result) + "_from_" + getItemName(ingredient));
         recipeOutput.accept(id, new HammerRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount)), null);
+    }
+
+    protected static void cuttingItem(RecipeOutput recipeOutput, ItemLike ingredient, ItemLike result, int resultCount, String group) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Technocraft.MODID, "cutting_item/" + getItemName(result) + "_from_" + getItemName(ingredient));
+        recipeOutput.accept(id, new CutterItemRecipe(Ingredient.of(ingredient), new ItemStack(result, resultCount)), null);
     }
 }

@@ -19,6 +19,7 @@ public class ModRecipeSerializers {
     public static final Supplier<RecipeSerializer<RollerRecipe>> ROLLER_SERIALIZER = SERIALIZERS.register("roller", () -> new SingleRecipeSerializer<>(RollerRecipe::new));
 
     public static final Supplier<RecipeSerializer<HammerRecipe>> HAMMER_SERIALIZER = SERIALIZERS.register("hammering", HammerRecipeSerializer::new);
+    public static final Supplier<RecipeSerializer<CutterItemRecipe>> CUTTER_ITEM_SERIALIZER = SERIALIZERS.register("cutting", CutterItemRecipeSerializer::new);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

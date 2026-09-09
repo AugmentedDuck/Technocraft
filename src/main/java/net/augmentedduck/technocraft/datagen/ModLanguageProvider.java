@@ -98,6 +98,7 @@ public class ModLanguageProvider extends LanguageProvider{
         // TOOLS
         add(ModItems.POWER_METER.get(), "Power Meter");
         add(ModItems.HAMMER.get(), "Hammer");
+        add(ModItems.CUTTER_ITEM.get(), "Cutter");
         
         // OTHER
         add(ModItems.RECHARGEABLE_BATTERY.get(), "Rechargeable Battery");

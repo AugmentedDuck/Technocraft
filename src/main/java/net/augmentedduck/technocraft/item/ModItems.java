@@ -103,6 +103,7 @@ public class ModItems {
     public static final DeferredItem<Item> ELECTRONIC_CIRCUIT = ITEMS.register("electronic_circuit", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> COIL = ITEMS.register("coil", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> HAMMER = ITEMS.register("hammer", () -> new HammerItem(new Item.Properties()));
+    public static final DeferredItem<Item> CUTTER_ITEM = ITEMS.register("cutter_item", () -> new CutterItem(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
