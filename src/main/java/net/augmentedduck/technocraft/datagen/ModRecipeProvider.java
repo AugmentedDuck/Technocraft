@@ -85,9 +85,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         extruding(recipeOutput, ModItems.TIN_INGOT, ModBlocks.TIN_CABLE_BLOCK, 3, "tin_cable");
         cuttingItem(recipeOutput, ModItems.TIN_PLATE.get(), ModBlocks.TIN_CABLE_BLOCK, 2, "tin_cable");
 
-
         // ITEM CASING
         rolling(recipeOutput, ModItems.TIN_PLATE, ModItems.TIN_CASING, 2, "tin_casing");
+        hammering(recipeOutput, ModItems.TIN_PLATE.get(), ModItems.TIN_CASING, 1, "tin_casing");
 
         // PLATE
         rolling(recipeOutput, ModItems.TIN_INGOT, ModItems.TIN_PLATE, 1, "tin_plate");
@@ -142,12 +142,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         
         // CABLE
         extruding(recipeOutput, ModItems.SILVER_INGOT, ModBlocks.SILVER_CABLE_BLOCK, 3, "silver_cable");
+        cuttingItem(recipeOutput, ModItems.SILVER_PLATE.get(), ModBlocks.SILVER_CABLE_BLOCK, 2, "silver_cable");
         
         // ITEM CASING
         rolling(recipeOutput, ModItems.SILVER_PLATE, ModItems.SILVER_CASING, 2, "silver_casing");
+        hammering(recipeOutput, ModItems.SILVER_PLATE.get(), ModItems.SILVER_CASING, 1, "silver_casing");
+        hammering(recipeOutput, ModItems.SILVER_INGOT.get(), ModItems.SILVER_PLATE, 1, "silver_plate");
 
         // PLATE
         rolling(recipeOutput, ModItems.SILVER_INGOT, ModItems.SILVER_PLATE, 1, "silver_plate");
+
 
         ///////////////////////////////////////////////////
         /// 
@@ -229,9 +233,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // ITEM CASING
         rolling(recipeOutput, ModItems.LEAD_PLATE, ModItems.LEAD_CASING, 2, "lead_casing");
+        hammering(recipeOutput, ModItems.LEAD_PLATE.get(), ModItems.LEAD_CASING, 1, "lead_casing");
 
         // PLATE
         rolling(recipeOutput, ModItems.LEAD_INGOT, ModItems.LEAD_PLATE, 1, "lead_plate");
+        hammering(recipeOutput, ModItems.LEAD_INGOT.get(), ModItems.LEAD_PLATE, 1, "lead_plate");
+
+
         ///////////////////////////////////////////////////
         /// 
         /// BRONZE
@@ -274,11 +282,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         // ITEM CASING
         rolling(recipeOutput, ModItems.BRONZE_PLATE, ModItems.BRONZE_CASING, 2, "bronze_casing");
+        hammering(recipeOutput, ModItems.BRONZE_PLATE.get(), ModItems.BRONZE_CASING, 1, "bronze_casing");
         
         // PLATE
         rolling(recipeOutput, ModItems.BRONZE_INGOT, ModItems.BRONZE_PLATE, 1, "bronze_plate");
+        hammering(recipeOutput, ModItems.BRONZE_INGOT.get(), ModItems.BRONZE_PLATE, 1, "bronze_plate");
 
         // TODO BRONZE: SHAFT
+
 
         ///////////////////////////////////////////////////
         /// 
@@ -318,12 +329,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         
         // CABLE
         extruding(recipeOutput, Items.COPPER_INGOT, ModBlocks.COPPER_CABLE_BLOCK, 3, "copper_cable");
+        cuttingItem(recipeOutput, ModItems.COPPER_PLATE.get(), ModBlocks.COPPER_CABLE_BLOCK, 2, "copper_cable");
 
         // ITEM CASING
         rolling(recipeOutput, ModItems.COPPER_PLATE, ModItems.COPPER_CASING, 2, "copper_casing");
+        hammering(recipeOutput, ModItems.COPPER_PLATE.get(), ModItems.COPPER_CASING, 1, "copper_casing");
 
         // PLATE
         rolling(recipeOutput, Items.COPPER_INGOT, ModItems.COPPER_PLATE, 1, "copper_plate");
+        hammering(recipeOutput, Items.COPPER_INGOT, ModItems.COPPER_PLATE, 1, "copper_plate");
+
 
         ///////////////////////////////////////////////////
         /// 
@@ -362,13 +377,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         
         // CABLE
         extruding(recipeOutput, Items.GOLD_INGOT, ModBlocks.GOLD_CABLE_BLOCK, 3, "gold_cable");
+        cuttingItem(recipeOutput, ModItems.GOLD_PLATE.get(), ModBlocks.GOLD_CABLE_BLOCK, 2, "gold_cable");
 
         // ITEM CASING
         rolling(recipeOutput, ModItems.GOLD_PLATE, ModItems.GOLD_CASING, 2, "gold_casing");
-
+        hammering(recipeOutput, ModItems.GOLD_PLATE.get(), ModItems.GOLD_CASING, 1, "gold_casing");
+        
         // PLATE
         rolling(recipeOutput, Items.GOLD_INGOT, ModItems.GOLD_PLATE, 1, "gold_plate");
-
+        hammering(recipeOutput, Items.GOLD_INGOT, ModItems.GOLD_PLATE, 1, "gold_plate");
+        
         ///////////////////////////////////////////////////
         /// 
         /// IRON
@@ -377,45 +395,47 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         
         // IRON BLOCK
         compressing(recipeOutput, Items.IRON_INGOT, 9, Blocks.IRON_BLOCK, 1, "iron_block");
-
+        
         // RAW IRON BLOCK
         compressing(recipeOutput, Items.RAW_IRON, 9, Blocks.RAW_IRON_BLOCK, 1, "raw_iron_block");
-
+        
         // IRON DUST
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_DUST.get())
-            .pattern("BBB")
-            .pattern("BBB")
-            .pattern("BBB")
-            .define('B', ModItems.IRON_TINY_DUST.get())
+        .pattern("BBB")
+        .pattern("BBB")
+        .pattern("BBB")
+        .define('B', ModItems.IRON_TINY_DUST.get())
             .unlockedBy("has_iron_tiny_dust", has(ModItems.IRON_TINY_DUST)).save(recipeOutput);
-        
+            
         compressing(recipeOutput, ModItems.IRON_TINY_DUST, 9, ModItems.IRON_DUST, 1, "iron_dust");
         macerating(recipeOutput, ModItems.IRON_DENSE_PLATE, ModItems.IRON_DUST, 9, "iron_dust");
         macerating(recipeOutput, List.of(ModItems.IRON_WASHED, ModItems.IRON_PLATE, Items.IRON_INGOT, ModItems.IRON_CRUSHED, ModItems.STEEL_INGOT, ModItems.STEEL_PLATE), ModItems.IRON_DUST, 1, "iron_dust");
         // EMPTY FUEL CELL [MACERATING] DUST
-
+        
         // IRON INGOT
         List<ItemLike> IRON_SMELTABLES = List.of(ModItems.IRON_DUST, ModItems.IRON_CRUSHED, ModItems.IRON_WASHED);
         oreSmelting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
         oreBlasting(recipeOutput, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 100, "iron_ingot");
-
+        
         // CRUSHED IRON
         macerating(recipeOutput, List.of(Items.RAW_IRON, Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), ModItems.IRON_CRUSHED.get(), 2, "iron_crushed");
-
+        
         // DENSE PLATE
         compressing(recipeOutput, ModItems.IRON_PLATE.get(), 9, ModItems.IRON_DENSE_PLATE.get(), 1, "iron_dense_plate");
-
+        
         // SHAFT
         // BLOCK [EXTRUDING] SHAFT
-
+        
         // FENCE
         // ITEM CASING [EXTRUDING] FENCE
-
+        
         // ITEM CASING
         rolling(recipeOutput, ModItems.IRON_PLATE, ModItems.IRON_CASING, 2, "iron_casing");
-
+        hammering(recipeOutput, ModItems.IRON_PLATE.get(), ModItems.IRON_CASING, 1, "iron_casing");
+        
         // PLATE
         rolling(recipeOutput, Items.IRON_INGOT, ModItems.IRON_PLATE, 1, "iron_plate");
+        hammering(recipeOutput, Items.IRON_INGOT, ModItems.IRON_PLATE, 1, "iron_plate");
 
         // TODO IRON: SHAFT + FENCE
 
@@ -1009,6 +1029,46 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('C', ModBlocks.COPPER_CABLE_BLOCK.get())
             .define('I', Items.IRON_INGOT)
             .unlockedBy("has_copper_cable", has(ModBlocks.COPPER_CABLE_BLOCK)).save(recipeOutput);
+
+        // Cutter Item
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CUTTER_ITEM.get())
+            .pattern("P P")
+            .pattern(" P ")
+            .pattern("I I")
+            .define('P', ModItems.IRON_PLATE.get())
+            .define('I', Items.IRON_INGOT)
+            .unlockedBy("has_iron_plate", has(ModItems.IRON_PLATE)).save(recipeOutput);
+        
+        // HAMMER
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HAMMER.get())
+            .pattern("II ")
+            .pattern("ISS")
+            .pattern("II ")
+            .define('S', Items.STICK)
+            .define('I', Items.IRON_INGOT)
+            .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(recipeOutput);
+        
+        // PRESS
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ROLLER_BLOCK.get())
+            .pattern(" H ")
+            .pattern("EME")
+            .pattern("CCC")
+            .define('H', ModItems.HAMMER.get())
+            .define('E', ModItems.ELECTRONIC_CIRCUIT.get())
+            .define('C', ModItems.COIL.get())
+            .define('M', ModBlocks.MACHINE_CASING.get())
+            .unlockedBy("has_hammer", has(ModItems.HAMMER)).save(recipeOutput); 
+
+        // EXTRUDER
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EXTRUDER_BLOCK.get())
+            .pattern(" X ")
+            .pattern("EME")
+            .pattern("CCC")
+            .define('X', ModItems.CUTTER_ITEM.get())
+            .define('E', ModItems.ELECTRONIC_CIRCUIT.get())
+            .define('C', ModItems.COIL.get())
+            .define('M', ModBlocks.MACHINE_CASING.get())
+            .unlockedBy("has_cutter_item", has(ModItems.CUTTER_ITEM)).save(recipeOutput); 
     }
 
     /** Registers a smelting recipe for every ingredient in pIngredients -> pResult (one recipe file per ingredient). */
